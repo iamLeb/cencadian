@@ -98,7 +98,7 @@
                             <div class="menu-dropdown collapse" id="employeeTemplates" style="">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Letter of Interview </a>
+                                        <a href="{{ route('admin.template.interview') }}" class="nav-link" data-key="t-calendar"> Letter of Interview </a>
                                     </li>
 
                                     <li class="nav-item">

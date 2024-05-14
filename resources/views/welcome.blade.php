@@ -226,13 +226,11 @@
             </div>
             <div class="contact-list mb-30">
                 <h4>Phone Number</h4>
-                <p>+1 (204) 111 1111</p>
-                <p>+1 (204) 111 1111</p>
+                <p>+1 (204) 930 0378</p>
             </div>
             <div class="contact-list mb-30">
                 <h4>Email Address</h4>
-                <p>info@iamLeb.com</p>
-                <p>contact@iamleb.com</p>
+                <p>admin@cencadian.ca</p>
             </div>
         </div>
         <div class="offCanvas__social-icon mt-30">
@@ -770,7 +768,7 @@
                                             <i class="flaticon-envelope"></i>
                                         </div>
                                         <div class="content">
-                                            <a href="admin@cencadian.ca">admin@cencadian.ca</a>
+                                            <a href="mailto:admin@cencadian.ca">admin@cencadian.ca</a>
                                         </div>
                                     </li>
                                     <li>

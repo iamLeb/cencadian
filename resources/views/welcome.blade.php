@@ -249,13 +249,38 @@
     <section class="banner-area banner-bg" data-background="{{ asset('front/assets/pexels-vladbagacian-3987066.jpg') }}">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
+                    <div class="banner-content">
+                        <span class="sub-title" data-aos="fade-up" data-aos-delay="0">We Are Expert In This Field</span>
+                        <h2 class="title text-white" data-aos="fade-up" data-aos-delay="200">business Consulting All Solutions</h2>
+                        <p class="text-white" data-aos="fade-up" data-aos-delay="400">Are you a talented intern looking for real-world experience in web development? Or are you a company seeking skilled professionals to elevate your online presence? Look no further! [Your Website Name] is your ultimate destination for connecting interns with companies, fostering growth, and driving innovation.</p>
+                        <a class='btn' style="background: rgb(62, 64, 115)" data-aos-delay='600' data-aos='fade-up' href='/register?key=intern'>Apply as an Intern</a>
+                    </div>
+                    <div class="banner-shape">
+                        <img src="{{ asset('front/assets/img/banner/banner_shape01.png') }}" alt="" class="rightToLeft">
+                        <img src="{{ asset('front/assets/img/banner/banner_shape02.png') }}" alt="" class="ribbonRotate">
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
                     <div class="banner-content">
                         <span class="sub-title" data-aos="fade-up" data-aos-delay="0">We Are Expert In This Field</span>
                         <h2 class="title text-white" data-aos="fade-up" data-aos-delay="200">business Consulting All Solutions</h2>
                         <p class="text-white" data-aos="fade-up" data-aos-delay="400">Are you a talented intern looking for real-world experience in web development? Or are you a company seeking skilled professionals to elevate your online presence? Look no further! [Your Website Name] is your ultimate destination for connecting interns with companies, fostering growth, and driving innovation.</p>
                         <a class='btn' data-aos-delay='600' data-aos='fade-up' href='/register?key=company'>Sign up as Company</a>
-                        <a class='btn' style="background: rgb(62, 64, 115)" data-aos-delay='600' data-aos='fade-up' href='/register?key=intern'>Apply as an Intern</a>
+                    </div>
+                    <div class="banner-shape">
+                        <img src="{{ asset('front/assets/img/banner/banner_shape01.png') }}" alt="" class="rightToLeft">
+                        <img src="{{ asset('front/assets/img/banner/banner_shape02.png') }}" alt="" class="ribbonRotate">
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="banner-content">
+                        <span class="sub-title" data-aos="fade-up" data-aos-delay="0">We Are Expert In This Field</span>
+                        <h2 class="title text-white" data-aos="fade-up" data-aos-delay="200">business Consulting All Solutions</h2>
+                        <p class="text-white" data-aos="fade-up" data-aos-delay="400">Are you a talented intern looking for real-world experience in web development? Or are you a company seeking skilled professionals to elevate your online presence? Look no further! [Your Website Name] is your ultimate destination for connecting interns with companies, fostering growth, and driving innovation.</p>
+                        <a class='btn' data-aos-delay='600' data-aos='fade-up' href='/register?key=company'>Sign up as Company</a>
                     </div>
                     <div class="banner-shape">
                         <img src="{{ asset('front/assets/img/banner/banner_shape01.png') }}" alt="" class="rightToLeft">

@@ -103,7 +103,30 @@
                             <div class="col-xxl-9">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-3">Application Info</h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5 class="card-title mb-3">Application Info</h5>
+                                            </div>
+                                            <div class="col-md-6">
+                                                @if (!$user->interview_mail)
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-sm">
+                                                        <i class="ri-mail-close-fill"></i> Send Interview
+                                                    </a>
+                                                @endif
+
+                                                @if (!$user->interview_question)
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-warning btn-sm">
+                                                        <i class="ri-mail-close-fill"></i>Interview Questions
+                                                    </a>
+                                                @endif
+
+                                                @if (!$user->offer_letter)
+                                                        <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-danger btn-sm">
+                                                            <i class="ri-mail-close-fill"></i> Send Offer Letter
+                                                        </a>
+                                                @endif
+                                            </div>
+                                        </div>
 
                                         <p>{{ $user->application->note ?? 'No Additional Info'}}</p>
                                         <div class="row">

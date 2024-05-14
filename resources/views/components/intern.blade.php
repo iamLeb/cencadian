@@ -171,7 +171,6 @@
                             <span class="icon-off"><i class="ri-bookmark-3-fill align-bottom"></i></span>
                         </a>
                     @endif
-
                 </div>
             </div>
         </div>

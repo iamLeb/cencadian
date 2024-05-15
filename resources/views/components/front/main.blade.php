@@ -242,7 +242,7 @@
                         <ul class="list-wrap">
                             <li>
                                 <div class="icon">
-                                    <i class="flaticon-investment"></i>
+                                    <i class="flaticon-light-bulb"></i>
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Comprehensive Training</h4>
@@ -251,7 +251,7 @@
                             </li>
                             <li>
                                 <div class="icon">
-                                    <i class="flaticon-investment-1"></i>
+                                    <i class="flaticon-handshake"></i>
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Real Projects, Real Impact</h4>
@@ -260,7 +260,7 @@
                             </li>
                             <li>
                                 <div class="icon">
-                                    <i class="flaticon-investment-1"></i>
+                                    <i class="flaticon-startup"></i>
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Leadership and Employment Skills</h4>
@@ -270,7 +270,7 @@
 
                             <li>
                                 <div class="icon">
-                                    <i class="flaticon-investment-1"></i>
+                                    <i class="flaticon-suitcase"></i>
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Support and Mentorship</h4>
@@ -280,7 +280,7 @@
 
                             <li>
                                 <div class="icon">
-                                    <i class="flaticon-investment-1"></i>
+                                    <i class="flaticon-talk"></i>
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Community Engagement and Networking</h4>

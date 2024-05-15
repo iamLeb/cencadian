@@ -136,7 +136,7 @@ $lists = [
         </div>
         <div class="services-item-wrap">
             <div class="row justify-content-center">
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 ">
                     <div class="services-item shine-animate-item">
                         <div class="services-thumb">
                             <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_website_builder_re_ii6e.svg') }}" alt=""></a>
@@ -150,7 +150,7 @@ $lists = [
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8" style="height: 100%">
                     <div class="services-item shine-animate-item">
                         <div class="services-thumb">
                             <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_mobile_content_xvgr.svg') }}" alt=""></a>

@@ -31,20 +31,25 @@ class ServiceRequestController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'desc' => 'required',
-            'priority' => 'required',
+            'executive_summary' => 'required',
+            'community_involvement' => 'required',
+            'background_rationale' => 'required',
+            'project_requirements' => 'required',
+            'project_team' => 'required',
             'budget' => 'required',
-            'category' => 'required',
+            'other_remarks' => 'required',
         ]);
 
         ServiceRequest::create([
             "user_id" => auth()->id(),
             "title" => $request->title,
-            "desc" => $request->desc,
-            "priority" => $request->priority,
-            "deadline" => $request->deadline,
+            "executive_summary" => $request->executive_summary,
+            "community_involvement" => $request->community_involvement,
+            "background_rationale" => $request->background_rationale,
+            "project_requirements" => $request->project_requirements,
+            "project_team" => $request->project_team,
             "budget" => $request->budget,
-            "category" => $request->category,
+            "other_remarks" => $request->other_remarks,
             "file" => ""
         ]);
 

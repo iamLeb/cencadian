@@ -57,7 +57,7 @@
                 <div class="col-lg-6">
                     <ul class="tg-header__top-right list-wrap">
                         <li><i class="flaticon-envelope"></i><a href="mailto:admin@cencadian.ca">admin@cencadian.ca</a></li>
-                        <li><i class="flaticon-time"></i>Mon-Fri: 10:00am - 09:00pm</li>
+                        <li><i class="flaticon-time"></i>Mon-Fri: 09:00am - 04:00pm</li>
                     </ul>
                 </div>
             </div>
@@ -295,17 +295,17 @@
                                 <p class="text-white text-center">
                                     {{ $list['body'] }}
                                 </p>
+                                <div class="d-flex justify-content-center mb-1">
                                 <?php
                                     if($list['category'] === 'gen') {
-                                        ?><a class='btn align-self-center' data-aos-delay='600' data-aos='fade-up' href='#about'>Learn More about Cencadian</a><?php
+                                        ?><a class='btn align-self-center' data-aos-delay='600' data-aos='fade-up' href='#about'>Learn More</a><?php
                                     } else if ($list['category'] === 'intern') {
                                         ?><a class='btn align-self-center' data-aos-delay='600' data-aos='fade-up' href='/register?key=intern'>Apply Now</a><?php
                                     }else if ($list['category'] === 'company') {
                                             ?><a class='btn align-self-center' data-aos-delay='600' data-aos='fade-up' href='/register?key=company'>Sign up</a> <?php
                                     }
-
                                 ?>
-
+                                </div>
                             </div>
 
                         <?php
@@ -381,9 +381,9 @@
                             <div class="icon">
                                 <i class="flaticon-trophy"></i>
                             </div>
-                            <!-- <div class="content">
-                                <h6 class="circle rotateme">Years Of - Experience 25 -</h6>
-                            </div> -->
+{{--                            <div class="content">--}}
+{{--                                <h6 class="circle rotateme">5 Years Experience</h6>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -457,13 +457,13 @@
             <div class="services-item-wrap">
                 <div class="row justify-content-center">
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-                        <div class="services-item shine-animate-item">
+                        <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
-                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_website_builder_re_ii6e.svg') }}" alt=""></a>
+                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_building_websites_i78t.svg') }}" alt=""></a>
                             </div>
                             <div class="services-content">
                                 <div class="icon">
-                                    <i class="flaticon-profit"></i>
+                                    <i class="fa fa-laptop"></i>
                                 </div>
                                 <h4 class="title"><a href='services-details.html'>Web Development Solutions</a></h4>
                                 <p>At Cencadian, we create custom web solutions to fit your business perfectly, whether it's an e-commerce site, corporate page, or dynamic app. Our experienced team turns your vision into digital reality.</p>
@@ -471,13 +471,13 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-                        <div class="services-item shine-animate-item">
+                        <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
-                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_mobile_content_xvgr.svg') }}" alt=""></a>
+                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_savings_re_eq4w.svg') }}" alt=""></a>
                             </div>
                             <div class="services-content">
                                 <div class="icon">
-                                    <i class="flaticon-investment-1"></i>
+                                    <i class="flaticon-financial-profit"></i>
                                 </div>
                                 <h4 class="title"><a href='services-details.html'>Little to no Cost</a></h4>
                                 <p>The 2024 Cencadian Summer Web Development Program is aimed to provide Web Development Services at little to no cost to new or existing small to medium scale organizations within the community that might not be able to afford the huge cost of web development and maintenance.  </p>
@@ -485,13 +485,13 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-                        <div class="services-item shine-animate-item">
+                        <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
-                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_everyday_design_gy64.svg') }}" alt=""></a>
+                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_showing_support_re_5f2v.svg') }}" alt=""></a>
                             </div>
                             <div class="services-content">
                                 <div class="icon">
-                                    <i class="flaticon-pie-chart"></i>
+                                    <i class="flaticon-handshake"></i>
                                 </div>
                                 <h4 class="title"><a href='services-details.html'>Community Impact</a></h4>
                                 <p>By focusing on local businesses and organizations that might not otherwise afford web development, we aim to strengthen community ties and foster economic growth.</p>
@@ -499,13 +499,13 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-                        <div class="services-item shine-animate-item">
+                        <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
-                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_search_re_x5gq.svg') }}" alt=""></a>
+                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_outer_space_re_u9vd.svg') }}" alt=""></a>
                             </div>
                             <div class="services-content">
                                 <div class="icon">
-                                    <i class="flaticon-light-bulb"></i>
+                                    <i class="flaticon-startup"></i>
                                 </div>
                                 <h4 class="title"><a href='services-details.html'>Competitive Advantage</a></h4>
                                 <p>Local businesses, startups, and entrepreneurs who lack the financial resources for extensive web development services will gain a competitive edge through affordable access to professional websites, enabling them to reach a wider audience and thrive in the digital landscape. </p>
@@ -528,9 +528,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 order-0 order-lg-2">
                     <div class="choose-img-wrap">
-                        <img src="{{ asset('front/assets/undraw_showing_support_re_5f2v.svg') }}" alt="">
-                        <img src="{{ asset('front/assets/img/images/choose_img02.jpg') }}" alt="" data-parallax='{"x" : 50 }'>
-                        <img src="{{ asset('front/assets/img/images/choose_img_shape.png') }}" alt="" class="alltuchtopdown">
+                        <img src="{{ asset('front/assets/undraw_educator_re_ju47.svg') }}" alt="">
+{{--                        <img src="{{ asset('front/assets/img/images/choose_img02.jpg') }}" alt="" data-parallax='{"x" : 50 }'>--}}
+{{--                        <img src="{{ asset('front/assets/img/images/choose_img_shape.png') }}" alt="" class="alltuchtopdown">--}}
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -589,7 +589,7 @@
                                     </div>
                                 </li>
 
-                                <div style="display:flex; justify-content:center width:100%">
+                                <div style="display:flex; justify-content:center; width:100%">
                                     <a href="/register?key=intern" class="btn" style="width:100%; justify-content:center">Sign Up as Intern</a>
                                 <div>
                             </ul>

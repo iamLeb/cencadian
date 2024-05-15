@@ -182,7 +182,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="address" class="form-label">{{ __('Full Address') }}</label>
                                     <input name="address" type="tel" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" placeholder="Enter your full address" id="address" required autocomplete="address">

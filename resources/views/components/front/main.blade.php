@@ -9,10 +9,7 @@
                             <div class="slider__content">
                                 <span class="sub-title">About The Summer Web Development Program</span>
                                 {{--                                    <h2 class="title">Transforming Dreams into Financial Reality</h2>--}}
-                                <p>Cencadian Educational Incorporated is a Canadian not-for-profit organization seeking to provide engagement
-                                    and learning opportunities for students of all ages that are accessible for all. This year, Cencadian is
-                                    kickstarting the Summer Web Development program, offering tech internship opportunities to students, as well as
-                                    low or no-cost web development for local organizations.</p>
+                                <p>Cencadian Educational Inc., a Canadian nonprofit, aims to offer inclusive learning opportunities. This summer, we're launching a Web Development program, providing tech internships for students and affordable or free web development for local organizations.</p>
                                 <a class='btn' href='#about'>Learn More about Cencadian</a>
                             </div>
                         </div>
@@ -31,9 +28,7 @@
                             <div class="slider__content">
                                 <span class="sub-title">Internship Opportunities for Youths</span>
                                 {{--                                    <h2 class="title">Transforming Dreams into Financial Reality</h2>--}}
-                                <p>Are you a student looking to gain real-world experience in Web Development? Cencadian's Summer Web Development
-                                    program might be the perfect fit for you. Learn from experienced mentors, gain hands-on experience, and add
-                                    to your portfolio! Apply to join our team today!</p>
+                                <p>Are you a student eager for real-world Web Development experience? Join Cencadian's Summer program. Learn from mentors, get hands-on experience, and enhance your portfolio.</p>
                                 <a class='btn' href='/register?key=intern'>Apply Now</a>
                             </div>
                         </div>

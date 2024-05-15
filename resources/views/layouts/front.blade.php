@@ -49,16 +49,16 @@
 </main>
 <!-- main-area-end -->
 <!-- footer-area -->
-<footer>
+<footer id="contact">
     <div class="footer-area">
         <div class="footer-top">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="footer-widget">
-                            {{--                            <div class="fw-logo mb-25">--}}
-                            {{--                                <a href='index.html'><img src="{{ asset('front/assets/img/logo/logo.png') }}" alt=""></a>--}}
-                            {{--                            </div>--}}
+                                                        <div class="fw-logo mb-25">
+                                                            <a href='/'><img src="{{ asset('front/assets/img/logo-black.png') }}" alt=""></a>
+                                                        </div>
                             <div class="footer-content">
                                 <p>Contact us for more information!</p>
                                 <div class="footer-social">

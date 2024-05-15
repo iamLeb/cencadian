@@ -2,8 +2,8 @@
 <header class="tg-header__style-two">
     <div class="tg-header__inner-wrap">
         <div class="tg-header__logo-wrap">
-            <div class="logo">
-                <a href='/'><img src="{{ asset('front/assets/img/favicon.png') }}" alt="Logo"></a>
+            <div class="logo p-3">
+                <a href='/'><img src="{{ asset('front/assets/img/logo-black.png') }}" alt="Logo"></a>
             </div>
         </div>
         <div class="tg-header__right-side">
@@ -18,7 +18,7 @@
                     <div class="col-lg-6">
                         <ul class="tg-header__top-right tg-header__top-right-two list-wrap">
                             <li><i class="flaticon-envelope"></i><a href="mailto:info@cencadian.ca">contact@cencadian.ca</a></li>
-                            <li><i class="flaticon-time"></i>Mon-Fri: 10:00am - 09:00pm</li>
+                            <li><i class="flaticon-time"></i>Mon-Fri: 09:00am - 04:00pm</li>
                         </ul>
                     </div>
                 </div>
@@ -29,14 +29,17 @@
                         <div class="tgmenu__wrap">
                             <nav class="tgmenu__nav">
                                 <div class="logo d-none">
-                                    <a href='index.html'><img src="{{ asset('front/assets/img/favicon.png') }}" alt="Logo"></a>
+                                    <a href='index.html'><img src="{{ asset('front/assets/img/logo-black.png') }}" alt="Logo"></a>
                                 </div>
                                 <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-lg-flex">
                                     <ul class="navigation">
                                         <li><a href='#'>Home</a></li>
                                         <li><a href='#about'>About</a></li>
-
                                         <li><a href='#contact'>contacts</a></li>
+
+                                        <li><a href='#about'>Login</a></li>
+                                        <li><a href='#about'>Signup</a></li>
+
                                     </ul>
                                 </div>
                                 <div class="tgmenu__action tgmenu__action-two d-none d-md-block">
@@ -86,7 +89,7 @@
                             <nav class="tgmobile__menu-box">
                                 <div class="close-btn"><i class="fas fa-times"></i></div>
                                 <div class="nav-logo">
-                                    <a href='index.html'><img src="assets/img/logo/logo.png" alt="Logo"></a>
+                                    <a href='index.html'><img src="{{ asset('front/assets/img/logo-black.png') }}" alt="Logo"></a>
                                 </div>
                                 <div class="tgmobile__search">
                                     <form action="#">
@@ -164,7 +167,7 @@
             <button><i class="far fa-window-close"></i></button>
         </div>
         <div class="offCanvas__logo mb-30">
-            <a href='index.html'><img src="{{ asset('front/assets/img/favicon.png') }}" alt="Logo"></a>
+            <a href='index.html'><img src="{{ asset('front/assets/img/logo-black.png') }}" alt="Logo"></a>
         </div>
         <div class="offCanvas__side-info mb-30">
             <div class="contact-list mb-30">

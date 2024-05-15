@@ -1,61 +1,42 @@
+<?php
+$lists = [
+    ["title" => 'About The Summer Web Development Program', 'body' => "Cencadian Educational Inc., a Canadian nonprofit, aims to offer inclusive learning opportunities. This summer, we're launching a Web Development program, providing tech internships for students and affordable or free web development for local organizations."],
+    ["title" => 'Internship Opportunities for Youths', 'body' => "Are you a student eager for real-world Web Development experience? Join Cencadian's Summer program. Learn from mentors, get hands-on experience, and enhance your portfolio."],
+    ["title" => 'Web Presence Opportunities for Businesses', 'body' => "Are you a small or medium-sized business or community organization needing web development services?
+                                    Through the Summer Web Development Program, Cencadian might be able to offer you a solution at little
+                                    or no cost. Our mission is to forge connections and support organizations making an impact in the community."],
+];
+?>
+
 <section class="slider__area">
-    <div class="swiper-container slider__active">
+    <div class="swiper-container slider__active slider__ac">
         <div class="swiper-wrapper">
             <div class="swiper-slide slider__single">
                 <div class="slider__bg" data-background="{{ asset('front/assets/pexels-kassiamelox-19899183.jpg') }}"></div>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider__content">
-                                <span class="sub-title">About The Summer Web Development Program</span>
-                                {{--                                    <h2 class="title">Transforming Dreams into Financial Reality</h2>--}}
-                                <p>Cencadian Educational Inc., a Canadian nonprofit, aims to offer inclusive learning opportunities. This summer, we're launching a Web Development program, providing tech internships for students and affordable or free web development for local organizations.</p>
+                    <div class="row text-white d-flex justify-content-center text-center">
+                        <?php
+                        foreach ($lists as $list) {
+                            ?>
+                        <div class="col-lg-4 p-2">
+                            <div class="slider__conten">
+                                <h3 class="title p-2" style="background-color: #1b1e71; color: white; border-radius: 5px">{{ $list['title'] }}</h3>
+                                <div class="border border-white border-top-0 p-3 mb-2">
+                                    {{ $list['body'] }}
+                                    {{--                                            <p class="text-white"></p>--}}
+                                </div>
                                 <a class='btn' href='#about'>Learn More about Cencadian</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider__shape">
-                    <img src="{{ asset('front/assets/img/slider/slider_shape01.png') }}" alt="">
-                    <img src="{{ asset('front/assets/img/slider/slider_shape02.png') }}" alt="">
-                </div>
-            </div>
-            <div class="swiper-slide slider__single">
-                <div class="slider__bg" data-background="{{ asset('front/assets/pexels-kassiamelox-19899183.jpg') }}"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider__content">
-                                <span class="sub-title">Internship Opportunities for Youths</span>
-                                {{--                                    <h2 class="title">Transforming Dreams into Financial Reality</h2>--}}
-                                <p>Are you a student eager for real-world Web Development experience? Join Cencadian's Summer program. Learn from mentors, get hands-on experience, and enhance your portfolio.</p>
-                                <a class='btn' href='/register?key=intern'>Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider__shape">
-                    <img src="{{ asset('front/assets/img/slider/slider_shape01.png') }}" alt="">
-                    <img src="{{ asset('front/assets/img/slider/slider_shape02.png') }}" alt="">
-                </div>
-            </div>
 
-            <div class="swiper-slide slider__single">
-                <div class="slider__bg" data-background="{{ asset('front/assets/pexels-kassiamelox-19899183.jpg') }}"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider__content">
-                                <span class="sub-title">Web Presence Opportunities for Businesses</span>
-                                {{--                                    <h2 class="title">Transforming Dreams into Financial Reality</h2>--}}
-                                <p>Are you a small or medium-sized business or community organization needing web development services?
-                                    Through the Summer Web Development Program, Cencadian might be able to offer you a solution at little
-                                    or no cost. Our mission is to forge connections and support organizations making an impact in the community.</p>
-                                <a class='btn' href='/register?key=company'>Sign up</a>
                             </div>
                         </div>
+
+                            <?php
+
+                        }
+                        ?>
                     </div>
                 </div>
+
                 <div class="slider__shape">
                     <img src="{{ asset('front/assets/img/slider/slider_shape01.png') }}" alt="">
                     <img src="{{ asset('front/assets/img/slider/slider_shape02.png') }}" alt="">
@@ -155,7 +136,7 @@
         </div>
         <div class="services-item-wrap">
             <div class="row justify-content-center">
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 ">
                     <div class="services-item shine-animate-item">
                         <div class="services-thumb">
                             <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_website_builder_re_ii6e.svg') }}" alt=""></a>
@@ -169,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8" style="height: 100%">
                     <div class="services-item shine-animate-item">
                         <div class="services-thumb">
                             <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_mobile_content_xvgr.svg') }}" alt=""></a>
@@ -423,7 +404,7 @@
 </section>
 <!-- project-area-end -->
 <!-- request-area -->
-<section id="contact" class="request-area request-bg" data-background="{{ asset('front/assets/pexels-kassiamelox-19899183.jpg') }}">
+<section class="request-area request-bg" data-background="{{ asset('front/assets/pexels-kassiamelox-19899183.jpg') }}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">

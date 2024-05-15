@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="swiper-slide slider__single">
-                <div class="slider__bg" data-background="{{ asset('front/assets/pexels-vladbagacian-3987066.jpg') }}"></div>
+                <div class="slider__bg" data-background="{{ asset('front/assets/pexels-kassiamelox-19899183.jpg') }}"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -46,7 +46,7 @@
             </div>
 
             <div class="swiper-slide slider__single">
-                <div class="slider__bg" data-background="{{ asset('front/assets/banner3.jpg') }}"></div>
+                <div class="slider__bg" data-background="{{ asset('front/assets/pexels-kassiamelox-19899183.jpg') }}"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">

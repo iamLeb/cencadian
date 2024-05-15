@@ -89,6 +89,57 @@
                             </ul>
                         </div>
                     </li>
+
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link collapsed" href="#employeeTemplates" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                                <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Employee Templates</span>
+                            </a>
+                            <div class="menu-dropdown collapse" id="employeeTemplates" style="">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.template.interview') }}" class="nav-link" data-key="t-calendar"> Letter of Interview </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Interview Questions </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Offer Letter </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Paystub Template </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link collapsed" href="#projectTemplates" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                                <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Project Templates</span>
+                            </a>
+                            <div class="menu-dropdown collapse" id="projectTemplates" style="">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Project Completion and Sign </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Project Contracts </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Project Proposal </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Non Disclosure Agreement </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                 @elseif ($user->isCompany())
                     @foreach($links as $link)
                         <li class="nav-item">

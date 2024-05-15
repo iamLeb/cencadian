@@ -28,6 +28,9 @@ Route::get('/admin/companies', [AdminController::class, 'companies'])->name('adm
 Route::get('/admin/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::post('/admin/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
 
+//Templates
+Route::get('/admin/template/interview', [App\Http\Controllers\TemplateController::class, 'interview'])->name('admin.template.interview');
+
 
 Route::get('/company', [ServiceRequestController::class, 'index'])->name('company.home');
 Route::get('/company/create', [ServiceRequestController::class, 'create'])->name('company.create');

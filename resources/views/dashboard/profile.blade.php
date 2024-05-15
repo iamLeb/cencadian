@@ -40,7 +40,7 @@
                     <div class="card-body p-4">
                         <div>
                             <h5 class="fw-semibold">Thank you {{ auth()->user()->name }}!</h5>
-                            <p class="text-muted">Thank you for taking the time to apply for the Web Development Internship at [Your Company Name]. We're thrilled to see your interest in joining our team and contributing to our projects.</p>
+                            <p class="text-muted">Thank you for taking the time to apply for the Web Development Internship at The Cencadian Summer Web Development Program. We're thrilled to see your interest in joining our team and contributing to our projects.</p>
                             <p class="text-muted">We're impressed by your skills and enthusiasm, and we're excited about the possibility of working with you. Your application is now under review, and we'll be in touch soon to discuss the next steps in the hiring process.</p>
                             <p class="text-muted">In the meantime, feel free to explore our website and learn more about our company culture and the projects we're working on. If you have any questions or need further information, please don't hesitate to reach out to us at [Your Contact Email].</p>
                             <p class="text-muted">Once again, thank you for your interest in joining our team. We appreciate your application and look forward to the opportunity to get to know you better.</p>
@@ -128,6 +128,9 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="personalDetails" role="tabpanel">
                                 <form action="{{ route('application.store') }}" method="post" enctype="multipart/form-data">
+
+                                    <h2 class="mb-4">Personal Details</h2>
+
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -166,22 +169,7 @@
                                             </div>
                                         </div>
                                         <!--end col-->
-                                        <!--end col-->
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="skillsInput" class="form-label">Select Stack</label>
-                                                @if(auth()->user()->application)
-                                                    <input type="text" value="{{ auth()->user()->application->stack }}" readonly class="form-control">
-                                                @else
-                                                    <select required name="stack" class="form-select">
-                                                        <option disabled selected>-- Select area of Preference -- </option>
-                                                        <option value="fullstack">Full Stack</option>
-                                                        <option value="frontend">Front End</option>
-                                                        <option value="backend">Back End</option>
-                                                    </select>
-                                                @endif
-                                            </div>
-                                        </div>
+                                        
                                         <!--end col-->
                                         <div class="col-lg-6">
                                             <div class="mb-3">
@@ -198,12 +186,179 @@
                                         </div>
                                         <!--end col-->
 
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
+                                        <div class="col-lg-6">
+                                            <div class="mb-5">
                                                 <label for="cityInput" class="form-label">Address</label>
                                                 <input readonly value="{{ auth()->user()->address }}" required name="city" type="text" class="form-control" id="cityInput" placeholder="Enter Your City" />
                                             </div>
                                         </div>
+
+                                        <div class="col-lg-12">
+                                            <h2>References</h2>
+                                        </div>
+
+                                        <div class="col-lg-12 mb-3">
+                                            <p>Please provide contact information for 3 references who are familiar with you and your capabilities.</p>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <h5>Reference 1</h5>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref1NameInput" class="form-label">Name</label>
+                                                <input required name="reference1_name" type="text" class="form-control" id="ref1NameInput" placeholder="Enter Reference 1's name" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref1OrgInput" class="form-label">Organization</label>
+                                                <input required name="reference1_org" type="text" class="form-control" id="ref1OrgInput" placeholder="Enter Reference 1's organization" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref1RelationshipInput" class="form-label">Relationship</label>
+                                                <input required name="reference1_relationship" type="phone" class="form-control" id="ref1RelationshipInput" placeholder="Enter Reference 1's relationship" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref1PhoneInput" class="form-label">Phone</label>
+                                                <input required name="reference1_phone" type="phone" class="form-control" id="ref1PhoneInput" placeholder="Enter Reference 1's phone" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref1EmailInput" class="form-label">Email</label>
+                                                <input required name="reference1_email" type="email" class="form-control" id="ref1EmailInput" placeholder="Enter Reference 1's email" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-5">
+                                                <p>Preferred Contact Method</p>
+
+                                                <label for="ref1PrefPhoneInput" class="form-label">Phone</label>
+                                                <input type="radio" id="ref1PrefPhoneInput" name="ref1PrefContact" value="phone"/>
+
+                                                <label for="ref1PrefEmailInput" class="form-label">Email</label>
+                                                <input type="radio" id="ref1PrefEmailInput" name="ref1PrefContact" value="email"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <h5>Reference 2</h5>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref2NameInput" class="form-label">Name</label>
+                                                <input required name="reference2_name" type="text" class="form-control" id="ref2NameInput" placeholder="Enter Reference 2's name" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref2OrgInput" class="form-label">Organization</label>
+                                                <input required name="reference2_org" type="text" class="form-control" id="ref2OrgInput" placeholder="Enter Reference 2's organization" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref1RelationshipInput" class="form-label">Relationship</label>
+                                                <input required name="reference2_relationship" type="phone" class="form-control" id="ref2RelationshipInput" placeholder="Enter Reference 2's relationship" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref2PhoneInput" class="form-label">Phone</label>
+                                                <input required name="reference2_phone" type="phone" class="form-control" id="ref2PhoneInput" placeholder="Enter Reference 2's phone" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref2EmailInput" class="form-label">Email</label>
+                                                <input required name="reference2_email" type="email" class="form-control" id="ref2EmailInput" placeholder="Enter Reference 2's email" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <p>Preferred Contact Method</p>
+
+
+                                                <label for="ref2PrefPhoneInput" class="form-label">Phone</label>
+                                                <input type="radio" id="ref2PrefPhoneInput" name="ref2PrefContact" value="phone"/>
+
+                                                <label for="ref1PrefEmailInput" class="form-label">Email</label>
+                                                <input type="radio" id="ref2PrefEmailInput" name="ref2PrefContact" value="email"/>
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <h5>Reference 3</h5>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref3NameInput" class="form-label">Name</label>
+                                                <input required name="reference3_name" type="text" class="form-control" id="ref3NameInput" placeholder="Enter Reference 3's name" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref3OrgInput" class="form-label">Organization</label>
+                                                <input required name="reference3_org" type="text" class="form-control" id="ref3OrgInput" placeholder="Enter Reference 3's organization" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref3RelationshipInput" class="form-label">Relationship</label>
+                                                <input required name="reference3_relationship" type="phone" class="form-control" id="ref3RelationshipInput" placeholder="Enter Reference 3's relationship" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref3PhoneInput" class="form-label">Phone</label>
+                                                <input required name="reference3_phone" type="phone" class="form-control" id="ref3PhoneInput" placeholder="Enter Reference 3's phone" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="ref3EmailInput" class="form-label">Email</label>
+                                                <input required name="reference3_email" type="email" class="form-control" id="ref3EmailInput" placeholder="Enter Reference 3's email" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="mb-5">
+                                                <p>Preferred Contact Method</p>
+
+                                                <label for="ref1PrefPhoneInput" class="form-label">Phone</label>
+                                                <input type="radio" id="ref1PrefPhoneInput" name="ref3PrefContact" value="phone"/>
+
+                                                <label for="ref1PrefEmailInput" class="form-label">Email</label>
+                                                <input type="radio" id="ref1PrefEmailInput" name="ref3PrefContact" value="email"/>
+                                            </div>
+                                        </div>
+
+                                        <h2>R&#x00e9sum&#x00e9</h2>
+
                                         <div class="card-body">
                                             <div>
                                                 @if(auth()->user()->application)

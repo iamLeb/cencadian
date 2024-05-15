@@ -26,7 +26,7 @@
 <div class="row g-4 mb-3">
     <div class="col-sm-auto">
         <div>
-            <a href="{{ route('company.create') }}" class="btn btn-success"><i class="ri-add-line align-bottom me-1"></i> Create New Service Request</a>
+            <a href="{{ route('company.create') }}" class="btn btn-success"><i class="ri-add-line align-bottom me-1"></i>Propose a Project</a>
         </div>
     </div>
 </div>
@@ -36,7 +36,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Basic Datatables</h5>
+                <h5 class="card-title mb-0">Proposed Projects</h5>
             </div>
             <div class="card-body">
                 <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
@@ -99,6 +99,33 @@
         </div>
     </div>
 </div>
+
+@if ($count == 0)
+<div class="row justify-center">
+    <p class="fs-4 text-info fw-bold text-center">
+        You haven't proposed any projects! Press "Propose a project" to get started.    
+    </p>
+</div>
+@endif
+
+<h3>Project Proposal and Development Process</h3>
+
+<ol>
+    <li>Click "Propose a Project"</li>
+    <li>Complete and submit the displayed Project Proposal Form</li>
+    <li>Your application will be reviewed by Cencadian's team</li>
+    <li>Cencadian will contact you for details about the project's requirements and any associated cost</li>
+    <li>Cencadian will contact you regarding the approval of your application</li>
+    <li>Your project will be ranked based on our organizational priorities</li>
+    <li>Once your project commences, it will go through three major stages</li>
+    <ol type="i">
+        <li>Project Planning</li>
+        <li>Mid-Project Review</li>
+        <li>Project completion Review</li>
+    </ol>
+</ol>
+
+<p>Once your project is completed, you will gain full ownership of the system!</p>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!--datatable js-->

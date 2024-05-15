@@ -71,7 +71,7 @@
                         <nav class="tgmenu__nav">
                             <div class="logo">
                                 <a href='index.html'>
-{{--                                    <img src="{{ asset('front/assets/img/logo/logo.png') }}" alt="Logo">--}}
+                                    <img src="{{ asset('front/assets/img/logo-black.png') }}" alt="Logo">
                                 </a>
                             </div>
                             <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-lg-flex">
@@ -137,8 +137,8 @@
                         <nav class="tgmobile__menu-box">
                             <div class="close-btn"><i class="fas fa-times"></i></div>
                             <div class="nav-logo">
-                                <a href='index.html'>
-{{--                                    <img src="{{ asset('front/assets/img/logo/logo.png') }}" alt="Logo">--}}
+                                <a href='/'>
+                                    <img src="{{ asset('front/assets/img/logo-black.png') }}" alt="Logo">
                                 </a>
                             </div>
                             <div class="tgmobile__search">
@@ -216,8 +216,8 @@
             <button><i class="far fa-window-close"></i></button>
         </div>
         <div class="offCanvas__logo mb-30">
-            <a href='index.html'>
-{{--                <img src="{{ asset('front/assets/img/logo/logo.png') }}" alt="Logo">--}}
+            <a href='/'>
+                <img src="{{ asset('front/assets/img/logo-black.png') }}" alt="Logo">
             </a>
         </div>
         <div class="offCanvas__side-info mb-30">
@@ -253,7 +253,7 @@
     <section class="banner-area banner-bg" data-background="{{ asset('front/assets/pexels-kassiamelox-19899183.jpg') }}">
         <div class="row justify-content-center">
             <div class="col-lg-12 d-flex text-center justify-center">
-                <h2 style="width:100%; font-size:48px" data-aos="fade-up" data-aos-delay="200"><span style="color:#14176C; font-family: 'Titan One', sans-serif">2024 Cencadian Summer Web Development Program</span></h2>
+                <h2 class="p-2" style="width:100%; font-size:48px" data-aos="fade-up" data-aos-delay="200"><span style="color:#14176C; font-family: 'Titan One', sans-serif">2024 Cencadian Summer Web Development Program</span></h2>
             </div>
 
             <?php
@@ -756,9 +756,9 @@
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="footer-widget">
-{{--                            <div class="fw-logo mb-25">--}}
-{{--                                <a href='index.html'><img src="{{ asset('front/assets/img/logo/logo.png') }}" alt=""></a>--}}
-{{--                            </div>--}}
+                            <div class="fw-logo mb-25">
+                                <a href='/'><img src="{{ asset('front/assets/img/logo-black.png') }}" alt=""></a>
+                            </div>
                             <div class="footer-content">
                                 <p>Contact us for more information!</p>
                                 <div class="footer-social">

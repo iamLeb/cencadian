@@ -5,15 +5,16 @@
 
     @if(auth()->user()->application)
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0">We have received your application</h4>
                 </div>
-            </div><div class="col-6">
+            </div>
+            <!-- <div class="col-6">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-around">
                     <a target="_blank" href="https://arabicawhite.s3.amazonaws.com/resume/{{ auth()->user()->application->resume }}">View Uploaded Resume</a>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-10">
@@ -21,7 +22,7 @@
                     <div class="bg-warning-subtle position-relative">
                         <div class="card-body p-5">
                             <div class="text-center">
-                                <h3 class="fw-semibold">Application Submitted Successful</h3>
+                                <h3 class="fw-semibold">Application Submitted Successfully</h3>
                             </div>
                         </div>
                         <div class="shape">
@@ -42,7 +43,7 @@
                             <h5 class="fw-semibold">Thank you {{ auth()->user()->name }}!</h5>
                             <p class="text-muted">Thank you for taking the time to apply for the Web Development Internship at The Cencadian Summer Web Development Program. We're thrilled to see your interest in joining our team and contributing to our projects.</p>
                             <p class="text-muted">We're impressed by your skills and enthusiasm, and we're excited about the possibility of working with you. Your application is now under review, and we'll be in touch soon to discuss the next steps in the hiring process.</p>
-                            <p class="text-muted">In the meantime, feel free to explore our website and learn more about our company culture and the projects we're working on. If you have any questions or need further information, please don't hesitate to reach out to us at [Your Contact Email].</p>
+                            <p class="text-muted">In the meantime, feel free to explore our website and learn more about our company culture and the projects we're working on. If you have any questions or need further information, please don't hesitate to reach out to us at <a href="mailto:admin@cencadian.ca">admin@cencadian.ca</a></p>
                             <p class="text-muted">Once again, thank you for your interest in joining our team. We appreciate your application and look forward to the opportunity to get to know you better.</p>
                         </div>
 

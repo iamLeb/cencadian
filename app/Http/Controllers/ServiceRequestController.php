@@ -37,7 +37,8 @@ class ServiceRequestController extends Controller
             'project_requirements' => 'required',
             'project_team' => 'required',
             'budget' => 'required',
-            'other_remarks' => 'required',
+            'service_category' => 'required',
+            'org_category' => 'required'
         ]);
 
         ServiceRequest::create([
@@ -50,6 +51,9 @@ class ServiceRequestController extends Controller
             "project_team" => $request->project_team,
             "budget" => $request->budget,
             "other_remarks" => $request->other_remarks,
+            "service_category" => $request->service_category,
+            "org_category" => $request->org_category,
+            "status" => "received",
             "file" => ""
         ]);
 

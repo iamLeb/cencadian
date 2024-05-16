@@ -129,7 +129,7 @@
                                         </div>
 
                                         <p>{{ $user->application->note ?? 'No Additional Info'}}</p>
-                                        <div class="row">
+                                        <div class="row mb-5">
                                             <div class="col-6 col-md-4">
                                                 <div class="d-flex mt-4">
                                                     <div class="flex-shrink-0 avatar-xs align-self-center me-3">
@@ -180,6 +180,66 @@
                                     </div>
                                     <!--end card-body-->
                                 </div><!-- end card -->
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <h5 class="card-title mb-3">References</h5>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <h5>Reference 1</h6>
+
+
+                                                    <p>Relationship: Boss</p>
+                                                    <p>Organization: Cencadian Educational Inc.</p>
+                                                    <p>Phone: +1 (234) 567 8900</p>
+                                                    <p>Email: ref1@iamleb.com</p>
+                                                    <p>Preferred contact: Phone</p>
+
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-sm">
+                                                        <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                    </a>
+
+                                                </div>
+
+                                                <div class="col-md-4 mb-3">
+                                                    <h5>Reference 2</h6>
+
+
+                                                    <p>Relationship: Boss</p>
+                                                    <p>Organization: Cencadian Educational Inc.</p>
+                                                    <p>Phone: +1 (234) 567 8900</p>
+                                                    <p>Email: ref1@iamleb.com</p>
+                                                    <p>Preferred contact: Phone</p>
+
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-sm">
+                                                        <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                    </a>
+
+                                                </div>
+
+                                                <div class="col-md-4 mb-3">
+                                                    <h5>Reference 3</h6>
+
+
+                                                    <p>Relationship: Boss</p>
+                                                    <p>Organization: Cencadian Educational Inc.</p>
+                                                    <p>Phone: +1 (234) 567 8900</p>
+                                                    <p>Email: ref1@iamleb.com</p>
+                                                    <p>Preferred contact: Phone</p>
+
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-sm">
+                                                        <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
                             </div>
                             <!--end col-->
                         </div>

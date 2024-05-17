@@ -193,25 +193,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-
-{{--                            <div class="col-md-6">--}}
-{{--                                <div class="mb-3">--}}
-{{--                                    <label for="dob" class="form-label">{{ __('Gender') }}</label>--}}
-{{--                                    <select required class="form-control" name="gender" id="gender">--}}
-{{--                                        <option selected>-- Select Gender -- </option>--}}
-{{--                                        <option value="male">Male </option>--}}
-{{--                                        <option value="female">Female </option>--}}
-{{--                                        <option value="others">Others </option>--}}
-{{--                                    </select>--}}
-{{--                                    @error('dob')--}}
-{{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                    <strong>{{ $message }}</strong>--}}
-{{--                                </span>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
                         </div>
 
 

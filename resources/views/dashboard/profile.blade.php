@@ -127,121 +127,161 @@
                     <div class="card-body p-4">
                         <div class="tab-content">
                             <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                                <form action="{{ route('application.store') }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="firstnameInput" class="form-label">Full Name</label>
-                                                <input required name="name" type="text" class="form-control" id="firstnameInput" placeholder="Enter your firstname" value="{{ auth()->user()->name }}">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="emailInput" class="form-label">Email Address</label>
-                                                <input required name="email" type="email" class="form-control" id="emailInput" placeholder="Enter your email" value="{{ auth()->user()->email }}">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="dob" class="form-label">Date of Birth (DOB)</label>
-                                                <input required name="dob" type="date" class="form-control" id="dob" placeholder="Enter DOB" value="{{ auth()->user()->dob }}">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="gender" class="form-label">Gender</label>
-                                                <input type="text" value="{{ auth()->user()->gender }}" readonly class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <!--end col-->
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="phonenumberInput" class="form-label">Phone Number</label>
-                                                <input required name="phone" type="text" class="form-control" id="phonenumberInput" placeholder="Enter your phone number" value="{{ auth()->user()->phone ?? '' }}">
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        <!--end col-->
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="skillsInput" class="form-label">Select Stack</label>
-                                                @if(auth()->user()->application)
-                                                    <input type="text" value="{{ auth()->user()->application->stack }}" readonly class="form-control">
-                                                @else
-                                                    <select required name="stack" class="form-select">
-                                                        <option disabled selected>-- Select area of Preference -- </option>
-                                                        <option value="fullstack">Full Stack</option>
-                                                        <option value="frontend">Front End</option>
-                                                        <option value="backend">Back End</option>
-                                                    </select>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="designationInput" class="form-label">Current School/University </label>
-                                                <input value="{{ auth()->user()->application->school ?? '' }}" required name="school" type="text" class="form-control" id="designationInput" placeholder="University / College / HighSchool">
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="websiteInput1" class="form-label">Skills (Seperate with Coma (,))</label>
-                                                <input value="{{ auth()->user()->application->skills ?? '' }}" required name="skills" type="text" class="form-control" id="websiteInput1" placeholder="MongoDB, Express, React, NodeJs..." />
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label for="cityInput" class="form-label">Address</label>
-                                                <input readonly value="{{ auth()->user()->address }}" required name="city" type="text" class="form-control" id="cityInput" placeholder="Enter Your City" />
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div>
-                                                @if(auth()->user()->application)
-                                                    <a href="{{ auth()->user()->application->resume }}" class="btn btn-ghost-light w-100 text-black">
-                                                        View Submitted Resume
-                                                    </a>
-                                                @else
-                                                    <p class="text-muted">Upload Your Reśume here. (Only PDF allowed)</p>
-                                                    <div class="fallback">
-                                                        <input class="form-control" required name="resume" type="file" />
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="mb-3 pb-2">
-                                                <label for="exampleFormControlTextarea" class="form-label">Additional Note (<small>Optional</small>)</label>
-                                                <textarea name="note" class="form-control" id="exampleFormControlTextarea" placeholder="Enter any additional note" rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        @if(auth()->user()->application)
-                                            <div class="alert alert-success text-center">Application Submitted Successfully </div>
-                                        @else
-                                            @if (!auth()->user()->isAdmin())
-                                                <div class="col-lg-12">
-                                                    <div class="hstack gap-2 justify-content-end">
-                                                        <button type="submit" class="btn btn-primary">Submit Application</button>
-                                                        <button type="button" class="btn btn-soft-success">Cancel</button>
-                                                    </div>
+                                @if (auth()->user()->isAdmin())
+                                    <form action="{{ route('company.update') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="firstnameInput" class="form-label">Company Name</label>
+                                                    <input required name="name" type="text" class="form-control" id="firstnameInput" placeholder="Enter your firstname" value="{{ auth()->user()->name }}">
                                                 </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Company Email Address</label>
+                                                    <input required readonly disabled type="email" class="form-control" id="emailInput" placeholder="Enter your email" value="{{ auth()->user()->email }}">
+                                                </div>
+                                            </div>
+
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="phone" class="form-label">Phone Number</label>
+                                                    <input required name="phone" type="text" class="form-control" id="phonenumberInput" placeholder="Enter your phone number" value="{{ auth()->user()->phone ?? '' }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="address" class="form-label">Address</label>
+                                                    <input value="{{ auth()->user()->address }}" required name="address" type="text" class="form-control" id="address" placeholder="Enter Your Address" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end row-->
+                                        <button class="btn btn-success">Update Profile</button>
+                                    </form>
+                                @elseif(auth()->user()->isCompany())
+                                    @include('dashboard.company')
+                                @else
+                                    <form action="{{ route('application.store') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="firstnameInput" class="form-label">Full Name</label>
+                                                    <input required name="name" type="text" class="form-control" id="firstnameInput" placeholder="Enter your firstname" value="{{ auth()->user()->name }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="emailInput" class="form-label">Email Address</label>
+                                                    <input required name="email" type="email" class="form-control" id="emailInput" placeholder="Enter your email" value="{{ auth()->user()->email }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="dob" class="form-label">Date of Birth (DOB)</label>
+                                                    <input required name="dob" type="date" class="form-control" id="dob" placeholder="Enter DOB" value="{{ auth()->user()->dob }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="gender" class="form-label">Gender</label>
+                                                    <input type="text" value="{{ auth()->user()->gender }}" readonly class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="phonenumberInput" class="form-label">Phone Number</label>
+                                                    <input required name="phone" type="text" class="form-control" id="phonenumberInput" placeholder="Enter your phone number" value="{{ auth()->user()->phone ?? '' }}">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="skillsInput" class="form-label">Select Stack</label>
+                                                    @if(auth()->user()->application)
+                                                        <input type="text" value="{{ auth()->user()->application->stack }}" readonly class="form-control">
+                                                    @else
+                                                        <select required name="stack" class="form-select">
+                                                            <option disabled selected>-- Select area of Preference -- </option>
+                                                            <option value="fullstack">Full Stack</option>
+                                                            <option value="frontend">Front End</option>
+                                                            <option value="backend">Back End</option>
+                                                        </select>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="designationInput" class="form-label">Current School/University </label>
+                                                    <input value="{{ auth()->user()->application->school ?? '' }}" required name="school" type="text" class="form-control" id="designationInput" placeholder="University / College / HighSchool">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="websiteInput1" class="form-label">Skills (Seperate with Coma (,))</label>
+                                                    <input value="{{ auth()->user()->application->skills ?? '' }}" required name="skills" type="text" class="form-control" id="websiteInput1" placeholder="MongoDB, Express, React, NodeJs..." />
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="cityInput" class="form-label">Address</label>
+                                                    <input readonly value="{{ auth()->user()->address }}" required name="city" type="text" class="form-control" id="cityInput" placeholder="Enter Your City" />
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div>
+                                                    @if(auth()->user()->application)
+                                                        <a href="{{ auth()->user()->application->resume }}" class="btn btn-ghost-light w-100 text-black">
+                                                            View Submitted Resume
+                                                        </a>
+                                                    @else
+                                                        <p class="text-muted">Upload Your Reśume here. (Only PDF allowed)</p>
+                                                        <div class="fallback">
+                                                            <input class="form-control" required name="resume" type="file" />
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="mb-3 pb-2">
+                                                    <label for="exampleFormControlTextarea" class="form-label">Additional Note (<small>Optional</small>)</label>
+                                                    <textarea name="note" class="form-control" id="exampleFormControlTextarea" placeholder="Enter any additional note" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            @if(auth()->user()->application)
+                                                <div class="alert alert-success text-center">Application Submitted Successfully </div>
+                                            @else
+                                                @if (!auth()->user()->isAdmin())
+                                                    <div class="col-lg-12">
+                                                        <div class="hstack gap-2 justify-content-end">
+                                                            <button type="submit" class="btn btn-primary">Submit Application</button>
+                                                            <button type="button" class="btn btn-soft-success">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             @endif
-                                        @endif
-                                        <!--end col-->
-                                    </div>
-                                    <!--end row-->
-                                </form>
+                                            <!--end col-->
+                                        </div>
+                                        <!--end row-->
+                                    </form>
+                                @endif
                             </div>
                             <!--end tab-pane-->
                             <div class="tab-pane" id="changePassword" role="tabpanel">

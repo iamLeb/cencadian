@@ -64,7 +64,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="address" class="form-label">{{ __('Full Address') }}</label>
                                     <input name="address" type="tel" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" placeholder="Enter your full address" id="address" required autocomplete="address">
@@ -76,34 +76,34 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="dob" class="form-label">{{ __('Date of Birth') }}</label>
-                                    <input name="dob" type="date" class="form-control @error('dob') is-invalid @enderror" value="{{ old('dob') }}" placeholder="Enter your DOB" id="dob" required autocomplete="dob">
-                                    @error('dob')
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                    @enderror
-                                </div>
-                            </div>
+{{--                            <div class="col-md-6">--}}
+{{--                                <div class="mb-3">--}}
+{{--                                    <label for="dob" class="form-label">{{ __('Date of Birth') }}</label>--}}
+{{--                                    <input name="dob" type="date" class="form-control @error('dob') is-invalid @enderror" value="{{ old('dob') }}" placeholder="Enter your DOB" id="dob" required autocomplete="dob">--}}
+{{--                                    @error('dob')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                    <strong>{{ $message }}</strong>--}}
+{{--                                </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="dob" class="form-label">{{ __('Gender') }}</label>
-                                    <select required class="form-control" name="gender" id="gender">
-                                        <option selected>-- Select Gender -- </option>
-                                        <option value="male">Male </option>
-                                        <option value="female">Female </option>
-                                        <option value="others">Others </option>
-                                    </select>
-                                    @error('dob')
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                    @enderror
-                                </div>
-                            </div>
+{{--                            <div class="col-md-6">--}}
+{{--                                <div class="mb-3">--}}
+{{--                                    <label for="dob" class="form-label">{{ __('Gender') }}</label>--}}
+{{--                                    <select required class="form-control" name="gender" id="gender">--}}
+{{--                                        <option selected>-- Select Gender -- </option>--}}
+{{--                                        <option value="male">Male </option>--}}
+{{--                                        <option value="female">Female </option>--}}
+{{--                                        <option value="others">Others </option>--}}
+{{--                                    </select>--}}
+{{--                                    @error('dob')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                    <strong>{{ $message }}</strong>--}}
+{{--                                </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                         </div>
 

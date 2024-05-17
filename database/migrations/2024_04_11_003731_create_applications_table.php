@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('school');
-            $table->string('stack');
             $table->string('skills');
             $table->string('resume');
             $table->text('note')->nullable();

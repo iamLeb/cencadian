@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ServiceRequest;
 use App\Models\User;
+use App\Models\InternReference;
+use App\Models\ReferenceCheck;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -35,6 +37,17 @@ class AdminController extends Controller
         $user = User::where('id', $id)->first();
         return view('admin/intern/show', [
             "user" => $user
+        ]);
+    }
+
+    public function referenceCheckShow($id)
+    {
+        $reference = InternReference::where('id', $id)->first();
+        $referenceCheck = ReferenceCheck::where('reference_id', $id)->first();
+
+        return view('admin/reference/show', [
+            "reference" => $reference,
+            "referenceCheck" => $referenceCheck
         ]);
     }
 

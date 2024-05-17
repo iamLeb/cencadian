@@ -24,8 +24,8 @@ class ApplicationController extends Controller
 
 
         if ($request->hasFile("resume")) {
-            $fileName = time().auth()->user()->name . ".pdf";
-            $request->file("resume")->storeAs('resume/', $fileName, 'local');
+            $fileName = time().auth()->id() . ".pdf";
+            $request->file("resume")->storeAs('resume/', $fileName, 's3');
 
             $application = auth()->user()->application()->create([
                 "school" => $request->school,

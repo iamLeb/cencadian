@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InternReference extends Model
+class ReferenceCheck extends Model
 {
     use HasFactory;
 
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -20,13 +20,8 @@ class InternReference extends Model
         'updated_at',
     ];
 
-    public function application()
-    {
-        return $this->belongsTo(User::class);
+    public function reference() {
+        return $this->belongsTo(InternReference::class);
     }
 
-    public function referenceCheck()
-    {
-        return $this->hasOne(ReferenceCheck::class);
-    }
 }

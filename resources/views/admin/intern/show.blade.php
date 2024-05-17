@@ -152,8 +152,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="mb-1">Stack</p>
-                                                        <h6 class="text-truncate mb-0">{{ ucfirst($user->application->stack ?? 'NA') }}</h6>
+                                                        <p class="mb-1">Application Status</p>
+                                                        <h6 class="text-truncate mb-0">{{ ucfirst($user->application->status ?? 'NA') }}</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,53 +190,27 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <h5>Reference 1</h6>
+                                                @foreach($user->application->reference as $reference)
+                                                    <div class="col-md-4 mb-3">
+                                                        <h5>{{$reference->name}}</h6>
 
 
-                                                    <p>Relationship: Boss</p>
-                                                    <p>Organization: Cencadian Educational Inc.</p>
-                                                    <p>Phone: +1 (234) 567 8900</p>
-                                                    <p>Email: ref1@iamleb.com</p>
-                                                    <p>Preferred contact: Phone</p>
+                                                        <p>Relationship: {{$reference->relationship}}</p>
+                                                        <p>Organization: {{$reference->org}}</p>
+                                                        <p>Phone: {{$reference->phone}}</p>
+                                                        <p>Email: {{$reference->email}}</p>
+                                                        <p>Preferred contact: {{$reference->prefContact}}</p>
 
-                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-sm">
-                                                        <i class="ri-mail-close-fill"></i> Send Reference Check
-                                                    </a>
+                                                        <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-md w-100 mb-3">
+                                                            <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                        </a>
 
-                                                </div>
+                                                        <a href="/admin/interns/reference/{{$reference->id}}" class="btn btn-primary w-100 btn-md">
+                                                            <i class="ri-mail-close-fill"></i>View Questionnaire
+                                                        </a>
 
-                                                <div class="col-md-4 mb-3">
-                                                    <h5>Reference 2</h6>
-
-
-                                                    <p>Relationship: Boss</p>
-                                                    <p>Organization: Cencadian Educational Inc.</p>
-                                                    <p>Phone: +1 (234) 567 8900</p>
-                                                    <p>Email: ref1@iamleb.com</p>
-                                                    <p>Preferred contact: Phone</p>
-
-                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-sm">
-                                                        <i class="ri-mail-close-fill"></i> Send Reference Check
-                                                    </a>
-
-                                                </div>
-
-                                                <div class="col-md-4 mb-3">
-                                                    <h5>Reference 3</h6>
-
-
-                                                    <p>Relationship: Boss</p>
-                                                    <p>Organization: Cencadian Educational Inc.</p>
-                                                    <p>Phone: +1 (234) 567 8900</p>
-                                                    <p>Email: ref1@iamleb.com</p>
-                                                    <p>Preferred contact: Phone</p>
-
-                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-sm">
-                                                        <i class="ri-mail-close-fill"></i> Send Reference Check
-                                                    </a>
-
-                                                </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                 </div>

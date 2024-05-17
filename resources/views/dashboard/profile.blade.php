@@ -246,10 +246,10 @@
                                                 <p>Preferred Contact Method</p>
 
                                                 <label for="ref1PrefPhoneInput" class="form-label">Phone</label>
-                                                <input type="radio" id="ref1PrefPhoneInput" name="reference1_prefContact" value="phone"/>
+                                                <input type="radio" id="ref1PrefPhoneInput" name="reference1_prefContact" value="phone" required/>
 
                                                 <label for="ref1PrefEmailInput" class="form-label">Email</label>
-                                                <input type="radio" id="ref1PrefEmailInput" name="reference1_prefContact" value="email"/>
+                                                <input type="radio" id="ref1PrefEmailInput" name="reference1_prefContact" value="email" required/>
                                             </div>
                                         </div>
 
@@ -298,10 +298,10 @@
 
 
                                                 <label for="ref2PrefPhoneInput" class="form-label">Phone</label>
-                                                <input type="radio" id="ref2PrefPhoneInput" name="reference2_prefContact" value="phone"/>
+                                                <input type="radio" id="ref2PrefPhoneInput" name="reference2_prefContact" value="phone" required/>
 
                                                 <label for="ref1PrefEmailInput" class="form-label">Email</label>
-                                                <input type="radio" id="ref2PrefEmailInput" name="reference2_prefContact" value="email"/>
+                                                <input type="radio" id="ref2PrefEmailInput" name="reference2_prefContact" value="email" required/>
 
 
                                             </div>
@@ -351,10 +351,10 @@
                                                 <p>Preferred Contact Method</p>
 
                                                 <label for="ref1PrefPhoneInput" class="form-label">Phone</label>
-                                                <input type="radio" id="ref1PrefPhoneInput" name="reference3_prefContact" value="phone"/>
+                                                <input type="radio" id="ref1PrefPhoneInput" name="reference3_prefContact" value="phone" required/>
 
                                                 <label for="ref1PrefEmailInput" class="form-label">Email</label>
-                                                <input type="radio" id="ref1PrefEmailInput" name="reference3_prefContact" value="email"/>
+                                                <input type="radio" id="ref1PrefEmailInput" name="reference3_prefContact" value="email" required/>
                                             </div>
                                         </div>
 

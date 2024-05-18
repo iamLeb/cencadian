@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('relationship');
             $table->string('phone');
             $table->string('email');
-            $table->string('prefContact');  
+            $table->string('prefContact');
             $table->timestamps();
         });
     }

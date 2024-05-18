@@ -153,7 +153,7 @@
                                                     </div>
                                                     <div class="flex-grow-1 overflow-hidden">
                                                         <p class="mb-1">Stack</p>
-                                                        <h6 class="text-truncate mb-0">{{ ucfirst($user->application->stack ?? 'NA') }}</h6>
+                                                        <h6 class="text-truncate mb-0">{{ ucfirst('Full Stack') }}</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -180,6 +180,43 @@
                                     </div>
                                     <!--end card-body-->
                                 </div><!-- end card -->
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header align-items-center d-flex">
+                                                <h4 class="card-title mb-0  me-2">References</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row row-cols-xxl-12 row-cols-lg-12 row-cols-12">
+                                                            {{ $references }}
+                                                            @foreach($references as $reference)
+                                                                <div class="col">
+                                                                    <div class="card card-body">
+                                                                        <div class="d-flex mb-4 align-items-center">
+                                                                            <div class="flex-shrink-0">
+                                                                                <img src="https://ui-avatars.com/api/?name={{ $reference->name }}" alt="" class="avatar-sm rounded-circle" />
+                                                                            </div>
+                                                                            <div class="flex-grow-1 ms-2">
+                                                                                <h5 class="card-title mb-1">{{ ucfirst($reference->name) }}</h5>
+                                                                                <p class="text-muted mb-0">{{ $reference->email }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <h6 class="mb-1">{{ $reference->phone }}</h6>
+                                                                        <p class="card-text text-muted">Expense Account</p>
+                                                                        <a href="javascript:void(0)" class="btn btn-primary btn-sm">See Details</a>
+                                                                    </div>
+                                                                </div><!-- end col -->
+                                                            @endforeach
+                                                        </div><!-- end row -->
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+                                </div><!-- end row -->
                             </div>
                             <!--end col-->
                         </div>

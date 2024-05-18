@@ -22,6 +22,6 @@ class InternReference extends Model
 
     public function application()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Application::class);
     }
 }

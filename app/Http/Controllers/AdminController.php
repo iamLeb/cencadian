@@ -33,8 +33,10 @@ class AdminController extends Controller
     public function internShow($id)
     {
         $user = User::where('id', $id)->first();
+        $references = $user->application->reference;
         return view('admin/intern/show', [
-            "user" => $user
+            "user" => $user,
+            'references' => $references
         ]);
     }
 

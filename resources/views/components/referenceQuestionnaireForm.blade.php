@@ -1,0 +1,179 @@
+<form id="create-request" action="{{ route('referencecheck.store') }}" method="post" enctype="multipart/form-data">
+    @csrf
+    <div class="row">
+        <div class="col-lg-12">
+            
+            <div class="mb-4">
+                <h5>Applicant Name: {{$reference->application->name}}</h5>
+                <p>Application for position of Web Development Intern</p>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Duration and Capacity</label>
+                <p>How long, and in what capacity have you known the candidate?</p>
+                <textarea class="form-control" name="duration_capacity" id="" cols="30" rows="10" placeholder="Enter Duration and Capacity" required>{{$referenceCheck?->duration_capacity}}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Performance</label>
+                <p>Can you provide examples of projects or activities the candidate was involved with? How did they handle these projects or activities?</p>
+                <textarea class="form-control" name="performance" id="" cols="30" rows="10" placeholder="Enter Performance" required>{{$referenceCheck?->performance}}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Teamwork</label>
+                <p>Does the applicant work well in a team setting? Can you provide an example where they demonstrated good teamwork?</p>
+                <textarea class="form-control" name="teamwork" id="" cols="30" rows="10" placeholder="Enter Teamwork" required>{{$referenceCheck?->teamwork}}</textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Reliability and Punctuality</label>
+                <p>How reliable was the candidate in arriving and completing tasks on time?</p>
+                
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="punctuality-poor">(1) Poor</label>
+                    <input type="radio" class="form-check-input" id="punctuality-poor" name="punctuality" value="1" required <?php echo ($referenceCheck?->punctuality == 1)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="punctuality-satisfactory">(2) Satisfactory</label>
+                    <input type="radio" class="form-check-input" id="punctuality-satisfactory" name="punctuality" value="2" required <?php echo ($referenceCheck?->punctuality == 2)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="punctuality-good">(3) Good</label>
+                    <input type="radio" class="form-check-input" id="punctuality-good" name="punctuality" value="3" required <?php echo ($referenceCheck?->punctuality == 3)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="punctuality-very-good">(4) Very Good</label>
+                    <input type="radio" class="form-check-input" id="punctuality-very-good" name="punctuality" value="4" required <?php echo ($referenceCheck?->punctuality == 4)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="punctuality-excellent">(5) Excellent</label>
+                    <input type="radio" class="form-check-input" id="punctuality-excellent" name="punctuality" value="5" required <?php echo ($referenceCheck?->punctuality == 5)?'checked':''?>/>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Problem Solving</label>
+                <p>How would you rate the applicant's problem solving skills?</p>
+                
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="problem-solving-poor">(1) Poor</label>
+                    <input type="radio" class="form-check-input" id="problem-solving-poor" name="problem_solving" value="1" required <?php echo ($referenceCheck?->problem_solving == 1)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="problem-solving-satisfactory">(2) Satisfactory</label>
+                    <input type="radio" class="form-check-input" id="problem-solving-satisfactory" name="problem_solving" value="2" required <?php echo ($referenceCheck?->problem_solving == 2)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="problem-solving-satisfactory">(3) Good</label>
+                    <input type="radio" class="form-check-input" id="problem-solving-good" name="problem_solving" value="3" required <?php echo ($referenceCheck?->problem_solving == 3)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="problem-solving-very-good">(4) Very Good</label>
+                    <input type="radio" class="form-check-input" id="problem-solving-very-" name="problem_solving" value="4" required <?php echo ($referenceCheck?->problem_solving == 4)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="problem-solving-very-excellent">(5) Excellent</label>
+                    <input type="radio" class="form-check-input" id="problem-solving-excellent" name="problem_solving" value="5" required <?php echo ($referenceCheck?->problem_solving == 5)?'checked':''?>/>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Communication Skills</label>
+                <p>How would you rate the applicant's communication skills?</p>
+                
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="communication-poor">(1) Poor</label>
+                    <input type="radio" class="form-check-input" id="communication-poor" name="communication" value="1" required <?php echo ($referenceCheck?->communication == 1)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="communication-satisfactory">(2) Satisfactory</label>
+                    <input type="radio" class="form-check-input" id="communication-satisfactory" name="communication" value="2" required <?php echo ($referenceCheck?->communication == 2)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="communication-good">(3) Good</label>
+                    <input type="radio" class="form-check-input" id="communication-good" name="communication" value="3" required <?php echo ($referenceCheck?->communication == 3)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="communication-very">(4) Very Good</label>
+                    <input type="radio" class="form-check-input" id="communication-very" name="communication" value="4" required <?php echo ($referenceCheck?->communication == 4)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="communication-excellent">(5) Excellent</label>
+                    <input type="radio" class="form-check-input" id="communication-excellent" name="communication" value="5" required <?php echo ($referenceCheck?->communication == 5)?'checked':''?>/>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Professionalism</label>
+                <p>How would you rate the applicant's level of professionalism?</p>
+                
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="professionalism-very-poor">(1) Poor</label>
+                    <input type="radio" class="form-check-input" id="professionalism-very-poor" name="professionalism" value="1" required <?php echo ($referenceCheck?->professionalism == 1)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="professionalism-poor">(2) Satisfactory</label>
+                    <input type="radio" class="form-check-input" id="professionalism-poor" name="professionalism" value="2" required <?php echo ($referenceCheck?->professionalism == 2)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="professionalism-satisfactory">(3) Good</label>
+                    <input type="radio" class="form-check-input" id="professionalism-satisfactory" name="professionalism" value="3" required <?php echo ($referenceCheck?->professionalism == 3)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="professionalism-good">(4) Very Good</label>
+                    <input type="radio" class="form-check-input" id="professionalism-good" name="professionalism" value="4" required <?php echo ($referenceCheck?->professionalism == 4)?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="professionalism-very-good">(5) Excellent</label>
+                    <input type="radio" class="form-check-input" id="professionalism-very-good" name="professionalism" value="5" required <?php echo ($referenceCheck?->professionalism == 5)?'checked':''?>/>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Suitability</label>
+                <p>Considering the role they have applied for (Web Development Intern), do you think they are a good fit for this position?</p>
+                
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="suitability-no">No</label>
+                    <input type="radio" class="form-check-input" id="suitability-no" name="suitability" value="no" required <?php echo ($referenceCheck?->suitability == "no")?'checked':''?>/>
+                </div>
+
+                <div class="form-check mb-1">
+                    <label class="form-check-label" for="suitability-yes">Yes</label>
+                    <input type="radio" class="form-check-input" id="suitability-yes" name="suitability" value="yes" required <?php echo ($referenceCheck?->suitability == "yes")?'checked':''?>/>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Additional Comments (Optional)</label>
+                <p>Is there anything else you would like to add that has not been covered?</p>
+                <textarea class="form-control" name="additional_comments" id="" cols="30" rows="10" placeholder="Enter Additional Comments">{{$referenceCheck?->additional_comments}}</textarea>
+            </div>
+
+            <input type="hidden" name="reference_id" value="{{$reference->id}}"/>
+        </div>
+        <!--end col-->
+    </div>
+    <!-- end row -->
+
+    <div class="text-end mb-4">
+        <a href="{{ route('referencecheck.store') }}" onclick="event.preventDefault(); document.getElementById('create-request').submit();" class="btn btn-success w-sm">Save Changes</a>
+    </div>
+</form>

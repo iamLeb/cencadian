@@ -129,7 +129,7 @@
                                         </div>
 
                                         <p>{{ $user->application->note ?? 'No Additional Info'}}</p>
-                                        <div class="row">
+                                        <div class="row mb-5">
                                             <div class="col-6 col-md-4">
                                                 <div class="d-flex mt-4">
                                                     <div class="flex-shrink-0 avatar-xs align-self-center me-3">
@@ -152,8 +152,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="mb-1">Stack</p>
-                                                        <h6 class="text-truncate mb-0">{{ ucfirst('Full Stack') }}</h6>
+
+                                                        <p class="mb-1">Application Status</p>
+                                                        <h6 class="text-truncate mb-0">{{ ucfirst($user->application->status ?? 'NA') }}</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,42 +182,39 @@
                                     <!--end card-body-->
                                 </div><!-- end card -->
 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card">
-                                            <div class="card-header align-items-center d-flex">
-                                                <h4 class="card-title mb-0  me-2">References</h4>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <h5 class="card-title mb-3">References</h5>
+                                                </div>
                                             </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row row-cols-xxl-12 row-cols-lg-12 row-cols-12">
-                                                            {{ $references }}
-                                                            @foreach($references as $reference)
-                                                                <div class="col">
-                                                                    <div class="card card-body">
-                                                                        <div class="d-flex mb-4 align-items-center">
-                                                                            <div class="flex-shrink-0">
-                                                                                <img src="https://ui-avatars.com/api/?name={{ $reference->name }}" alt="" class="avatar-sm rounded-circle" />
-                                                                            </div>
-                                                                            <div class="flex-grow-1 ms-2">
-                                                                                <h5 class="card-title mb-1">{{ ucfirst($reference->name) }}</h5>
-                                                                                <p class="text-muted mb-0">{{ $reference->email }}</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <h6 class="mb-1">{{ $reference->phone }}</h6>
-                                                                        <p class="card-text text-muted">Expense Account</p>
-                                                                        <a href="javascript:void(0)" class="btn btn-primary btn-sm">See Details</a>
-                                                                    </div>
-                                                                </div><!-- end col -->
-                                                            @endforeach
-                                                        </div><!-- end row -->
-                                                    </div><!-- end col -->
-                                                </div><!-- end row -->
-                                            </div><!-- end card body -->
-                                        </div><!-- end card -->
-                                    </div><!-- end col -->
-                                </div><!-- end row -->
+
+                                            <div class="row">
+                                                @foreach($references as $reference)
+                                                    <div class="col-md-4 mb-3">
+                                                        <h5>{{$reference->name}}</h5>
+
+
+                                                        <p>Relationship: {{$reference->relationship}}</p>
+                                                        <p>Organization: {{$reference->org}}</p>
+                                                        <p>Phone: {{$reference->phone}}</p>
+                                                        <p>Email: {{$reference->email}}</p>
+                                                        <p>Preferred contact: {{$reference->prefContact}}</p>
+
+                                                        <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-md w-100 mb-3">
+                                                            <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                        </a>
+
+                                                        <a href="/admin/interns/reference/{{$reference->id}}" class="btn btn-primary w-100 btn-md">
+                                                            <i class="ri-mail-close-fill"></i>View Questionnaire
+                                                        </a>
+
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                </div>
                             </div>
                             <!--end col-->
                         </div>

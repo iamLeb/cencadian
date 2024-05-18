@@ -5,9 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InternReference extends Model
+class Contact extends Model
 {
     use HasFactory;
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -19,14 +25,4 @@ class InternReference extends Model
         'created_at',
         'updated_at',
     ];
-
-    public function application()
-    {
-        return $this->belongsTo(Application::class);
-    }
-
-    public function referenceCheck()
-    {
-        return $this->hasOne(ReferenceCheck::class);
-    }
 }

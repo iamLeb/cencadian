@@ -152,6 +152,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1 overflow-hidden">
+
                                                         <p class="mb-1">Application Status</p>
                                                         <h6 class="text-truncate mb-0">{{ ucfirst($user->application->status ?? 'NA') }}</h6>
                                                     </div>
@@ -190,9 +191,9 @@
                                             </div>
 
                                             <div class="row">
-                                                @foreach($user->application->reference as $reference)
+                                                @foreach($references as $reference)
                                                     <div class="col-md-4 mb-3">
-                                                        <h5>{{$reference->name}}</h6>
+                                                        <h5>{{$reference->name}}</h5>
 
 
                                                         <p>Relationship: {{$reference->relationship}}</p>

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\ReferenceCheckController;
 use Illuminate\Support\Facades\Route;
@@ -38,5 +40,10 @@ Route::get('/company', [ServiceRequestController::class, 'index'])->name('compan
 Route::get('/company/create', [ServiceRequestController::class, 'create'])->name('company.create');
 Route::post('/company/store', [ServiceRequestController::class, 'store'])->name('company.store');
 
+Route::post('/company/contact/store', [ContactController::class, 'updateContact'])->name('company.contact.store');
+Route::post('/company/profile', [HomeController::class, 'updateCompany'])->name('company.update');
+
+
 //Reference check
 Route::post('/referencecheck', [ReferenceCheckController::class, 'store'])->name('referencecheck.store');
+

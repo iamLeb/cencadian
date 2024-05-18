@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('intern_references', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('application_id');
-            $table->foreign('application_id')->references('id')->on('applications');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->string('org');
-            $table->string('relationship');
-            $table->string('phone');
             $table->string('email');
-            $table->string('prefContact');
+            $table->string('phone');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('intern_references');
+        Schema::dropIfExists('contacts');
     }
 };

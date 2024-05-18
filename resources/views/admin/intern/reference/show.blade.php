@@ -2,14 +2,15 @@
 @section('content')
     <div class="profile-foreground position-relative mx-n4 mt-n4">
         <div class="profile-wid-bg">
-            <img src="{{ asset('assets/images/profile-bg.jpg') }}" alt="" class="profile-wid-img" />
+            <img src="{{ asset('assets/images/profile-bg.jpg') }}" alt="" class="profile-wid-img"/>
         </div>
     </div>
     <div class="pt-4 mb-4 mb-lg-3 pb-lg-4 profile-wrapper">
         <div class="row g-4">
             <div class="col-auto">
                 <div class="avatar-lg">
-                    <img src="https://ui-avatars.com/api/?name={{ $reference->name }}" alt="user-img" class="img-thumbnail rounded-circle" />
+                    <img src="https://ui-avatars.com/api/?name={{ $reference->name }}" alt="user-img"
+                         class="img-thumbnail rounded-circle"/>
                 </div>
             </div>
             <!--end col-->
@@ -18,7 +19,9 @@
                     <h3 class="text-white mb-1">{{ $reference->name }}</h3>
                     <p class="text-white text-opacity-75">{{ $reference->email }}</p>
                     <div class="hstack text-white-50 gap-1">
-                        <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>{{ $reference->address ?? 'NA'}}</div>
+                        <div class="me-2"><i
+                                    class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>{{ $reference->address ?? 'NA'}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,7 +39,8 @@
                     <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
-                                <i class="ri-airplay-fill d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Overview</span>
+                                <i class="ri-airplay-fill d-inline-block d-md-none"></i> <span
+                                        class="d-none d-md-inline-block">Overview</span>
                             </a>
                         </li>
 
@@ -104,21 +108,24 @@
                                             </div>
                                             <div class="col-md-6">
                                                 @if (!$reference->interview_mail)
-                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-sm">
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')"
+                                                       href="" class="btn btn-primary btn-sm">
                                                         <i class="ri-mail-close-fill"></i> Send Interview
                                                     </a>
                                                 @endif
 
                                                 @if (!$reference->interview_question)
-                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-warning btn-sm">
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')"
+                                                       href="" class="btn btn-warning btn-sm">
                                                         <i class="ri-mail-close-fill"></i>Interview Questions
                                                     </a>
                                                 @endif
 
                                                 @if (!$reference->offer_letter)
-                                                        <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-danger btn-sm">
-                                                            <i class="ri-mail-close-fill"></i> Send Offer Letter
-                                                        </a>
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')"
+                                                       href="" class="btn btn-danger btn-sm">
+                                                        <i class="ri-mail-close-fill"></i> Send Offer Letter
+                                                    </a>
                                                 @endif
                                             </div>
                                         </div>
@@ -178,8 +185,8 @@
                                             </div>
                                         </div>
 
-                                        @include('components/referenceQuestionnaireForm')
-                                            
+                                        @include('components.referenceQuestionnaireForm')
+
                                     </div>
                                     <!--end card body-->
                                 </div>

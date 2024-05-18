@@ -38,6 +38,7 @@
             <div class="card-header">
                 <h5 class="card-title mb-0">Proposed Projects</h5>
             </div>
+
             <div class="card-body">
                 <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                     <thead>
@@ -66,11 +67,16 @@
                             </th>
                             <td>{{ ++$count }}</td>
                             <td>{{ ucfirst($sr->title) }}</td>
+<<<<<<< HEAD
+                            <td>{{ $sr->budget }}</td>
+                            <td>{{ ucfirst($sr->service_category) }}</td>
+=======
                             <td>{{ $sr-> service_category }}</td>
                             <td>{{ $sr->budget }}</td>
                             <td>{{ ucfirst($sr->created_at) }}</td>
                             <!-- <td><a target="_blank" href="https://arabicawhite.s3.amazonaws.com/file/{{ $sr->file }}">{{ ucfirst('Uploaded Document') }}</a></td> -->
                             <td><span class="badge @if($sr->priority === 'High') bg-danger @elseif($sr->priority === 'Medium') bg-warning @else bg-primary @endif">{{ $sr->status }}</span></td>
+>>>>>>> 79cce2a7cf29123e1af6ecf6aa19e275827bf62e
 
                             <td>
                                 <div class="dropdown d-inline-block">
@@ -100,7 +106,7 @@
 @if ($count == 0)
 <div class="row justify-center">
     <p class="fs-4 text-info fw-bold text-center">
-        You haven't proposed any projects! Press "Propose a project" to get started.    
+        You haven't proposed any projects! Press "Propose a project" to get started.
     </p>
 </div>
 @endif

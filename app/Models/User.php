@@ -59,4 +59,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(ServiceRequest::class);
     }
+    public function contact()
+    {
+        return $this->hasOne(Contact::class);
+    }
 }

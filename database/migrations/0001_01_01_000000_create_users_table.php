@@ -22,9 +22,6 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('interview_mail')->default(false);
-            $table->boolean('interview_question')->default(false);
-            $table->boolean('offer_letter')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -35,8 +35,15 @@ class HomeController extends Controller
 
     public function profileUpdate(Request $request)
     {
+        dd($request->all());
         Auth::user()->update($request->all());
         return redirect()->route('home')->with('success', 'Profile Saved, Please Start Your Application');
+    }
+
+    public function updateCompany(Request $request)
+    {
+        auth()->user()->update($request->all());
+        return redirect()->back()->with('success', 'Profile Updated');
     }
 
 }

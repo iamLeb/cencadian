@@ -25,7 +25,8 @@ return new class extends Migration
             $table->text('other_remarks');
             $table->text('org_category');
             $table->text('service_category');
-//            $table->string('file');
+            $table->text('status');
+            $table->string('file');
             $table->timestamps();
         });
     }

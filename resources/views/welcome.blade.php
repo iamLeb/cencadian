@@ -151,7 +151,7 @@
                                 <div class="contact-info">
                                     <ul class="list-wrap">
                                         <li><a href="mailto:info@apexa.com">info@iamLeb.com</a></li>
-                                        <li><a href="tel:0123456789">+1 (204) 111 1111</a></li>
+                                        <li><a href="tel:+12049300378">(204) 930 0378</a></li>
                                     </ul>
                                 </div>
                                 <div class="social-links">
@@ -224,13 +224,11 @@
             </div>
             <div class="contact-list mb-30">
                 <h4>Phone Number</h4>
-                <p>+1 (204) 111 1111</p>
-                <p>+1 (204) 111 1111</p>
+                <div href="tel:+12049300378">(204) 930 0378</div>
             </div>
             <div class="contact-list mb-30">
                 <h4>Email Address</h4>
-                <p>info@iamLeb.com</p>
-                <p>contact@iamleb.com</p>
+                <p>admin@cencadian.ca</p>
             </div>
         </div>
         <div class="offCanvas__social-icon mt-30">

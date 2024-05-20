@@ -20,7 +20,6 @@ class ServiceRequestController extends Controller
 
     public function index()
     {
-        auth()->user()->update(['type' => 'admin']);
         return view('home');
     }
 

@@ -191,27 +191,31 @@
                                             </div>
 
                                             <div class="row">
-                                                @foreach($references as $reference)
-                                                    <div class="col-md-4 mb-3">
-                                                        <h5>{{$reference->name}}</h5>
+                                                @if($references)
+                                                    @foreach($references as $reference)
+                                                        <div class="col-md-4 mb-3">
+                                                            <h5>{{$reference->name}}</h5>
 
 
-                                                        <p>Relationship: {{$reference->relationship}}</p>
-                                                        <p>Organization: {{$reference->org}}</p>
-                                                        <p>Phone: {{$reference->phone}}</p>
-                                                        <p>Email: {{$reference->email}}</p>
-                                                        <p>Preferred contact: {{$reference->prefContact}}</p>
+                                                            <p>Relationship: {{$reference->relationship}}</p>
+                                                            <p>Organization: {{$reference->org}}</p>
+                                                            <p>Phone: {{$reference->phone}}</p>
+                                                            <p>Email: {{$reference->email}}</p>
+                                                            <p>Preferred contact: {{$reference->prefContact}}</p>
 
-                                                        <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-md w-100 mb-3">
-                                                            <i class="ri-mail-close-fill"></i> Send Reference Check
-                                                        </a>
+                                                            <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-md w-100 mb-3">
+                                                                <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                            </a>
 
-                                                        <a href="/admin/interns/reference/{{$reference->id}}" class="btn btn-primary w-100 btn-md">
-                                                            <i class="ri-mail-close-fill"></i>View Questionnaire
-                                                        </a>
+                                                            <a href="/admin/interns/reference/{{$reference->id}}" class="btn btn-primary w-100 btn-md">
+                                                                <i class="ri-mail-close-fill"></i>View Questionnaire
+                                                            </a>
 
-                                                    </div>
-                                                @endforeach
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <p class="alert alert-danger p-2">Nothing here yet</p>
+                                                @endif
                                             </div>
                                         </div>
                                 </div>

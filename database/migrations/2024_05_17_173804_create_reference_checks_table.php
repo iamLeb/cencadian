@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('reference_id')->references('id')->on('intern_references');
             $table->text('duration_capacity');
             $table->text('performance');
-            $table->integer('teamwork');
+            $table->string('teamwork');
             $table->integer('punctuality');
             $table->integer('problem_solving');
             $table->integer('communication');

@@ -163,7 +163,16 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="gender" class="form-label">Gender</label>
-                                                    <input type="text" value="{{ auth()->user()->gender }}" readonly class="form-control">
+                                                    @if(auth()->user()->gender)
+                                                        <input type="text" value="{{ auth()->user()->gender }}"  class="form-control">
+                                                    @else
+                                                        <select class="form-control" name="gender" id="gender">
+                                                            <option selected disabled>-- Select Gender --</option>
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>
+                                                        </select>
+                                                    @endif
+
                                                 </div>
                                             </div>
 

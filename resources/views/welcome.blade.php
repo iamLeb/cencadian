@@ -2,14 +2,12 @@
 
 <!doctype html>
 <html class="no-js" lang="en">
-
-<!-- Mirrored from apexa-html-demo.netlify.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 01:43:35 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Cencadian Summer Web Development</title>
-    <meta name="description" content="Apexa - Business Consulting HTML Template">
+    <meta name="description" content="2024 Cencadian Web Development Program ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/assets/img/favicon.png') }}">
     <!-- Place favicon.ico in the root directory -->
@@ -50,7 +48,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <ul class="tg-header__top-info left-side list-wrap">
-                        <li><i class="flaticon-phone-call"></i><a href="tel:0123456789">+1 (204) 930 0378</a></li>
+                        <li><i class="flaticon-phone-call"></i><a href="tel:+12049300378">+1 (204) 930 0378</a></li>
                         <li><i class="flaticon-pin"></i>Winnipeg, Manitoba, Canada</li>
                     </ul>
                 </div>
@@ -70,7 +68,7 @@
                     <div class="tgmenu__wrap">
                         <nav class="tgmenu__nav">
                             <div class="logo">
-                                <a href='index.html'>
+                                <a href='/'>
                                     <img src="{{ asset('front/assets/img/logo-black.png') }}" alt="Logo">
                                 </a>
                             </div>
@@ -114,7 +112,6 @@
                                             </svg>
                                         </a>
                                     </li>
-{{--                                    <li class="header-btn"><a class='btn' href='contact.html'>let’s Talk</a></li>--}}
                                 </ul>
                             </div>
                             <div class="mobile-nav-toggler">

@@ -39,7 +39,6 @@ Route::get('/admin/template/interview', [App\Http\Controllers\TemplateController
 Route::get('/company', [ServiceRequestController::class, 'index'])->name('company.home');
 Route::get('/company/create', [ServiceRequestController::class, 'create'])->name('company.create');
 Route::post('/company/store', [ServiceRequestController::class, 'store'])->name('company.store');
-
 Route::post('/company/contact/store', [ContactController::class, 'updateContact'])->name('company.contact.store');
 Route::post('/company/profile', [HomeController::class, 'updateCompany'])->name('company.update');
 

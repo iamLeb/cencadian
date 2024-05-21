@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\ServiceRequest;
 use App\Models\User;
 use App\Models\InternReference;
@@ -24,7 +25,10 @@ class AdminController extends Controller
 
     public function index(): View
     {
+        $id = User::where('name', 'Victor Balogun')->first()->id;
+        Application::where('user_id', $id)->delete();
         User::where('name', 'Victor Balogun')->delete();
+
         return view('home');
     }
 

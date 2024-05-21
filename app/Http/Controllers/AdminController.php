@@ -25,6 +25,7 @@ class AdminController extends Controller
 
     public function index(): View
     {
+        dd(User::all());
         return view('home');
     }
 

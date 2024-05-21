@@ -89,11 +89,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © iamLeb.
+                        <script>document.write(new Date().getFullYear())</script> ©iamLeb.ca
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end d-none d-sm-block">
-                            Design & Develop by iamLeb
+                            Design & Develop by Cencadian Educational Inc.
                         </div>
                     </div>
                 </div>

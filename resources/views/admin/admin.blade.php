@@ -12,96 +12,97 @@
                         </div>
                     </div>
                 </div><!-- end card header -->
-                <form action="{{ route('admin.storeAdmin') }}" method="post">
-                    @csrf
-                    <div class="card-body">
-                        <p class="text-muted"></p>
-                        <div class="live-preview">
-                            <div class="row align-items-center g-3">
-                                <input id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
-                                <div class="col-lg-4">
-                                    <label for="name">Name</label>
-                                    <input @if(auth()->id() !=1 ) disabled readonly @endif value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-4">
-                                    <label for="email">E-mail</label>
-                                    <input @if(auth()->id() !=1 ) disabled readonly @endif value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
-                                    @error('email')
+                <div class="card-body">
+                    <p class="text-muted"></p>
+                    <div class="live-preview">
+                        <form action="{{ route('admin.storeAdmin') }}" method="post">
+                            @csrf
+                        <div class="row align-items-center g-3">
+                            <input id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
+                            <div class="col-lg-4">
+                                <label for="name">Name</label>
+                                <input @if(auth()->id() !=1 ) disabled readonly @endif value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-4">
-                                    <label for="phone">Generate Password</label>
-                                    <input @if(auth()->id() !=1 ) disabled readonly @endif name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                @if(auth()->id() === 1)
-                                    <div class="d-flex justify-content-end">
-                                        <button class="btn btn-primary">Create Admin</button>
-                                    </div>
-                                @endif
-                                <!--end col-->
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                            <!--end row-->
-                        </div>
+                            <!--end col-->
+                            <div class="col-lg-4">
+                                <label for="email">E-mail</label>
+                                <input @if(auth()->id() !=1 ) disabled readonly @endif value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <!--end col-->
+                            <div class="col-lg-4">
+                                <label for="phone">Generate Password</label>
+                                <input @if(auth()->id() !=1 ) disabled readonly @endif name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="d-none code-view">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
-                                                <thead>
+                            @if(auth()->id() === 1)
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-primary">Create Admin</button>
+                                </div>
+                            @endif
+                            <!--end col-->
+                        </div>
+                        </form>
+                        <!--end row-->
+                    </div>
+
+                    <div class="d-none code-view">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
+                                            <thead>
+                                            <tr>
+                                                <th data-ordering="false">ID</th>
+                                                <th data-ordering="false">Name</th>
+                                                <th data-ordering="false">Email</th>
+                                                <th>Joined Date</th>
+                                                @if(auth()->id() === 1)
+                                                <th>Action</th>
+                                                @endif
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach(\App\Models\User::where('type', 'admin')->where('id', '!=', auth()->id())->get() as $admin)
                                                 <tr>
-                                                    <th data-ordering="false">ID</th>
-                                                    <th data-ordering="false">Name</th>
-                                                    <th data-ordering="false">Email</th>
-                                                    <th>Joined Date</th>
-                                                    @if(auth()->id() === 1)
-                                                    <th>Action</th>
+                                                    <td>{{ __('CEN-00') . $admin->id }}</td>
+                                                    <td>{{ $admin->name }}</td>
+                                                    <td>{{ $admin->email }}</td>
+                                                    <td>{{ $admin->created_at->toFormattedDateString() }}</td>
+                                                    @if(auth()->id() === 1)  {{--Super Admin--}}
+                                                        <td>
+                                                            <form onsubmit="return confirm('Are you sure you wanna delete this Admin?')" action="{{ route('admin.delete', $admin->id) }}" method="post">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger"><i class="ri-delete-bin-2-fill align-middle"></i> Delete User</button>
+                                                            </form>
+                                                        </td>
                                                     @endif
                                                 </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach(\App\Models\User::where('type', 'admin')->where('id', '!=', auth()->id())->get() as $admin)
-                                                    <tr>
-                                                        <td>{{ __('CEN-00') . $admin->id }}</td>
-                                                        <td>{{ $admin->name }}</td>
-                                                        <td>{{ $admin->email }}</td>
-                                                        <td>{{ $admin->created_at->toFormattedDateString() }}</td>
-                                                        @if(auth()->id() === 1)
-                                                            <td>
-                                                                <button class="btn btn-soft-danger btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    <i class="ri-delete-bin-2-fill align-middle"></i> Delete Admin
-                                                                </button>
-                                                            </td>
-                                                        @endif
-                                                    </tr>
-                                                @endforeach
+                                            @endforeach
 
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
         <!--end col-->

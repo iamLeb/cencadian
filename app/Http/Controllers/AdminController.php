@@ -91,4 +91,14 @@ class AdminController extends Controller
         }
 
     }
+
+    public function deleteAdmin($id)
+    {
+        if($id === 1) {
+            return redirect()->back()->with('error', 'You Cannot Delete a Supper Admin');
+        } else {
+            User::destroy($id);
+            return redirect()->back()->with('success', 'Admin Deleted Successfully...');
+        }
+    }
 }

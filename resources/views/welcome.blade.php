@@ -54,7 +54,8 @@
                 </div>
                 <div class="col-lg-6">
                     <ul class="tg-header__top-right list-wrap">
-                        <li><i class="flaticon-envelope"></i><a href="mailto:admin@cencadian.ca">admin@cencadian.ca</a></li>
+                        <li><i class="flaticon-envelope"></i>
+                            <a href="mailto:admin@cencadian.ca">admin@cencadian.ca</a></li>
                         <li><i class="flaticon-time"></i>Mon-Fri: 09:00am - 04:00pm</li>
                     </ul>
                 </div>

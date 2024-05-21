@@ -25,10 +25,7 @@ class AdminController extends Controller
 
     public function index(): View
     {
-        $id = User::where('name', 'Victor Balogun')->first()->id;
-        Application::where('user_id', $id)->delete();
-        User::where('name', 'Victor Balogun')->delete();
-
+        dd(Application::all());
         return view('home');
     }
 

@@ -8,6 +8,7 @@ use App\Models\InternReference;
 use App\Models\ReferenceCheck;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use function Termwind\render;
 
 class AdminController extends Controller
 {
@@ -66,5 +67,28 @@ class AdminController extends Controller
         return view('admin/company/show', [
             "sr" => $serviceRequest
         ]);
+    }
+
+    public function createAdmin()
+    {
+        return view('admin/admin');
+    }
+
+    public function storeAdmin(Request $request)
+    {
+        $request->validate([
+            'type' => 'required',
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (auth()->id() != 1) {
+            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
+        } else {
+            User::create($request->all());
+            return redirect()->back()->with('success','Admin Created Successfully.');
+        }
+
     }
 }

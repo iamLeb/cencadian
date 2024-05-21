@@ -24,7 +24,7 @@ Route::group(['middleware' => ['isAdmin'],'prefix' => '/secure'], function () {
 });
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.home');
-//Route::get('/admin/create', [AdminController::class, 'createAdmin'])->name('admin.createAdmin');
+Route::get('/admin/create', [AdminController::class, 'createAdmin'])->name('admin.createAdmin');
 Route::post('/admin/store', [AdminController::class, 'storeAdmin'])->name('admin.storeAdmin');
 Route::post('/admin/delete/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete');
 Route::get('/admin/interns', [AdminController::class, 'interns'])->name('admin.interns');

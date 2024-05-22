@@ -221,7 +221,7 @@
             <div class="mb-3">
                 <label class="form-label @error('additional_comments') is-invalid @enderror">Additional Comments (Optional)</label>
                 <p>Is there anything else you would like to add that has not been covered?</p>
-                <textarea class="form-control" name="additional_comments" id="" cols="30" rows="10" placeholder="Enter Additional Comments">{{$referenceCheck?->additional_comments}}</textarea>
+                <textarea class="form-control" name="additional_comments" id="" cols="30" rows="10" placeholder="Enter Additional Comments">{{$referenceCheck?->additional_comments ?? old('additional_comments')}}</textarea>
 
                 @error('additional_comments')
                     <span class="invalid-feedback" role="alert">
@@ -237,6 +237,6 @@
     <!-- end row -->
 
     <div class="text-end mb-4">
-        <a href="{{ route('referencecheck.store') }}" onclick="event.preventDefault(); document.getElementById('create-request').submit();" class="btn btn-success w-sm">Save Changes</a>
+        <a href="{{ route('referencecheck.store') }}" onclick="event.preventDefault(); document.getElementById('create-request').submit();" class="btn btn-success h-l w-xl">Save Changes</a>
     </div>
 </form>

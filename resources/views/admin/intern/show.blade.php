@@ -201,34 +201,61 @@
                                                             <p>Phone: {{$reference->phone}}</p>
                                                             <p>Email: {{$reference->email}}</p>
                                                             <p>Preferred contact: {{$reference->prefContact}}</p>
+
+                                                            <p>
+                                                                Questionnaire Status:
+                                                                @if ($reference->referenceCheck)
+                                                                    <a href="javascript:void(0);" class="badge bg-success">Submitted</a>
+                                                                @else
+                                                                <a href="javascript:void(0);" class="badge bg-warning">Not Submitted</a>
+                                                                @endif
+                                                            </p>
                                                             
                                                             @php
                                                                 $applicantName = $user?->name ?? "An applicant";
 
                                                                 $mailtoHref = "mailto:".$reference->email
-                                                                ."?subject=Reference Questionnaire for Cencadian Summer Web Development Program"
+                                                                ."?subject=Reference Check for $applicantName - Cencadian Summer Web Development Internship Program"
                                                                 ."&body="
-                                                                ."Hello, " . $reference->name . "%0A%0A"
+                                                                ."Hello " . $reference->name . ",%0A%0A"
                                                                 ." You have been listed as a reference by " . $applicantName
-                                                                ." on their application to the Cencadian Summer Web Development Program. "
+                                                                ." on their application to the Cencadian Summer Web Development Internship Program. "
                                                                 ."Below is a link to a short questionnaire about your experience and relationship with the applicant."
                                                                 ."%0A%0A"
                                                                 .route('reference.questionnaire.show', ['otp' => $reference->otp])
                                                                 ."%0A%0A"
                                                                 ."We would appreciate it if you could take 5 minutes to complete this short questionnaire so that we can learn more about the applicant."
                                                                 ."%0A%0A"
-                                                                ."If you have any questions or concerns, feel free to reply to this email, or contact us at admin@cencadian.ca";
+                                                                ."If you have any questions or concerns, feel free to reply to this email, or contact us at admin@cencadian.ca"
+                                                                ."%0A%0A"
+                                                                ."Regards,"
+                                                                ."%0A"
+                                                                ."Management Team"
+                                                                ."%0A"
+                                                                ."Cencadian Educational Incorporated";
                                                                 
 
                                                             @endphp
 
-                                                            <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
-                                                                <i class="ri-mail-close-fill"></i> Send Reference Check
-                                                            </a>
+                                                            
+                                                            @if ($reference->referenceCheck)
+                                                                <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
+                                                                    <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                                </a>
 
-                                                            <a href="/admin/interns/reference/{{$reference->id}}" class="btn btn-primary w-100 btn-md">
-                                                                <i class="ri-mail-close-fill"></i>View Questionnaire
-                                                            </a>
+                                                                <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-success w-100 btn-md">
+                                                                    <i class="ri-mail-close-fill"></i>View Questionnaire
+                                                                </a>
+                                                            @else
+                                                                <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
+                                                                    <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                                </a>
+
+                                                                <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-primary w-100 btn-md">
+                                                                    <i class="ri-mail-close-fill"></i>Complete Questionnaire
+                                                                </a>
+                                                            @endif
+                                                            
 
                                                         </div>
                                                     @endforeach

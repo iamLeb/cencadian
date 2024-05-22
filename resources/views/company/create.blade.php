@@ -26,7 +26,12 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label" for="project-title-input">Project Title</label>
-                        <input name="title" type="text" class="form-control" id="project-title-input" placeholder="Enter project title" required>
+                        <input name="title" type="text" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" id="project-title-input" placeholder="Enter project title" required>
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
 {{--                    <div class="mb-3">--}}
@@ -37,37 +42,67 @@
                     <div class="mb-3">
                         <label class="form-label">Executive Summary</label>
                         <p>Provide a brief overview of your organization, the project, the needs it addresses, and the proposed solution. Summarize the main objectives and the expected outcomes of the project</p>
-                        <textarea class="form-control" name="executive_summary" id="" cols="30" rows="10" placeholder="Enter Executive Summary" required></textarea>
+                        <textarea class="form-control @error('executive_summary') is-invalid @enderror" name="executive_summary" id="" cols="30" rows="10" placeholder="Enter Executive Summary" required>{{ old('executive_summary') }}</textarea>
+                        @error('executive_summary')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Community Involvement</label>
                         <p>As a community-minded organization, Cencadian prioritizes working with organizations that make an impact in their community. Explain how your business or organization impacts the local community. </p>
-                        <textarea class="form-control" name="community_involvement" id="" cols="30" rows="10" placeholder="Enter Community Involvement" required></textarea>
+                        <textarea class="form-control @error('community_involvement') is-invalid @enderror" name="community_involvement" id="" cols="30" rows="10" placeholder="Enter Community Involvement" required>{{ old('community_involvement') }}</textarea>
+                        @error('community_involvement')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Background and Rationale</label>
                         <p>Describe the problem and why the project is necessary. Explain how the project aligns with the strategic goals of your organization, and how it will help form connections in your community.</p>
-                        <textarea class="form-control" name="background_rationale" id="" cols="30" rows="10" placeholder="Enter Background & Rationale" required></textarea>
+                        <textarea class="form-control @error('community_involvement') is-invalid @enderror" name="background_rationale" id="" cols="30" rows="10" placeholder="Enter Background & Rationale" required>{{ old('background_rationale') }}</textarea>
+                        @error('background_rationale')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Project Requirements</label>
                         <p>Detail the specific features and functionalities you would like to see implemented in your project.</p>
-                        <textarea class="form-control" name="project_requirements" id="" cols="30" rows="10" placeholder="Enter Project Requirements" required></textarea>
+                        <textarea class="form-control @error('project_requirements') is-invalid @enderror" name="project_requirements" id="" cols="30" rows="10" placeholder="Enter Project Requirements" required>{{ old('project_requirements') }}</textarea>
+                        @error('project_requirements')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Project Team</label>
                         <p>List the members of your organization that will be involved in the project, including their roles and responsibilities.</p>
-                        <textarea class="form-control" name="project_team" id="" cols="30" rows="10" placeholder="Enter Project Team" required></textarea>
+                        <textarea class="form-control @error('project_team') is-invalid @enderror" name="project_team" id="" cols="30" rows="10" placeholder="Enter Project Team" required>{{ old('project_team') }}</textarea>
+                        @error('project_team')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Budget</label>
                         <p>Cencadian is a community-minded non-profit organization offering free and low-cost web development services to small to medium-sized businesses and organizations. A budget is not required, but can help us offer additional support, features, and quality for your project. Indicate your proposed budget range, and we will offer a tailored package specific to your organization’s needs. Please note that your organization will be responsible for domain hosting and any other costs associated with maintaining the project.</p>
-                        <textarea class="form-control" name="budget" id="" cols="30" rows="10" placeholder="Enter Budget" required></textarea>
+                        <textarea class="form-control @error('budget') is-invalid @enderror" name="budget" id="" cols="30" rows="10" placeholder="Enter Budget" required>{{ old('budget') }}</textarea>
+                        @error('budget')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
@@ -185,11 +220,16 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="choices-categories-input" class="form-label">Service Category</label>
-                        <select name="service_category" class="form-select" data-choices data-choices-search-false id="choices-categories-input" required>
-                            <option  selected>-- Select Service Category --</option>
+                        <select name="service_category" class="form-select @error('service_category') is-invalid @enderror" data-choices data-choices-search-false id="choices-categories-input" required>
+                            <option disabled selected>-- Select Service Category --</option>
                             <option value="new">New Service</option>
                             <option value="alter">Alter Existing Service</option>
                         </select>
+                        @error('service_category')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                 </div>
@@ -198,13 +238,18 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="choices-categories-input" class="form-label">Organization Type</label>
-                        <select name="org_category" class="form-select" data-choices data-choices-search-false id="choices-categories-input" required>
-                            <option  selected>-- Select Organization Type --</option>
+                        <select name="org_category" class="form-select @error('org_category') is-invalid @enderror" data-choices data-choices-search-false id="choices-categories-input" required>
+                            <option disabled selected>-- Select Organization Type --</option>
                             <option value="smallbiz">Small Business</option>
                             <option value="medbiz">Medium Business</option>
                             <option value="nonprofit">Non-Profit Organization</option>
                             <option value="other">Other Organization Type</option>
                         </select>
+                        @error('org_category')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                 </div>

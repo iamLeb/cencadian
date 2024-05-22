@@ -38,7 +38,6 @@ class ServiceRequestController extends Controller
             'project_requirements' => 'required',
             'project_team' => 'required',
             'budget' => 'required',
-            'other_remarks' => 'required',
             'org_category' => 'required',
             'service_category' => 'required',
         ]);
@@ -58,6 +57,7 @@ class ServiceRequestController extends Controller
 ////            "file" => ""
 //        ]);
 
+        $request['status'] = 'received';
         auth()->user()->serviceRequest()->create($request->all());
 
 //        if ($request->hasFile("file")) {

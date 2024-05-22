@@ -47,5 +47,7 @@ Route::post('/company/profile', [HomeController::class, 'updateCompany'])->name(
 
 
 //Reference check
+Route::get('/reference-questionnaire/{otp}', [ReferenceCheckController::class, 'referenceQuestionniareShow'])->name('reference.questionnaire.show');
+Route::post('/reference-questionnaire/{otp}', [ReferenceCheckController::class, 'referenceQuestionnaireSave'])->name('reference.questionnaire.save');
 Route::post('/referencecheck', [ReferenceCheckController::class, 'store'])->name('referencecheck.store');
 

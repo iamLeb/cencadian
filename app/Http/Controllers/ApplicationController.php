@@ -69,6 +69,14 @@ class ApplicationController extends Controller
 
             //create reference
             foreach ($references as $reference) {
+
+                //generate a random OTP and check that an existing record with the same OTP does not exist
+                $otp = 0;
+                do {
+                    $otp=random_int(1,999999);
+                    $existingRecord = InternReference::where('otp', $otp);
+                } while (!$existingRecord);
+
                 InternReference::create([
                     "application_id" => $reference['application_id'],
                     "name" => $reference['name'],
@@ -77,6 +85,7 @@ class ApplicationController extends Controller
                     "phone" => $reference['phone'],
                     "email" => $reference['email'],
                     "prefContact" => $reference['prefContact'],
+                    "otp" => $otp
                 ]);
             }
         }

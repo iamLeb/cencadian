@@ -206,7 +206,7 @@
                                                             <p>Preferred contact: {{$reference->prefContact}}</p>
 
                                                             <p>
-                                                                Questionnaire Status:
+                                                                Reference Check Status:
                                                                 @if ($reference->referenceCheck)
                                                                     <a href="javascript:void(0);" class="badge bg-success">Submitted</a>
                                                                 @else
@@ -247,7 +247,7 @@
                                                                 </a>
 
                                                                 <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-success w-100 btn-md">
-                                                                    <i class="ri-mail-close-fill"></i>View Questionnaire
+                                                                    <i class="ri-mail-close-fill"></i>View Reference Check
                                                                 </a>
                                                             @else
                                                                 <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
@@ -255,7 +255,7 @@
                                                                 </a>
 
                                                                 <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-primary w-100 btn-md">
-                                                                    <i class="ri-mail-close-fill"></i>Complete Questionnaire
+                                                                    <i class="ri-mail-close-fill"></i>Complete Reference Check
                                                                 </a>
                                                             @endif
 

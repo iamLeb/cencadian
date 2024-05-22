@@ -45,7 +45,10 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 @php $user = auth()->user(); @endphp
-                @if($user->isIntern())
+
+                @if (!$user)
+                
+                @elseif($user->isIntern())
                     @foreach($links as $link)
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="{{ route($link['path']) }}">

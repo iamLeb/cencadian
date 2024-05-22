@@ -21,12 +21,14 @@ class UserTypeMiddleware
         // Check if user is authenticated and their type
         if ($user && $user->isAdmin()) {
             // If user is an admin, redirect to admin layout
-            return redirect()->route('admin.home');
+            return $next($request);
         } else if ($user && $user->isCompany()) {
             return redirect()->route('company.home');
+        } else if ($user && $user->isIntern()) {
+            return redirect()->route('home');
         }
 
         // For guest users or non-admins, proceed with the request
-        return $next($request);
+//        return $next($request);
     }
 }

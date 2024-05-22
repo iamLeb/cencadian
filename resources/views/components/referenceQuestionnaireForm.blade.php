@@ -1,29 +1,56 @@
-<form id="create-request" action="{{ route('referencecheck.store') }}" method="post" enctype="multipart/form-data">
+@php
+    $actionRoute = route('reference.questionnaire.save', ['otp' => $reference->otp]);
+    $isAdmin = auth()?->user()?->isAdmin();
+
+    if ($isAdmin) {
+        $actionRoute = route('referencecheck.store');
+    }
+@endphp
+
+<form id="create-request" action="{{ $actionRoute }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-lg-12">
             
             <div class="mb-4">
-                <h5>Applicant Name: {{$reference->application->name}}</h5>
+                <h5>Applicant Name: {{$reference->application->user->name}}</h5>
                 <p>Application for position of Web Development Intern</p>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Duration and Capacity</label>
                 <p>How long, and in what capacity have you known the candidate?</p>
-                <textarea class="form-control" name="duration_capacity" id="" cols="30" rows="10" placeholder="Enter Duration and Capacity" required>{{$referenceCheck?->duration_capacity}}</textarea>
+                <textarea class="form-control @error('duration_capacity') is-invalid @enderror" name="duration_capacity" id="" cols="30" rows="10" placeholder="Enter Duration and Capacity" required>{{$referenceCheck?->duration_capacity ?? old('duration_capacity')}}</textarea>
+
+                @error('duration_capacity')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Performance</label>
                 <p>Can you provide examples of projects or activities the candidate was involved with? How did they handle these projects or activities?</p>
-                <textarea class="form-control" name="performance" id="" cols="30" rows="10" placeholder="Enter Performance" required>{{$referenceCheck?->performance}}</textarea>
+                <textarea class="form-control @error('performance') is-invalid @enderror" name="performance" id="" cols="30" rows="10" placeholder="Enter Performance" required>{{$referenceCheck?->performance ?? old('performance')}}</textarea>
+
+                @error('performance')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Teamwork</label>
                 <p>Does the applicant work well in a team setting? Can you provide an example where they demonstrated good teamwork?</p>
-                <textarea class="form-control" name="teamwork" id="" cols="30" rows="10" placeholder="Enter Teamwork" required>{{$referenceCheck?->teamwork}}</textarea>
+                <textarea class="form-control  @error('teamwork') is-invalid @enderror" name="teamwork" id="" cols="30" rows="10" placeholder="Enter Teamwork" required>{{$referenceCheck?->teamwork ?? old('teamwork')}}</textarea>
+                
+                @error('teamwork')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="mb-4">

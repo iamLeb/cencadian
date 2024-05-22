@@ -201,8 +201,28 @@
                                                             <p>Phone: {{$reference->phone}}</p>
                                                             <p>Email: {{$reference->email}}</p>
                                                             <p>Preferred contact: {{$reference->prefContact}}</p>
+                                                            
+                                                            @php
+                                                                $applicantName = $user?->name ?? "An applicant";
 
-                                                            <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-primary btn-md w-100 mb-3">
+                                                                $mailtoHref = "mailto:".$reference->email
+                                                                ."?subject=Reference Questionnaire for Cencadian Summer Web Development Program"
+                                                                ."&body="
+                                                                ."Hello, " . $reference->name . "%0A%0A"
+                                                                ." You have been listed as a reference by " . $applicantName
+                                                                ." on their application to the Cencadian Summer Web Development Program. "
+                                                                ."Below is a link to a short questionnaire about your experience and relationship with the applicant."
+                                                                ."%0A%0A"
+                                                                .route('reference.questionnaire.show', ['otp' => $reference->otp])
+                                                                ."%0A%0A"
+                                                                ."We would appreciate it if you could take 5 minutes to complete this short questionnaire so that we can learn more about the applicant."
+                                                                ."%0A%0A"
+                                                                ."If you have any questions or concerns, feel free to reply to this email, or contact us at admin@cencadian.ca";
+                                                                
+
+                                                            @endphp
+
+                                                            <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
                                                                 <i class="ri-mail-close-fill"></i> Send Reference Check
                                                             </a>
 

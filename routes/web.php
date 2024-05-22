@@ -14,10 +14,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/secure', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => '/secure'], function () {
     // Interns
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
     Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');

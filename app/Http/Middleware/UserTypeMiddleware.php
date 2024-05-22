@@ -18,17 +18,17 @@ class UserTypeMiddleware
     {
         $user = Auth::user();
 
-        // Check if user is authenticated and their type
-        if ($user && $user->isAdmin()) {
-            // If user is an admin, redirect to admin layout
-            return $next($request);
-        } else if ($user && $user->isCompany()) {
-            return redirect()->route('company.home');
-        } else if ($user && $user->isIntern()) {
-            return redirect()->route('home');
+        switch ($user->type) {
+            case 'admin':
+                return $next($request);
+                break;
+            case 'intern':
+                return redirect()->route('home')->with('success', 'Hello Intern');
+                break;
+            case 'company':
+                return redirect()->route('company.home')->with('success', 'Hello Company');
+                break;
         }
 
-        // For guest users or non-admins, proceed with the request
-//        return $next($request);
     }
 }

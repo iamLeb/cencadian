@@ -201,23 +201,31 @@
                                                             <p>Phone: {{$reference->phone}}</p>
                                                             <p>Email: {{$reference->email}}</p>
                                                             <p>Preferred contact: {{$reference->prefContact}}</p>
+
+                                                            {{-- <p>Questionnaire Status: {{$reference->referenceCheck()}}</p> --}}
                                                             
                                                             @php
                                                                 $applicantName = $user?->name ?? "An applicant";
 
                                                                 $mailtoHref = "mailto:".$reference->email
-                                                                ."?subject=Reference Questionnaire for Cencadian Summer Web Development Program"
+                                                                ."?subject=Reference Check for $applicantName - Cencadian Summer Web Development Internship Program"
                                                                 ."&body="
-                                                                ."Hello, " . $reference->name . "%0A%0A"
+                                                                ."Hello " . $reference->name . ",%0A%0A"
                                                                 ." You have been listed as a reference by " . $applicantName
-                                                                ." on their application to the Cencadian Summer Web Development Program. "
+                                                                ." on their application to the Cencadian Summer Web Development Internship Program. "
                                                                 ."Below is a link to a short questionnaire about your experience and relationship with the applicant."
                                                                 ."%0A%0A"
                                                                 .route('reference.questionnaire.show', ['otp' => $reference->otp])
                                                                 ."%0A%0A"
                                                                 ."We would appreciate it if you could take 5 minutes to complete this short questionnaire so that we can learn more about the applicant."
                                                                 ."%0A%0A"
-                                                                ."If you have any questions or concerns, feel free to reply to this email, or contact us at admin@cencadian.ca";
+                                                                ."If you have any questions or concerns, feel free to reply to this email, or contact us at admin@cencadian.ca"
+                                                                ."%0A%0A"
+                                                                ."Regards,"
+                                                                ."%0A"
+                                                                ."Management Team"
+                                                                ."%0A"
+                                                                ."Cencadian Educational Incorporated";
                                                                 
 
                                                             @endphp

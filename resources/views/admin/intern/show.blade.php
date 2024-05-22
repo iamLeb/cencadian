@@ -203,7 +203,7 @@
                                                             <p>Preferred contact: {{$reference->prefContact}}</p>
 
                                                             <p>
-                                                                Questionnaire Status:
+                                                                Reference Check Status:
                                                                 @if ($reference->referenceCheck)
                                                                     <a href="javascript:void(0);" class="badge bg-success">Submitted</a>
                                                                 @else

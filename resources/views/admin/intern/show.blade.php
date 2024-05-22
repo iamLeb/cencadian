@@ -202,7 +202,14 @@
                                                             <p>Email: {{$reference->email}}</p>
                                                             <p>Preferred contact: {{$reference->prefContact}}</p>
 
-                                                            {{-- <p>Questionnaire Status: {{$reference->referenceCheck()}}</p> --}}
+                                                            <p>
+                                                                Questionnaire Status:
+                                                                @if ($reference->referenceCheck)
+                                                                    <a href="javascript:void(0);" class="badge bg-success">Submitted</a>
+                                                                @else
+                                                                <a href="javascript:void(0);" class="badge bg-warning">Not Submitted</a>
+                                                                @endif
+                                                            </p>
                                                             
                                                             @php
                                                                 $applicantName = $user?->name ?? "An applicant";
@@ -230,13 +237,25 @@
 
                                                             @endphp
 
-                                                            <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
-                                                                <i class="ri-mail-close-fill"></i> Send Reference Check
-                                                            </a>
+                                                            
+                                                            @if ($reference->referenceCheck)
+                                                                <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
+                                                                    <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                                </a>
 
-                                                            <a href="/admin/interns/reference/{{$reference->id}}" class="btn btn-primary w-100 btn-md">
-                                                                <i class="ri-mail-close-fill"></i>View Questionnaire
-                                                            </a>
+                                                                <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-success w-100 btn-md">
+                                                                    <i class="ri-mail-close-fill"></i>View Questionnaire
+                                                                </a>
+                                                            @else
+                                                                <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
+                                                                    <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                                </a>
+
+                                                                <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-primary w-100 btn-md">
+                                                                    <i class="ri-mail-close-fill"></i>Complete Questionnaire
+                                                                </a>
+                                                            @endif
+                                                            
 
                                                         </div>
                                                     @endforeach

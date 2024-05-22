@@ -18,17 +18,35 @@ class UserTypeMiddleware
     {
         $user = Auth::user();
 
-        switch ($user->type) {
-            case 'admin':
-                return $next($request);
-                break;
-            case 'intern':
-                return redirect()->route('home')->with('success', 'Hello Intern');
-                break;
-            case 'company':
-                return redirect()->route('company.home')->with('success', 'Hello Company');
-                break;
+        if ($user) {
+            $route = $request->route()->getName();
+
+            switch ($user->type) {
+                case 'admin':
+                    if (strpos($route, 'company.') === 0 || strpos($route, 'intern.') === 0) {
+                        return redirect()->back()->with('error', 'Access denied.');
+                    }
+                    break;
+
+                case 'company':
+                    if (strpos($route, 'admin.') === 0 || strpos($route, 'intern.') === 0) {
+                        return redirect()->back()->with('error', 'Access denied.');
+                    }
+                    break;
+
+                case 'intern':
+                    if (strpos($route, 'admin.') === 0 || strpos($route, 'company.') === 0) {
+                        return redirect()->back()->with('error', 'Access denied.');
+                    }
+                    break;
+
+                default:
+                    return redirect()->back()->with('error', 'Access denied.');
+            }
+        } else {
+            return redirect()->route('login')->with('error', 'Please login first.');
         }
 
+        return $next($request);
     }
 }

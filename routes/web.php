@@ -15,6 +15,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/secure', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+Route::post('profile', [HomeController::class, 'updateCompany'])->name('company.update');
+Route::post('profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
 
 Route::group(['prefix' => '/secure'], function () {
     // Interns
@@ -32,9 +35,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('interns/{id}', [AdminController::class, 'internShow'])->name('admin.intern.show');
     Route::get('company/{id}', [AdminController::class, 'companyShow'])->name('admin.company.show');
     Route::get('companies', [AdminController::class, 'companies'])->name('admin.companies');
-    Route::post('profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
-    Route::get('interns/reference/{id}', [App\Http\Controllers\AdminController::class, 'referenceCheckShow'])->name('reference.check.show');
+    Route::get('interns/reference/{id}', [AdminController::class, 'referenceCheckShow'])->name('reference.check.show');
     Route::get('/admin/template/interview', [App\Http\Controllers\TemplateController::class, 'interview'])->name('admin.template.interview');
+    Route::post('/referencecheck', [ReferenceCheckController::class, 'store'])->name('referencecheck.store');
+
 });
 
 Route::group(['prefix' => 'company'], function () {
@@ -42,13 +46,9 @@ Route::group(['prefix' => 'company'], function () {
     Route::get('create', [ServiceRequestController::class, 'create'])->name('company.create');
     Route::post('store', [ServiceRequestController::class, 'store'])->name('company.store');
     Route::post('contact/store', [ContactController::class, 'updateContact'])->name('company.contact.store');
-    Route::post('profile', [HomeController::class, 'updateCompany'])->name('company.update');
 });
-
-Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 
 //Reference check
 Route::get('/reference-questionnaire/{otp}', [ReferenceCheckController::class, 'referenceQuestionniareShow'])->name('reference.questionnaire.show');
 Route::post('/reference-questionnaire/{otp}', [ReferenceCheckController::class, 'referenceQuestionnaireSave'])->name('reference.questionnaire.save');
-Route::post('/referencecheck', [ReferenceCheckController::class, 'store'])->name('referencecheck.store');
 

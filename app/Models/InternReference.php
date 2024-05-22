@@ -27,6 +27,6 @@ class InternReference extends Model
 
     public function referenceCheck()
     {
-        return $this->hasOne(ReferenceCheck::class);
+        return $this->hasOne(ReferenceCheck::class, 'reference_id');
     }
 }

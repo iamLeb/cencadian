@@ -126,7 +126,7 @@
                                                 @endif
 
                                                 @if (!$user->offer_letter)
-                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-danger btn-sm">
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="{{ route('admin.intern.offer') }}" class="btn btn-danger btn-sm">
                                                         <i class="ri-mail-close-fill"></i> Send Offer Letter
                                                     </a>
                                                 @endif
@@ -173,10 +173,10 @@
                                                         </div>
                                                     </div>
                                                     @if ($user->application)
-                                                    <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="mb-1">Resume</p>
-                                                        <a href="https://arabicawhite.s3.amazonaws.com/resume/{{ $user->application->resume }}" class="fw-semibold">{{ __('Resume.pdf') }}</a>
-                                                    </div>
+                                                        <div class="flex-grow-1 overflow-hidden">
+                                                            <p class="mb-1">Resume</p>
+                                                            <a href="https://arabicawhite.s3.amazonaws.com/resume/{{ $user->application->resume }}" class="fw-semibold">{{ __('Resume.pdf') }}</a>
+                                                        </div>
                                                     @endif
                                                 </div>
                                             </div>
@@ -190,86 +190,86 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row mb-3">
-                                                <div class="col-md-12">
-                                                    <h5 class="card-title mb-3">References</h5>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                @if($references)
-                                                    @foreach($references as $reference)
-                                                        <div class="col-md-4 mb-3">
-                                                            <h5>{{$reference->name}}</h5>
-
-
-                                                            <p>Relationship: {{$reference->relationship}}</p>
-                                                            <p>Organization: {{$reference->org}}</p>
-                                                            <p>Phone: {{$reference->phone}}</p>
-                                                            <p>Email: {{$reference->email}}</p>
-                                                            <p>Preferred contact: {{$reference->prefContact}}</p>
-
-                                                            <p>
-                                                                Reference Check Status:
-                                                                @if ($reference->referenceCheck)
-                                                                    <a href="javascript:void(0);" class="badge bg-success">Submitted</a>
-                                                                @else
-                                                                <a href="javascript:void(0);" class="badge bg-warning">Not Submitted</a>
-                                                                @endif
-                                                            </p>
-
-                                                            @php
-                                                                $applicantName = $user?->name ?? "An applicant";
-
-                                                                $mailtoHref = "mailto:".$reference->email
-                                                                ."?subject=Reference Check for $applicantName - Cencadian Summer Web Development Internship Program"
-                                                                ."&body="
-                                                                ."Hello " . $reference->name . ",%0A%0A"
-                                                                ." You have been listed as a reference by " . $applicantName
-                                                                ." on their application to the Cencadian Summer Web Development Internship Program. "
-                                                                ."Below is a link to a short questionnaire about your experience and relationship with the applicant."
-                                                                ."%0A%0A"
-                                                                .route('reference.questionnaire.show', ['otp' => $reference->otp])
-                                                                ."%0A%0A"
-                                                                ."We would appreciate it if you could take 5 minutes to complete this short questionnaire so that we can learn more about the applicant."
-                                                                ."%0A%0A"
-                                                                ."If you have any questions or concerns, feel free to reply to this email, or contact us at admin@cencadian.ca"
-                                                                ."%0A%0A"
-                                                                ."Regards,"
-                                                                ."%0A"
-                                                                ."Management Team"
-                                                                ."%0A"
-                                                                ."Cencadian Educational Incorporated";
-
-
-                                                            @endphp
-
-
-                                                            @if ($reference->referenceCheck)
-                                                                <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
-                                                                    <i class="ri-mail-close-fill"></i> Send Reference Check
-                                                                </a>
-
-                                                                <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-success w-100 btn-md">
-                                                                    <i class="ri-mail-close-fill"></i>View Reference Check
-                                                                </a>
-                                                            @else
-                                                                <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
-                                                                    <i class="ri-mail-close-fill"></i> Send Reference Check
-                                                                </a>
-
-                                                                <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-primary w-100 btn-md">
-                                                                    <i class="ri-mail-close-fill"></i>Complete Reference Check
-                                                                </a>
-                                                            @endif
-
-
-                                                        </div>
-                                                    @endforeach
-                                                @else
-                                                    <p class="alert alert-danger p-2">Nothing here yet</p>
-                                                @endif
+                                            <div class="col-md-12">
+                                                <h5 class="card-title mb-3">References</h5>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            @if($references)
+                                                @foreach($references as $reference)
+                                                    <div class="col-md-4 mb-3">
+                                                        <h5>{{$reference->name}}</h5>
+
+
+                                                        <p>Relationship: {{$reference->relationship}}</p>
+                                                        <p>Organization: {{$reference->org}}</p>
+                                                        <p>Phone: {{$reference->phone}}</p>
+                                                        <p>Email: {{$reference->email}}</p>
+                                                        <p>Preferred contact: {{$reference->prefContact}}</p>
+
+                                                        <p>
+                                                            Reference Check Status:
+                                                            @if ($reference->referenceCheck)
+                                                                <a href="javascript:void(0);" class="badge bg-success">Submitted</a>
+                                                            @else
+                                                                <a href="javascript:void(0);" class="badge bg-warning">Not Submitted</a>
+                                                            @endif
+                                                        </p>
+
+                                                        @php
+                                                            $applicantName = $user?->name ?? "An applicant";
+
+                                                            $mailtoHref = "mailto:".$reference->email
+                                                            ."?subject=Reference Check for $applicantName - Cencadian Summer Web Development Internship Program"
+                                                            ."&body="
+                                                            ."Hello " . $reference->name . ",%0A%0A"
+                                                            ." You have been listed as a reference by " . $applicantName
+                                                            ." on their application to the Cencadian Summer Web Development Internship Program. "
+                                                            ."Below is a link to a short questionnaire about your experience and relationship with the applicant."
+                                                            ."%0A%0A"
+                                                            .route('reference.questionnaire.show', ['otp' => $reference->otp])
+                                                            ."%0A%0A"
+                                                            ."We would appreciate it if you could take 5 minutes to complete this short questionnaire so that we can learn more about the applicant."
+                                                            ."%0A%0A"
+                                                            ."If you have any questions or concerns, feel free to reply to this email, or contact us at admin@cencadian.ca"
+                                                            ."%0A%0A"
+                                                            ."Regards,"
+                                                            ."%0A"
+                                                            ."Management Team"
+                                                            ."%0A"
+                                                            ."Cencadian Educational Incorporated";
+
+
+                                                        @endphp
+
+
+                                                        @if ($reference->referenceCheck)
+                                                            <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
+                                                                <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                            </a>
+
+                                                            <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-success w-100 btn-md">
+                                                                <i class="ri-mail-close-fill"></i>View Reference Check
+                                                            </a>
+                                                        @else
+                                                            <a href="{{$mailtoHref}}" class="btn btn-primary btn-md w-100 mb-3">
+                                                                <i class="ri-mail-close-fill"></i> Send Reference Check
+                                                            </a>
+
+                                                            <a href="{{route('reference.check.show', ['id' => $reference->id])}}" class="btn btn-primary w-100 btn-md">
+                                                                <i class="ri-mail-close-fill"></i>Complete Reference Check
+                                                            </a>
+                                                        @endif
+
+
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <p class="alert alert-danger p-2">Nothing here yet</p>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!--end col-->
@@ -299,37 +299,37 @@
                                                 </thead>
                                                 <tbody>
                                                 @if ($user->application)
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm">
-                                                                <div class="avatar-title bg-primary-subtle text-primary rounded fs-20 shadow">
-                                                                    <i class="ri-file-zip-fill"></i>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar-sm">
+                                                                    <div class="avatar-title bg-primary-subtle text-primary rounded fs-20 shadow">
+                                                                        <i class="ri-file-zip-fill"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ms-3 flex-grow-1">
+                                                                    <h6 class="fs-15 mb-0">
+                                                                        <a target="_blank" href="https://arabicawhite.s3.amazonaws.com/resume/{{ $user->application->resume }}">Resume.zip</a>
+                                                                    </h6>
                                                                 </div>
                                                             </div>
-                                                            <div class="ms-3 flex-grow-1">
-                                                                <h6 class="fs-15 mb-0">
-                                                                    <a target="_blank" href="https://arabicawhite.s3.amazonaws.com/resume/{{ $user->application->resume }}">Resume.zip</a>
-                                                                </h6>
+                                                        </td>
+                                                        <td>Zip File</td>
+                                                        <td>2.07 MB</td>
+                                                        <td>{{ $user->application->created_at->toformattedDateString() }}</td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink15" data-bs-toggle="dropdown" aria-expanded="true">
+                                                                    <i class="ri-equalizer-fill"></i>
+                                                                </a>
+                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink15">
+                                                                    @if ($user->application)
+                                                                        <li><a class="dropdown-item" target="_blank" href="https://arabicawhite.s3.amazonaws.com/resume/{{ $user->application->resume }}"><i class="ri-eye-fill me-2 align-middle text-muted"></i>View</a></li>
+                                                                    @endif
+                                                                </ul>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Zip File</td>
-                                                    <td>2.07 MB</td>
-                                                    <td>{{ $user->application->created_at->toformattedDateString() }}</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink15" data-bs-toggle="dropdown" aria-expanded="true">
-                                                                <i class="ri-equalizer-fill"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink15">
-                                                                @if ($user->application)
-                                                                <li><a class="dropdown-item" target="_blank" href="https://arabicawhite.s3.amazonaws.com/resume/{{ $user->application->resume }}"><i class="ri-eye-fill me-2 align-middle text-muted"></i>View</a></li>
-                                                                @endif
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
                                                 @endif
                                                 </tbody>
                                             </table>

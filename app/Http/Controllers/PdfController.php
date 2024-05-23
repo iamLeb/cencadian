@@ -23,12 +23,6 @@ class PdfController extends Controller
 
     public function generatePdf(Request $request)
     {
-        // Validate form data
-
-        // Generate PDF using dompdf
-        $pdf = PDF::loadView('pdf.pdf_template', $request->all());
-
-        // Return PDF as download
-        return $pdf->download('generated_pdf.pdf');
+        // code here
     }
 }

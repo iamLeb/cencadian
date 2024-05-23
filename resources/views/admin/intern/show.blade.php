@@ -111,11 +111,11 @@
                                                 $mailTo =
                                                 "mailto:$user->email
                                                 ?subject=Interview Invitation
-                                                &body=Cencadian Educational Incorporated%0D%0A[date]%0D%0A{{ $user->name }} {{ $user->address }} %0D%0A%0D%0ADear {{ $user->name }},%0D%0A%0D%0AWe are pleased to inform you that based on the strength of your application for the Web Development Intern position, we would like to invite you to participate in an interview for the Cencadian Summer Web Development Program. We believe your skills and experiences could be a good match for our team, and we are excited to learn more about your qualifications.%0D%0A%0D%0AInterview Details:%0D%0A• Date: [Interview Date]%0D%0A• Time: [Interview Time]%0D%0A• Location: 262 Tanager Trail, Winnipeg, MB%0D%0A• Expected Duration: About 1 hour%0D%0A%0D%0AThe interview will cover your professional background, your skills, and your potential fit within our team. Additionally, this will be a great opportunity for you to learn more about our company’s culture, the specifics of the role, and the impact you can make at Cencadian.%0D%0A%0D%0APlease confirm your availability for this interview by May 27th 2024 and do not hesitate to contact us at admin@cencadian.ca if you have any questions or need further details.%0D%0A%0D%0AThank you for your interest in the Cencadian Summer Web Development Program. Please let us know if you require any special accommodations for your interview.%0D%0A%0D%0ARegards,%0D%0AManagement Team%0D%0ACencadian Educational Incorporated%0D%0A%0D%0AP.S. Please attach the provided image to this email before sending.";
+                                                &body=Cencadian Educational Incorporated%0D%0A " .date('M d, Y') . " %0D%0A $user->name | $user->address %0D%0A%0D%0ADear $user->name,%0D%0A%0D%0AWe are pleased to inform you that after reviewing your application for the Web Development Intern position, we would like to invite you to participate in an interview for this position. We believe your skills and experiences could be a good match for our team, and we would like to learn more.%0D%0A%0D%0AInterview Details:%0D%0A• Date: [Interview Date]%0D%0A• Time: [Interview Time]%0D%0A• Location: 262 Tanager Trail, Winnipeg, MB%0D%0A• Expected Duration: About 1 hour%0D%0A%0D%0AThe interview will cover your professional background, your skills, and your possible fit within our team. Additionally, this will be a great opportunity for you to learn more about our company’s culture, the specifics of the role, and the impact you can make at Cencadian.%0D%0A%0D%0ADo not hesitate to contact us at admin@cencadian.ca if you have any questions or need further details.%0D%0A%0D%0AThank you for your interest in the Cencadian Summer Web Development Program. Please let us know if you require any special accommodations for your interview.%0D%0A%0D%0ARegards,%0D%0AManagement Team%0D%0ACencadian Educational Incorporated%0D%0A%0D%0A.";
                                             @endphp
                                             <div class="col-md-6">
                                                 @if (!$user->interview_mail)
-                                                    <a class="btn btn-primary btn-sm" href="{{ $mailTo }}">
+                                                    <a onclick="return confirm('Are you sure you wanna send this email?')" class="btn btn-primary btn-sm" href="{{ $mailTo }}">
                                                         <i class="ri-mail-close-fill"></i> Send Interview</a>
                                                 @endif
 
@@ -126,9 +126,9 @@
                                                 @endif
 
                                                 @if (!$user->offer_letter)
-                                                        <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-danger btn-sm">
-                                                            <i class="ri-mail-close-fill"></i> Send Offer Letter
-                                                        </a>
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-danger btn-sm">
+                                                        <i class="ri-mail-close-fill"></i> Send Offer Letter
+                                                    </a>
                                                 @endif
                                             </div>
                                         </div>

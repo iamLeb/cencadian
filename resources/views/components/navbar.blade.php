@@ -9,12 +9,7 @@
            "name" => "My Account",
            "path" => "profile",
            "icon" => "mdi-account-circle-outline"
-       ],
-       [
-           "name" => "My Admins",
-           "path" => "admin.createAdmin",
-           "icon" => "mdi-account-circle-outline"
-       ],
+       ]
    ];
 ?>
 
@@ -50,7 +45,10 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 @php $user = auth()->user(); @endphp
-                @if($user->isIntern())
+
+                @if (!$user)
+                
+                @elseif($user->isIntern())
                     @foreach($links as $link)
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="{{ route($link['path']) }}">
@@ -68,6 +66,12 @@
                             </a>
                         </li>
                     @endforeach
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('admin.createAdmin')}}">
+                            <i class="mdi "></i>
+                            <span data-key="t-widgets">My Admins</span>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link menu-link collapsed" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">

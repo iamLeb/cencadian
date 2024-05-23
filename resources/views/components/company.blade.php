@@ -67,16 +67,11 @@
                             </th>
                             <td>{{ ++$count }}</td>
                             <td>{{ ucfirst($sr->title) }}</td>
-<<<<<<< HEAD
-                            <td>{{ $sr->budget }}</td>
-                            <td>{{ ucfirst($sr->service_category) }}</td>
-=======
                             <td>{{ $sr-> service_category }}</td>
                             <td>{{ $sr->budget }}</td>
                             <td>{{ ucfirst($sr->created_at) }}</td>
                             <!-- <td><a target="_blank" href="https://arabicawhite.s3.amazonaws.com/file/{{ $sr->file }}">{{ ucfirst('Uploaded Document') }}</a></td> -->
                             <td><span class="badge @if($sr->priority === 'High') bg-danger @elseif($sr->priority === 'Medium') bg-warning @else bg-primary @endif">{{ $sr->status }}</span></td>
->>>>>>> 79cce2a7cf29123e1af6ecf6aa19e275827bf62e
 
                             <td>
                                 <div class="dropdown d-inline-block">

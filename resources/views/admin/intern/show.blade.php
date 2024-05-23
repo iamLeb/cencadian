@@ -126,7 +126,7 @@
                                                 @endif
 
                                                 @if (!$user->offer_letter)
-                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="{{ route('admin.intern.offer') }}" class="btn btn-danger btn-sm">
+                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="{{ route('admin.intern.offer', $user->id) }}" class="btn btn-danger btn-sm">
                                                         <i class="ri-mail-close-fill"></i> Send Offer Letter
                                                     </a>
                                                 @endif

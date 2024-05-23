@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class PdfController extends Controller
 {
     /**
@@ -16,13 +17,17 @@ class PdfController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function showForm()
+    public function showForm($id)
     {
-        return view('admin.intern.pdf');
-    }
+        $userId = User::where('id', $id)->first();
 
-    public function generatePdf(Request $request)
-    {
-        // code here
+        $data = [
+            'user_id' => $userId,
+        ];
+
+        $pdf = Pdf::loadView('admin/intern/pdf/pdf_template', $data);
+        // Return PDF as download
+        return $pdf->download('generated_pdf.pdf');
+
     }
 }

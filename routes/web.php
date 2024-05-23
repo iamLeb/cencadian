@@ -25,8 +25,6 @@ Route::group(['prefix' => '/secure'], function () {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
     Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');
-    Route::get('/form', [PdfController::class, 'showForm'])->name('admin.intern.offer');
-    Route::post('/generate-pdf', [PdfController::class, 'generatePdf']);
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -42,6 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/admin/template/interview', [App\Http\Controllers\TemplateController::class, 'interview'])->name('admin.template.interview');
     Route::post('/referencecheck', [ReferenceCheckController::class, 'store'])->name('referencecheck.store');
 
+    Route::get('/form/{id}', [PdfController::class, 'showForm'])->name('admin.intern.offer');
 });
 
 Route::group(['prefix' => 'company'], function () {

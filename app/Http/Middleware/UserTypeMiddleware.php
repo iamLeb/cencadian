@@ -18,15 +18,35 @@ class UserTypeMiddleware
     {
         $user = Auth::user();
 
-        // Check if user is authenticated and their type
-        if ($user && $user->isAdmin()) {
-            // If user is an admin, redirect to admin layout
-            return redirect()->route('admin.home');
-        } else if ($user && $user->isCompany()) {
-            return redirect()->route('company.home');
+        if ($user) {
+            $route = $request->route()->getName();
+
+            switch ($user->type) {
+                case 'admin':
+                    if (strpos($route, 'company.') === 0 || strpos($route, 'intern.') === 0) {
+                        return redirect()->back()->with('error', 'Access denied.');
+                    }
+                    break;
+
+                case 'company':
+                    if (strpos($route, 'admin.') === 0 || strpos($route, 'intern.') === 0) {
+                        return redirect()->back()->with('error', 'Access denied.');
+                    }
+                    break;
+
+                case 'intern':
+                    if (strpos($route, 'admin.') === 0 || strpos($route, 'company.') === 0) {
+                        return redirect()->back()->with('error', 'Access denied.');
+                    }
+                    break;
+
+                default:
+                    return redirect()->back()->with('error', 'Access denied.');
+            }
+        } else {
+            return redirect()->route('login')->with('error', 'Please login first.');
         }
 
-        // For guest users or non-admins, proceed with the request
         return $next($request);
     }
 }

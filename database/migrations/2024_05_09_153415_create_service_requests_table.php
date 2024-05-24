@@ -22,11 +22,11 @@ return new class extends Migration
             $table->text('project_requirements');
             $table->text('project_team');
             $table->string('budget');
-            $table->text('other_remarks');
+            $table->text('other_remarks')->nullable();
             $table->text('org_category');
             $table->text('service_category');
             $table->text('status');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

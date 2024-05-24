@@ -113,8 +113,8 @@
                                                         <i class="ri-mail-close-fill"></i> Send Interview</a>
                                                 @endif
 
-                                                @if (!$user->interview_question)
-                                                    <a onclick="return confirm('Are your sure you wanna send this mail?')" href="" class="btn btn-warning btn-sm">
+                                                @if ($user->application)
+                                                    <a href="{{route('show.interview.notes', ['applicationId' => $user->application->id, 'interviewerId' => auth()->user()->id])}}" class="btn btn-warning btn-sm">
                                                         <i class="ri-mail-close-fill"></i>Interview Questions
                                                     </a>
                                                 @endif

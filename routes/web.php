@@ -34,6 +34,8 @@ Route::get('/admin/companies', [AdminController::class, 'companies'])->name('adm
 Route::get('/admin/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::post('/admin/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
 Route::get('/admin/interns/reference/{id}', [App\Http\Controllers\AdminController::class, 'referenceCheckShow'])->name('reference.check.show');
+Route::get('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'showInterviewNotes'])->name('show.interview.notes');
+Route::post('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'saveInterviewNotes'])->name('save.interview.notes');
 
 //Templates
 Route::get('/admin/template/interview', [App\Http\Controllers\TemplateController::class, 'interview'])->name('admin.template.interview');

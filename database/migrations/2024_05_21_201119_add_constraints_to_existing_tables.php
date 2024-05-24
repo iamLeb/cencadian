@@ -11,27 +11,27 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('applications', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+            // $table->dropForeign(['user_id']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('intern_references', function (Blueprint $table) {
-            $table->dropForeign(['application_id']);
+            // $table->dropForeign(['application_id']);
             $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade');
         });
 
         Schema::table('service_requests', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+            // $table->dropForeign(['user_id']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('contacts', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+            // $table->dropForeign(['user_id']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('reference_checks', function (Blueprint $table) {
-            $table->dropForeign(['reference_id']);
+            // $table->dropForeign(['reference_id']);
             $table->foreign('reference_id')->references('id')->on('intern_references')->onDelete('cascade');
         });
     }

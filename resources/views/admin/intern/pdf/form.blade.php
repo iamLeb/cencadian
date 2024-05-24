@@ -5,7 +5,7 @@
             <form action="{{ route('admin.intern.pdf') }}" method="post">
                 @csrf
                 <div class="card">
-                    <input type="hidden" value="{{ $id }}">
+                    <input type="hidden" name="id" value="{{ $id }}">
                     <div class="card-header align-items-center d-flex">
                         <h4 class="card-title mb-0 flex-grow-1">{{ __('Generating Offer Letter | ' . ucfirst($name)) }}</h4>
                         <div class="flex-shrink-0">
@@ -20,19 +20,29 @@
                             <div class="row gy-4">
                                 <div class="col-xxl-12 col-md-6">
                                     <div>
-                                        <label for="basiInput" class="form-label">Select Position</label>
-                                        <select name="type" class="form-control form-control-lg" id="">
+                                        <label for="positionType" class="form-label">Select Position</label>
+                                        <select name="type" class="form-control form-control-lg @error('type') is-invalid @enderror" id="positionType" onchange="updatePreview()">
                                             <option disabled selected>-- Select Position --</option>
                                             <option value="paid">Paid Intern</option>
                                             <option value="volunteer">Volunteer Intern</option>
                                         </select>
+                                        @error('type')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-xxl-6 col-md-6">
                                     <div>
                                         <label for="startDate" class="form-label">Start Date</label>
-                                        <input type="date" name="startDate" class="form-control form-control-lg" id="startDate">
+                                        <input type="date" name="startDate" class="form-control form-control-lg @error('startDate') is-invalid @enderror" id="startDate" onchange="updatePreview()">
+                                        @error('startDate')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -40,7 +50,12 @@
                                 <div class="col-xxl-6 col-md-6">
                                     <div>
                                         <label for="endDate" class="form-label">End Date</label>
-                                        <input type="date" name="endDate" class="form-control form-control-lg" id="endDate">
+                                        <input type="date" name="endDate" class="form-control form-control-lg @error('endDate') is-invalid @enderror" id="endDate" onchange="updatePreview()">
+                                        @error('endDate')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -48,12 +63,17 @@
                                 <div class="col-xxl-6 col-md-6">
                                     <div>
                                         <label for="reportingTo" class="form-label">Reporting to</label>
-                                        <select name="reportingTo" class="form-control form-control-lg" id="">
-                                            <option selected disabled">-- Who should {{ $name }} report to?</option>
+                                        <select name="reportingTo" class="form-control form-control-lg @error('reportingTo') is-invalid @enderror" id="reportingTo" onchange="updatePreview()">
+                                            <option selected disabled>-- Who should {{ $name }} report to?</option>
                                             @foreach(\App\Models\User::where('type', 'admin')->get() as $user)
-                                                <option value="{{ $user->id }}">{{ ucfirst($user->name) }}</option>
+                                                <option value="{{ $user->name }}">{{ ucfirst($user->name) }}</option>
                                             @endforeach
                                         </select>
+                                        @error('reportingTo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -61,13 +81,17 @@
                                 <div class="col-xxl-6 col-md-6">
                                     <div>
                                         <label for="location" class="form-label">Location</label>
-                                        <input placeholder="Enter Job Location " type="text" name="location" class="form-control form-control-lg" id="location">
+                                        <input placeholder="Enter Job Location " type="text" name="location" class="form-control form-control-lg @error('location') is-invalid @enderror" id="location" onkeyup="updatePreview()">
+                                        @error('location')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--end col-->
 
-                                <button class="btn btn-primary ">Generate PDF ({{ $name }})</button>
-
+                                <button onclick="return confirm('Are your sure you wanna send this mail?')" class="btn btn-primary">Generate PDF ({{ $name }})</button>
                             </div>
                             <!--end row-->
                         </div>
@@ -109,25 +133,27 @@
                                     <img src="https://summerweb.cencadian.ca/front/assets/img/logo-black.png" alt="CENCADIAN Educational Incorporated">
                                     <p>
                                         262 Tanager Trail, Winnipeg, MB<br>
-                                        Phone: <a href="tel:12049300378"></a>(204) 930 0378<br>
+                                        Phone: <a href="tel:12049300378">(204) 930 0378</a><br>
                                         Email: <a href="mailto:admin@cencadian.ca">admin@cencadian.ca</a><br>
                                         Web: <a href="http://www.summerweb.cencadian.ca">www.summerweb.cencadian.ca</a>
                                     </p>
                                 </div>
                                 <div class="content">
                                     <p>{{ date('M d, Y') }}</p>
-                                    <p>{{ $name }}<br>
-                                        {{ $email }}<br>
-                                        {{ $address }}</p> <br>
-                                    <p>Dear {{ $name }},</p>
+                                    <p id="previewName">{{ $name }}</p>
+                                    <p id="previewEmail">{{ $email }}</p>
+                                    <p id="previewAddress">{{ $address }}</p>
+                                    <br>
+                                    <p>Dear <span class="name">{{ $name }}</span>,</p>
                                     <p>We are pleased to offer you the position of Web Development Intern at the Cencadian Summer Web Development Program. We are pleased with your background and skills, and we are excited about the potential you bring to our team.</p>
-                                    <p><strong>Position:</strong> Web Development Intern (Paid)<br>
-                                        <strong>Start Date:</strong> [Start Date]<br>
-                                        <strong>End Date:</strong> [End Date, if applicable]<br>
-                                        <strong>Reporting To:</strong> [Supervisor’s Name], [Supervisor’s Title]</p>
-                                    <p><strong>Location:</strong></p>
+                                    <p id="note"></p>
+                                    <p><strong>Position:</strong> <span id="previewPosition">Web Development Intern (Paid)</span><br>
+                                        <strong>Start Date:</strong> <span id="previewStartDate">[Start Date]</span><br>
+                                        <strong>End Date:</strong> <span id="previewEndDate">[End Date, if applicable]</span><br>
+                                        <strong>Reporting To:</strong> <span id="previewReportingTo">[Supervisor’s Name]</span></p>
+                                    <p><strong>Location:</strong> <span id="previewLocation"></span></p>
                                     <p><strong>Compensation:</strong><br>
-                                        As this is a paid internship position, you will be allocated 30 hours per week a wage of $15.30 per hour, payable in bi-weekly installments.</p>
+                                        <span id="compensation"></span></p>
                                     <p><strong>Work Hours:</strong><br>
                                         Your regular hours of work will be 10am to 4pm, 5 days per week Monday-Friday. Please note that some flexibility might be required to meet project deadlines.</p>
                                     <p><strong>Onboarding:</strong><br>
@@ -168,14 +194,30 @@
                             </div>
                             </body>
                             </html>
-
-                        </>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
         <!--end col-->
-
     </div>
     <!--end row-->
+
+    <script>
+        function updatePreview() {
+            const positionType = document.getElementById('positionType').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            const reportingTo = document.getElementById('reportingTo').options[document.getElementById('reportingTo').selectedIndex].text;
+            const location = document.getElementById('location').value;
+
+            document.getElementById('note').innerText = positionType === 'paid' ? '' : 'Even though this is a volunteering position, you are expected to be committed to the days and hours of work required for this position. The terms and conditions of your volunteering appointment with us are as follows:';
+            document.getElementById('compensation').innerText = positionType === 'paid' ? 'As this is a paid internship position, you will be allocated 30 hours per week a wage of $15.30 per hour, payable in bi-weekly installments.' : 'While we appreciate your effort to acquire skills that would be of benefit to the community, it is important that you note and accept that voluntary work by its very name means that there is no wage associated with this position. As such the usual conditions and entitlements which apply in paid employment situations do not exist. The skills you acquire during this program will equip you for future employment and career opportunities.';
+            document.getElementById('previewPosition').innerText = positionType === 'paid' ? 'Web Development Intern (Paid)' : 'Web Development Intern (Volunteer)';
+            document.getElementById('previewStartDate').innerText = startDate ? startDate : '[Start Date]';
+            document.getElementById('previewEndDate').innerText = endDate ? endDate : '[End Date, if applicable]';
+            document.getElementById('previewReportingTo').innerText = reportingTo !== '-- Who should {{ $name }} report to?' ? reportingTo : '[Supervisor’s Name]';
+            document.getElementById('previewLocation').innerText = location ? location : '[Job Location]';
+        }
+    </script>
 @endsection

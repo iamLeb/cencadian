@@ -46,13 +46,14 @@
             {{ $address }}</p> <br>
         <p>Dear {{ $name }},</p>
         <p>We are pleased to offer you the position of Web Development Intern at the Cencadian Summer Web Development Program. We are pleased with your background and skills, and we are excited about the potential you bring to our team.</p>
-        <p><strong>Position:</strong> Web Development Intern (Paid)<br>
+        <p>Even though this is a volunteering position, you are expected to be committed to the days and hours of work required for this position. The terms and conditions of your volunteering appointment with us are as follows:</p>
+        <p><strong>Position:</strong> Web Development Intern (Volunteer)<br>
             <strong>Start Date:</strong> {{ $startDate }}<br>
             <strong>End Date:</strong> {{ $endDate }}<br>
             <strong>Reporting To:</strong> {{ $reportingTo }}</p>
         <p><strong>Location:</strong> {{ $location }}</p>
         <p><strong>Compensation:</strong><br>
-            As this is a paid internship position, you will be allocated 30 hours per week at a wage of $15.30 per hour, payable in bi-weekly installments.</p>
+            While we appreciate your effort to acquire skills that would be of benefit to the community, it is important that you note and accept that voluntary work by its very name means that there is no wage associated with this position. As such the usual conditions and entitlements which apply in paid employment situations do not exist. The skills you acquire during this program will equip you for future employment and career opportunities.</p>
         <p><strong>Work Hours:</strong><br>
             Your regular hours of work will be 10am to 4pm, 5 days per week Monday-Friday. Please note that some flexibility might be required to meet project deadlines.</p>
         <p><strong>Onboarding:</strong><br>

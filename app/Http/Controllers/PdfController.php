@@ -44,8 +44,11 @@ class PdfController extends Controller
             'location' => $request['location']
         ];
 
-        $pdf = Pdf::loadView('admin/intern/pdf/pdf_template', $userInfo);
-        // Return PDF as download
+        if ($request->type === 'volunteer') {
+            $pdf = Pdf::loadView('admin/intern/pdf/pdf_template_volunteer', $userInfo);
+        } else {
+            $pdf = Pdf::loadView('admin/intern/pdf/pdf_template', $userInfo);
+        }
         return $pdf->download('generated_pdf.pdf');
     }
 }

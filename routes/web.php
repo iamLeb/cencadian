@@ -40,9 +40,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/admin/template/interview', [App\Http\Controllers\TemplateController::class, 'interview'])->name('admin.template.interview');
     Route::post('/referencecheck', [ReferenceCheckController::class, 'store'])->name('referencecheck.store');
 
-
     Route::get('/form/{id}', [PdfController::class, 'showForm'])->name('admin.intern.offer');
     Route::post('/generate-pdf', [PdfController::class, 'generatePdf'])->name('admin.intern.pdf');
+
+    Route::get('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'showInterviewNotes'])->name('show.interview.notes');
+    Route::post('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'saveInterviewNotes'])->name('save.interview.notes');
 });
 
 Route::group(['prefix' => 'company'], function () {

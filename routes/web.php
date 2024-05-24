@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/referencecheck', [ReferenceCheckController::class, 'store'])->name('referencecheck.store');
 
     Route::get('/form/{id}', [PdfController::class, 'showForm'])->name('admin.intern.offer');
+    Route::post('/generate-pdf', [PdfController::class, 'generatePdf'])->name('admin.intern.pdf');
 });
 
 Route::group(['prefix' => 'company'], function () {

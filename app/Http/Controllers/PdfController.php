@@ -19,15 +19,33 @@ class PdfController extends Controller
 
     public function showForm($id)
     {
-        $userId = User::where('id', $id)->first();
+        $user = User::where('id', $id)->first();
+        $userInfo = [
+            'id' => $id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'address' => $user->address
+        ];
+        return view('admin/intern/pdf/form', $userInfo);
+    }
 
-        $data = [
-            'user_id' => $userId,
+    public function generatePdf(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+
+        $userInfo = [
+            'name' => $user->name,
+            'email' => $user->email,
+            'address' => $user->address,
+            'position' => $request['type'],
+            'startDate' => $request['startDate'],
+            'endDate' => $request['endDate'],
+            'reportingTo' => $request['reportingTo'],
+            'location' => $request['location']
         ];
 
-        $pdf = Pdf::loadView('admin/intern/pdf/pdf_template', $data);
+        $pdf = Pdf::loadView('admin/intern/pdf/pdf_template', $userInfo);
         // Return PDF as download
         return $pdf->download('generated_pdf.pdf');
-
     }
 }

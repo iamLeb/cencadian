@@ -5,6 +5,12 @@
     if ($isAdmin) {
         $actionRoute = route('referencecheck.store');
     }
+
+    $prevPunctuality = $referenceCheck?->punctuality ?? old('punctuality');
+    $prevProblemSolving = $referenceCheck?->problem_solving ?? old('problem_solving');
+    $prevCommunication = $referenceCheck?->communication ?? old('communication');
+    $prevProfessionalism = $referenceCheck?->professionalism ?? old('professionalism');
+    $prevSuitability = $referenceCheck?->suitability ?? old('suitability');
 @endphp
 
 <form id="create-request" action="{{ $actionRoute }}" method="post" enctype="multipart/form-data">
@@ -59,27 +65,27 @@
                 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="punctuality-poor">(1) Poor</label>
-                    <input type="radio" class="form-check-input" id="punctuality-poor" name="punctuality" value="1" required <?php echo ($referenceCheck?->punctuality == 1)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="punctuality-poor" name="punctuality" value="1" required <?php echo ($prevPunctuality == 1)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="punctuality-satisfactory">(2) Satisfactory</label>
-                    <input type="radio" class="form-check-input" id="punctuality-satisfactory" name="punctuality" value="2" required <?php echo ($referenceCheck?->punctuality == 2)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="punctuality-satisfactory" name="punctuality" value="2" required <?php echo ($prevPunctuality == 2)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="punctuality-good">(3) Good</label>
-                    <input type="radio" class="form-check-input" id="punctuality-good" name="punctuality" value="3" required <?php echo ($referenceCheck?->punctuality == 3)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="punctuality-good" name="punctuality" value="3" required <?php echo ($prevPunctuality == 3)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="punctuality-very-good">(4) Very Good</label>
-                    <input type="radio" class="form-check-input" id="punctuality-very-good" name="punctuality" value="4" required <?php echo ($referenceCheck?->punctuality == 4)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="punctuality-very-good" name="punctuality" value="4" required <?php echo ($prevPunctuality == 4)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="punctuality-excellent">(5) Excellent</label>
-                    <input type="radio" class="form-check-input" id="punctuality-excellent" name="punctuality" value="5" required <?php echo ($referenceCheck?->punctuality == 5)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="punctuality-excellent" name="punctuality" value="5" required <?php echo ($prevPunctuality == 5)?'checked':''?>/>
                 </div>
 
                 @error('punctuality')
@@ -95,27 +101,27 @@
                 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="problem-solving-poor">(1) Poor</label>
-                    <input type="radio" class="form-check-input" id="problem-solving-poor" name="problem_solving" value="1" required <?php echo ($referenceCheck?->problem_solving == 1)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="problem-solving-poor" name="problem_solving" value="1" required <?php echo ($prevProblemSolving == 1)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="problem-solving-satisfactory">(2) Satisfactory</label>
-                    <input type="radio" class="form-check-input" id="problem-solving-satisfactory" name="problem_solving" value="2" required <?php echo ($referenceCheck?->problem_solving == 2)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="problem-solving-satisfactory" name="problem_solving" value="2" required <?php echo ($prevProblemSolving == 2)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="problem-solving-satisfactory">(3) Good</label>
-                    <input type="radio" class="form-check-input" id="problem-solving-good" name="problem_solving" value="3" required <?php echo ($referenceCheck?->problem_solving == 3)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="problem-solving-good" name="problem_solving" value="3" required <?php echo ($prevProblemSolving == 3)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="problem-solving-very-good">(4) Very Good</label>
-                    <input type="radio" class="form-check-input" id="problem-solving-very-" name="problem_solving" value="4" required <?php echo ($referenceCheck?->problem_solving == 4)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="problem-solving-very-" name="problem_solving" value="4" required <?php echo ($prevProblemSolving == 4)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="problem-solving-very-excellent">(5) Excellent</label>
-                    <input type="radio" class="form-check-input" id="problem-solving-excellent" name="problem_solving" value="5" required <?php echo ($referenceCheck?->problem_solving == 5)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="problem-solving-excellent" name="problem_solving" value="5" required <?php echo ($prevProblemSolving == 5)?'checked':''?>/>
                 </div>
 
                 @error('problem_solving')
@@ -131,27 +137,27 @@
                 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="communication-poor">(1) Poor</label>
-                    <input type="radio" class="form-check-input" id="communication-poor" name="communication" value="1" required <?php echo ($referenceCheck?->communication == 1)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="communication-poor" name="communication" value="1" required <?php echo ($prevCommunication == 1)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="communication-satisfactory">(2) Satisfactory</label>
-                    <input type="radio" class="form-check-input" id="communication-satisfactory" name="communication" value="2" required <?php echo ($referenceCheck?->communication == 2)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="communication-satisfactory" name="communication" value="2" required <?php echo ($prevCommunication == 2)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="communication-good">(3) Good</label>
-                    <input type="radio" class="form-check-input" id="communication-good" name="communication" value="3" required <?php echo ($referenceCheck?->communication == 3)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="communication-good" name="communication" value="3" required <?php echo ($prevCommunication == 3)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="communication-very">(4) Very Good</label>
-                    <input type="radio" class="form-check-input" id="communication-very" name="communication" value="4" required <?php echo ($referenceCheck?->communication == 4)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="communication-very" name="communication" value="4" required <?php echo ($prevCommunication == 4)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="communication-excellent">(5) Excellent</label>
-                    <input type="radio" class="form-check-input" id="communication-excellent" name="communication" value="5" required <?php echo ($referenceCheck?->communication == 5)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="communication-excellent" name="communication" value="5" required <?php echo ($prevCommunication == 5)?'checked':''?>/>
                 </div>
 
                 @error('communication')
@@ -167,27 +173,27 @@
                 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="professionalism-very-poor">(1) Poor</label>
-                    <input type="radio" class="form-check-input" id="professionalism-very-poor" name="professionalism" value="1" required <?php echo ($referenceCheck?->professionalism == 1)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="professionalism-very-poor" name="professionalism" value="1" required <?php echo ($prevProfessionalism == 1)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="professionalism-poor">(2) Satisfactory</label>
-                    <input type="radio" class="form-check-input" id="professionalism-poor" name="professionalism" value="2" required <?php echo ($referenceCheck?->professionalism == 2)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="professionalism-poor" name="professionalism" value="2" required <?php echo ($prevProfessionalism == 2)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="professionalism-satisfactory">(3) Good</label>
-                    <input type="radio" class="form-check-input" id="professionalism-satisfactory" name="professionalism" value="3" required <?php echo ($referenceCheck?->professionalism == 3)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="professionalism-satisfactory" name="professionalism" value="3" required <?php echo ($prevProfessionalism == 3)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="professionalism-good">(4) Very Good</label>
-                    <input type="radio" class="form-check-input" id="professionalism-good" name="professionalism" value="4" required <?php echo ($referenceCheck?->professionalism == 4)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="professionalism-good" name="professionalism" value="4" required <?php echo ($prevProfessionalism == 4)?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="professionalism-very-good">(5) Excellent</label>
-                    <input type="radio" class="form-check-input" id="professionalism-very-good" name="professionalism" value="5" required <?php echo ($referenceCheck?->professionalism == 5)?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="professionalism-very-good" name="professionalism" value="5" required <?php echo ($prevProfessionalism == 5)?'checked':''?>/>
                 </div>
 
                 @error('professionalism')
@@ -203,12 +209,12 @@
                 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="suitability-no">No</label>
-                    <input type="radio" class="form-check-input" id="suitability-no" name="suitability" value="no" required <?php echo ($referenceCheck?->suitability == "no")?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="suitability-no" name="suitability" value="no" required <?php echo ($prevSuitability == "no")?'checked':''?>/>
                 </div>
 
                 <div class="form-check mb-1">
                     <label class="form-check-label" for="suitability-yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="suitability-yes" name="suitability" value="yes" required <?php echo ($referenceCheck?->suitability == "yes")?'checked':''?>/>
+                    <input type="radio" class="form-check-input" id="suitability-yes" name="suitability" value="yes" required <?php echo ($prevSuitability == "yes")?'checked':''?>/>
                 </div>
 
                 @error('suitability')

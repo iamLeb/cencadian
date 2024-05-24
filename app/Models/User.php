@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Contact::class);
     }
+
+    public function interview()
+    {
+        return $this->hasMany(Interview::class, 'interviewer_id');
+    }
 }

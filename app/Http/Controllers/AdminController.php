@@ -109,15 +109,20 @@ class AdminController extends Controller
         $application = Application::where('id', $request->applicationId)->first();
         $interviewer = User::where('id', $request->interviewerId)->first();
         $interview = Interview::where('application_id', $request->applicationId)->where('interviewer_id', $request->interviewerId)->first();
+        $otherInterviews = Interview::where('application_id', $request->applicationId)->where('interviewer_id', '<>', $request->interviewerId)->get();
 
         if (!$application or !$interviewer) {
             abort('404');
         }
 
+        $canEdit = $interviewer->id === auth()->user()->id;
+
         return view('admin/intern/showInterviewNotes', [
             "application" => $application,
             "interviewer" => $interviewer,
-            "interview" => $interview
+            "interview" => $interview,
+            "otherInterviews" => $otherInterviews,
+            "canEdit" => $canEdit
         ]);
     }
 

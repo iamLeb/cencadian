@@ -24,4 +24,9 @@ class Application extends Model
     {
         return $this->hasMany(InternReference::class);
     }
+
+    public function interview()
+    {
+        return $this->hasOne(Interview::class, 'application_id');
+    }
 }

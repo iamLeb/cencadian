@@ -73,9 +73,6 @@ class AdminController extends Controller
 
     public function createAdmin()
     {
-        auth()->user()->update([
-            'super_admin' => true
-        ]);
         return view('admin/admin');
     }
 
@@ -88,14 +85,13 @@ class AdminController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        dd($request->all());
 
-//        if (auth()->id() != 1) {
-//            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
-//        } else {
-//            User::create($request->all());
-//            return redirect()->back()->with('success','Admin Created Successfully.');
-//        }
+        if (auth()->id() != 1) {
+            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
+        } else {
+            User::create($request->all());
+            return redirect()->back()->with('success','Admin Created Successfully.');
+        }
 
     }
 

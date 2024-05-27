@@ -49,6 +49,20 @@
                                     @enderror
                                 </div>
 
+                                <div class="col-lg-4">
+                                    <label for="phone">Make Super Admin</label>
+                                    <select @if (!auth()->user()->super_admin) readonly disabled @endif name="super_admin" id="super_admin" class="form-control @error('password') is-invalid @enderror">
+                                        <option disabled selected>--Make Super Admin--</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">Nope</option>
+                                    </select>
+                                    @error('super_admin')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+                                </div>
+
                                 @if (auth()->user()->super_admin)
                                     <div class="d-flex justify-content-end">
                                         <button class="btn btn-primary">Create Admin</button>

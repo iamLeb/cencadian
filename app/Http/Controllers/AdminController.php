@@ -87,23 +87,23 @@ class AdminController extends Controller
 
         dd($request->all());
 
-        if (auth()->id() != 1) {
-            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
-        } else {
-            User::create($request->all());
-            return redirect()->back()->with('success','Admin Created Successfully.');
-        }
+//        if (auth()->id() != 1) {
+//            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
+//        } else {
+//            User::create($request->all());
+//            return redirect()->back()->with('success','Admin Created Successfully.');
+//        }
 
     }
 
     public function deleteAdmin($id)
     {
-        if($id === 1) {
-            return redirect()->back()->with('error', 'You Cannot Delete a Supper Admin');
-        } else {
-            User::destroy($id);
-            return redirect()->back()->with('success', 'Admin Deleted Successfully...');
-        }
+//        if($id === 1) {
+//            return redirect()->back()->with('error', 'You Cannot Delete a Supper Admin');
+//        } else {
+//            User::destroy($id);
+//            return redirect()->back()->with('success', 'Admin Deleted Successfully...');
+//        }
     }
 
     public function showInterviewNotes(Request $request)

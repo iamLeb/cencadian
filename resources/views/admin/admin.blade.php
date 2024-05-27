@@ -18,10 +18,10 @@
                         <form action="{{ route('admin.storeAdmin') }}" method="post">
                             @csrf
                             <div class="row align-items-center g-3">
-                                <input @if (!auth()->user()->super_admin) readonly disabled @endif id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
+                                <input id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
                                 <div class="col-lg-4">
                                     <label for="name">Name</label>
-                                    <input value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
+                                    <input @if(!auth()->user()->super_admin) readonly disabled @endif value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -31,7 +31,7 @@
                                 <!--end col-->
                                 <div class="col-lg-4">
                                     <label for="email">E-mail</label>
-                                    <input value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
+                                    <input @if (!auth()->user()->super_admin) readonly disabled @endif value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                                 <!--end col-->
                                 <div class="col-lg-4">
                                     <label for="phone">Generate Password</label>
-                                    <input name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
+                                    <input @if (!auth()->user()->super_admin) readonly disabled @endif name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -49,9 +49,12 @@
                                     @enderror
                                 </div>
 
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn btn-primary">Create Admin</button>
-                                </div>
+                                @if (auth()->user()->super_admin)
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-primary">Create Admin</button>
+                                    </div>
+                                @endif
+
                                 <!--end col-->
                             </div>
                         </form>

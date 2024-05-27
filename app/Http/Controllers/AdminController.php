@@ -86,18 +86,15 @@ class AdminController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if ($request['super_admin'] === '1') {
-            $request['super_admin'] = true;
-        } else {
-            $request['super_admin'] = false;
-        }
+        dd($request->all());
 
-        if (!auth()->user()->super_admin) {
-            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
-        } else {
-            User::create($request->all());
-            return redirect()->back()->with('success','Admin Created Successfully.');
-        }
+//        if (!auth()->user()->super_admin) {
+//            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
+//        } else {
+//            User::create($request->all());
+//            return redirect()->back()->with('success','Admin Created Successfully.');
+//        }
+
 
     }
 

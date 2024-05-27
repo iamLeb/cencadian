@@ -29,7 +29,7 @@
                                     @enderror
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label for="email">E-mail</label>
                                     <input @if (!auth()->user()->super_admin) readonly disabled @endif value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
                                     @error('email')
@@ -39,7 +39,7 @@
                                     @enderror
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label for="phone">Generate Password</label>
                                     <input @if (!auth()->user()->super_admin) readonly disabled @endif name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
                                     @error('password')
@@ -47,6 +47,22 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                     @enderror
+                                </div>
+
+                                <!--end col-->
+                                <div class="col-lg-6">
+                                    <label for="super_admin">Make Super Admin</label>
+                                    <select name="super_admin" id="super_admin" class="form-control @error('super_admin') is-invalid @enderror">
+                                        <option disabled selected>--Make Super Admin--</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">Nope</option>
+                                    </select>
+                                    @error('super_admin')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+
                                 </div>
 
                                 @if (auth()->user()->super_admin)

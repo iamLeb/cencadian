@@ -85,6 +85,8 @@ class AdminController extends Controller
             'password' => 'required|min:6'
         ]);
 
+        dd($request->all());
+
         if (auth()->id() != 1) {
             return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
         } else {

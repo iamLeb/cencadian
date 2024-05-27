@@ -81,27 +81,23 @@ class AdminController extends Controller
         $request->validate([
             'type' => 'required',
             'name' => 'required',
-            'super_admin' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6'
         ]);
 
-        dd($request->all());
-
-//        if (!auth()->user()->super_admin) {
-//            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
-//        } else {
-//            User::create($request->all());
-//            return redirect()->back()->with('success','Admin Created Successfully.');
-//        }
-
+        if (auth()->id() != 1) {
+            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
+        } else {
+            User::create($request->all());
+            return redirect()->back()->with('success','Admin Created Successfully.');
+        }
 
     }
 
     public function deleteAdmin($id)
     {
         if($id === 1) {
-            return redirect()->back()->with('error', 'There was an error processing your request, Please try again');
+            return redirect()->back()->with('error', 'You Cannot Delete a Supper Admin');
         } else {
             User::destroy($id);
             return redirect()->back()->with('success', 'Admin Deleted Successfully...');

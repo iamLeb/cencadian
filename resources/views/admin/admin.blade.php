@@ -41,7 +41,7 @@
                             <!--end col-->
                             <div class="col-lg-6">
                                 <label for="super_admin">Make Super Admin</label>
-                                <select name="super_admin" id="super_admin" class="form-control @error('super_admin') is-invalid @enderror">
+                                <select @if(auth()->user()->super_admin != 1) disabled readonly=" @endif" name="super_admin" id="super_admin" class="form-control @error('super_admin') is-invalid @enderror">
                                     <option selected disabled>-- Make Super Admin --</option>
                                     <option value="1">Yes</option>
                                     <option value="0">Nope</option>

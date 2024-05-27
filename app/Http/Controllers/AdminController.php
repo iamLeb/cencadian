@@ -73,7 +73,6 @@ class AdminController extends Controller
 
     public function createAdmin()
     {
-        User::where('type', 'admin')->update(['super_admin' => true]);
         return view('admin/admin');
     }
 

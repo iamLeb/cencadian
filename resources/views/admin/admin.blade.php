@@ -19,7 +19,7 @@
                             @csrf
                             <div class="row align-items-center g-3">
                                 <input id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label for="name">Name</label>
                                     <input @if(!auth()->user()->super_admin) readonly disabled @endif value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
                                     @error('name')

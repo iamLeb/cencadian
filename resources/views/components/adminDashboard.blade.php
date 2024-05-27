@@ -1,12 +1,34 @@
 <div class="row">
     <div class="col">
+        <?php
+// Assume the user is authenticated and auth()->user() returns the user object
+        $userName = auth()->user()->name;
+        $currentHour = date('H');
 
+        switch (true) {
+            case ($currentHour >= 5 && $currentHour < 12):
+                $greeting = "Good Morning";
+                break;
+            case ($currentHour >= 12 && $currentHour < 17):
+                $greeting = "Good Afternoon";
+                break;
+            case ($currentHour >= 17 && $currentHour < 21):
+                $greeting = "Good Evening";
+                break;
+            default:
+                $greeting = "Good Night";
+                break;
+        }
+
+        ?>
+
+            <!-- Display the greeting -->
         <div class="h-100">
             <div class="row mb-3 pb-1">
                 <div class="col-12">
                     <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                         <div class="flex-grow-1">
-                            <h4 class="fs-16 mb-1">Good Morning, {{ auth()->user()->name }}!</h4>
+                            <h4 class="fs-16 mb-1">{{ $greeting }}, {{ auth()->user()->name }}!</h4>
                             <p class="text-muted mb-0">Here's what's happening today.</p>
                         </div>
                         <div class="mt-3 mt-lg-0">

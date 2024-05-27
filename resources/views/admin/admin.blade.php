@@ -19,7 +19,7 @@
                             @csrf
                             <div class="row align-items-center g-3">
                                 <input id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label for="name">Name</label>
                                     <input @if(!auth()->user()->super_admin) readonly disabled @endif value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
                                     @error('name')
@@ -29,7 +29,7 @@
                                     @enderror
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label for="email">E-mail</label>
                                     <input @if (!auth()->user()->super_admin) readonly disabled @endif value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
                                     @error('email')
@@ -39,7 +39,7 @@
                                     @enderror
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label for="phone">Generate Password</label>
                                     <input @if (!auth()->user()->super_admin) readonly disabled @endif name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
                                     @error('password')
@@ -49,8 +49,8 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-lg-4">
-                                    <label for="phone">Make Super Admin</label>
+                                <div class="col-lg-6">
+                                    <label for="super_admin">Make Super Admin</label>
                                     <select @if (!auth()->user()->super_admin) readonly disabled @endif name="super_admin" id="super_admin" class="form-control @error('password') is-invalid @enderror">
                                         <option disabled selected>--Make Super Admin--</option>
                                         <option value="1">Yes</option>

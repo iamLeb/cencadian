@@ -81,6 +81,7 @@ class AdminController extends Controller
         $request->validate([
             'type' => 'required',
             'name' => 'required',
+            'super_admin' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6'
         ]);

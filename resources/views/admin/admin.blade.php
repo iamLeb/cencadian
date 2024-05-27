@@ -15,49 +15,51 @@
                 <div class="card-body">
                     <p class="text-muted"></p>
                     <div class="live-preview">
-                        <form action="{{ route('admin.storeAdmin') }}" method="post">
-                            @csrf
-                            <div class="row align-items-center g-3">
-                                <input id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
-                                <div class="col-lg-4">
-                                    <label for="name">Name</label>
-                                    <input @if(auth()->id() !=1 ) disabled readonly @endif value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-4">
-                                    <label for="email">E-mail</label>
-                                    <input @if(auth()->id() !=1 ) disabled readonly @endif value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-4">
-                                    <label for="phone">Generate Password</label>
-                                    <input @if(auth()->id() !=1 ) disabled readonly @endif name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+                        @php
+                            if (auth()->user()->super_admin || auth()->id() == 1) {
+                                ?>
+                                <form action="{{ route('admin.storeAdmin') }}" method="post">
+                                    @csrf
+                                    <div class="row align-items-center g-3">
+                                        <input id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
+                                        <div class="col-lg-4">
+                                            <label for="name">Name</label>
+                                            <input value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-4">
+                                            <label for="email">E-mail</label>
+                                            <input value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-4">
+                                            <label for="phone">Generate Password</label>
+                                            <input name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
 
-                                @if(auth()->id() === 1)
-                                    <div class="d-flex justify-content-end">
-                                        <button class="btn btn-primary">Create Admin</button>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-primary">Create Admin</button>
+                                        </div>
+                                        <!--end col-->
                                     </div>
-                                @endif
-                                <!--end col-->
-                            </div>
-                        </form>
-                        <!--end row-->
+                                </form>
+                                <?php }
+                        @endphp
                     </div>
 
                     <div class="d-none code-view">

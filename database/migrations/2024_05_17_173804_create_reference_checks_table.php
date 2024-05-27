@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('reference_id');
-            $table->foreign('reference_id')->references('id')->on('intern_references');
+//            $table->foreign('reference_id')->references('id')->on('intern_references');
             $table->text('duration_capacity');
             $table->text('performance');
             $table->string('teamwork');

@@ -81,11 +81,12 @@ class AdminController extends Controller
         $request->validate([
             'type' => 'required',
             'name' => 'required',
+            'super_admin' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6'
         ]);
 
-        if (auth()->id() != 1) {
+        if (!auth()->user()->super_admin) {
             return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
         } else {
             User::create($request->all());
@@ -97,7 +98,7 @@ class AdminController extends Controller
     public function deleteAdmin($id)
     {
         if($id === 1) {
-            return redirect()->back()->with('error', 'You Cannot Delete a Supper Admin');
+            return redirect()->back()->with('error', 'There was an error processing your request, Please try again');
         } else {
             User::destroy($id);
             return redirect()->back()->with('success', 'Admin Deleted Successfully...');
@@ -105,7 +106,7 @@ class AdminController extends Controller
     }
 
     public function showInterviewNotes(Request $request)
-    {   
+    {
         $application = Application::where('id', $request->applicationId)->first();
         $interviewer = User::where('id', $request->interviewerId)->first();
         $interview = Interview::where('application_id', $request->applicationId)->where('interviewer_id', $request->interviewerId)->first();

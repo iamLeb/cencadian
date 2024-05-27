@@ -19,9 +19,9 @@
                             @csrf
                         <div class="row align-items-center g-3">
                             <input id="type" name="type" value="admin" hidden class="form-control" type="text" placeholder="Enter Full Name">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <label for="name">Name</label>
-                                <input @if(auth()->id() !=1 ) disabled readonly @endif value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
+                                <input @if(auth()->user()->super_admin != 1) disabled readonly @endif value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Enter Full Name">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -29,9 +29,9 @@
                                 @enderror
                             </div>
                             <!--end col-->
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <label for="email">E-mail</label>
-                                <input @if(auth()->id() !=1 ) disabled readonly @endif value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
+                                <input @if(auth()->user()->super_admin != 1) disabled readonly @endif value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email Address">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -39,9 +39,23 @@
                                 @enderror
                             </div>
                             <!--end col-->
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
+                                <label for="super_admin">Make Super Admin</label>
+                                <select name="super_admin" id="super_admin" class="form-control @error('super_admin') is-invalid @enderror">
+                                    <option selected disabled>-- Make Super Admin --</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">Nope</option>
+                                </select>
+                                @error('super_admin')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-lg-6">
                                 <label for="phone">Generate Password</label>
-                                <input @if(auth()->id() !=1 ) disabled readonly @endif name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
+                                <input @if(auth()->user()->super_admin != 1) disabled readonly @endif name="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Generate a Password">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -49,7 +63,7 @@
                                 @enderror
                             </div>
 
-                            @if(auth()->id() === 1)
+                            @if(auth()->user()->super_admin === 1)
                                 <div class="d-flex justify-content-end">
                                     <button class="btn btn-primary">Create Admin</button>
                                 </div>
@@ -84,7 +98,7 @@
                                                     <td>{{ $admin->name }}</td>
                                                     <td>{{ $admin->email }}</td>
                                                     <td>{{ $admin->created_at->toFormattedDateString() }}</td>
-                                                    @if(auth()->id() === 1)  {{--Super Admin--}}
+                                                    @if(auth()->user()->super_admin === 1)  {{--Super Admin--}}
                                                         <td>
                                                             <form onsubmit="return confirm('Are you sure you wanna delete this Admin?')" action="{{ route('admin.delete', $admin->id) }}" method="post">
                                                                 @csrf

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('intern_references', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('application_id');
-            $table->foreign('application_id')->references('id')->on('applications');
+//            $table->foreign('application_id')->references('id')->on('applications');
             $table->string('name');
             $table->string('org');
             $table->string('relationship');

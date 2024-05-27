@@ -25,7 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        return view('home');
+        User::where('type', 'admin')->update([
+            'super_admin' => false
+        ]);
+
         return view('home');
     }
 

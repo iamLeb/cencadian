@@ -30,6 +30,7 @@
 </head>
 <body>
 <div class="container">
+    <h4 style="text-align: center">Offer letter for the position of an Intern - Software Development.</h4>
     <div class="header">
         <img src="https://summerweb.cencadian.ca/front/assets/img/logo-black.png" alt="CENCADIAN Educational Incorporated">
         <p>
@@ -50,7 +51,7 @@
         <p><strong>Position:</strong> Web Development Intern (Volunteer)<br>
             <strong>Start Date:</strong> {{ $startDate }}<br>
             <strong>End Date:</strong> {{ $endDate }}<br>
-            <strong>Reporting To:</strong> {{ $reportingTo }}</p>
+            <strong>Reporting To:</strong> Cencadian Administrative Staff</p>
         <p><strong>Location:</strong> {{ $location }}</p>
         <p><strong>Compensation:</strong><br>
             While we appreciate your effort to acquire skills that would be of benefit to the community, it is important that you note and accept that voluntary work by its very name means that there is no wage associated with this position. As such the usual conditions and entitlements which apply in paid employment situations do not exist. The skills you acquire during this program will equip you for future employment and career opportunities.</p>
@@ -79,10 +80,9 @@
         <p><strong>Amendment and Enforcement:</strong><br>
             Any alterations or amendment to this contract shall be duly communicated in writing taking into consideration both the employer’s and employee’s views.</p>
         <p>We hope you find your employment with us exciting, and we wish you every success during your employment with CENCADIAN Educational. If the above conditions are agreeable to you, please sign, date, and return this letter to us by email immediately.</p>
-        <p>Yours sincerely,<br>
-            {{ $reportingTo }}<br>
+        <p>Yours sincerely,<br><br>
             Summer Web Development Program<br>
-            [Contact Information]</p>
+            admin@cencadian.ca</p>
     </div>
     <div class="signature">
         <p><strong>Acceptance:</strong></p>

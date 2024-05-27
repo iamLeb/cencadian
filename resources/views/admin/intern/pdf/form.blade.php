@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="live-preview">
                             <div class="row gy-4">
-                                <div class="col-xxl-12 col-md-6">
+                                <div class="col-xxl-3 col-md-6">
                                     <div>
                                         <label for="positionType" class="form-label">Select Position</label>
                                         <select name="type" class="form-control form-control-lg @error('type') is-invalid @enderror" id="positionType" onchange="updatePreview()">
@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                                 <!--end col-->
-                                <div class="col-xxl-6 col-md-6">
+                                <div class="col-xxl-3 col-md-6">
                                     <div>
                                         <label for="startDate" class="form-label">Start Date</label>
                                         <input type="date" name="startDate" class="form-control form-control-lg @error('startDate') is-invalid @enderror" id="startDate" onchange="updatePreview()">
@@ -47,7 +47,7 @@
                                 </div>
                                 <!--end col-->
 
-                                <div class="col-xxl-6 col-md-6">
+                                <div class="col-xxl-3 col-md-6">
                                     <div>
                                         <label for="endDate" class="form-label">End Date</label>
                                         <input type="date" name="endDate" class="form-control form-control-lg @error('endDate') is-invalid @enderror" id="endDate" onchange="updatePreview()">
@@ -60,25 +60,7 @@
                                 </div>
                                 <!--end col-->
 
-                                <div class="col-xxl-6 col-md-6">
-                                    <div>
-                                        <label for="reportingTo" class="form-label">Reporting to</label>
-                                        <select name="reportingTo" class="form-control form-control-lg @error('reportingTo') is-invalid @enderror" id="reportingTo" onchange="updatePreview()">
-                                            <option selected disabled>-- Who should {{ $name }} report to?</option>
-                                            @foreach(\App\Models\User::where('type', 'admin')->get() as $user)
-                                                <option value="{{ $user->name }}">{{ ucfirst($user->name) }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('reportingTo')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <!--end col-->
-
-                                <div class="col-xxl-6 col-md-6">
+                                <div class="col-xxl-3 col-md-6">
                                     <div>
                                         <label for="location" class="form-label">Location</label>
                                         <input placeholder="Enter Job Location " type="text" name="location" class="form-control form-control-lg @error('location') is-invalid @enderror" id="location" onkeyup="updatePreview()">
@@ -91,7 +73,9 @@
                                 </div>
                                 <!--end col-->
 
-                                <button onclick="return confirm('Are your sure you wanna send this mail?')" class="btn btn-primary">Generate PDF ({{ $name }})</button>
+                                <div style="text-align: right">
+                                    <button onclick="return confirm('Are your sure you wanna send this mail?')" class="btn btn-primary">Generate PDF ({{ $name }})</button>
+                                </div>
                             </div>
                             <!--end row-->
                         </div>
@@ -129,6 +113,7 @@
                             </head>
                             <body>
                             <div class="container">
+                                <h3 style="text-align: center">Offer letter for the position of an Intern - Software Development.</h3>
                                 <div class="header">
                                     <img src="https://summerweb.cencadian.ca/front/assets/img/logo-black.png" alt="CENCADIAN Educational Incorporated">
                                     <p>
@@ -150,7 +135,7 @@
                                     <p><strong>Position:</strong> <span id="previewPosition">Web Development Intern (Paid)</span><br>
                                         <strong>Start Date:</strong> <span id="previewStartDate">[Start Date]</span><br>
                                         <strong>End Date:</strong> <span id="previewEndDate">[End Date, if applicable]</span><br>
-                                        <strong>Reporting To:</strong> <span id="previewReportingTo">[Supervisor’s Name]</span></p>
+                                        <strong>Reporting To:</strong> Cencadian Administrative Staff</p>
                                     <p><strong>Location:</strong> <span id="previewLocation"></span></p>
                                     <p><strong>Compensation:</strong><br>
                                         <span id="compensation"></span></p>
@@ -179,11 +164,9 @@
                                     <p><strong>Amendment and Enforcement:</strong><br>
                                         Any alterations or amendment to this contract shall be duly communicated in writing taking into consideration both the employer’s and employee’s views.</p>
                                     <p>We hope you find your employment with us exciting, and we wish you every success during your employment with CENCADIAN Educational. If the above conditions are agreeable to you, please sign, date, and return this letter to us by email immediately.</p>
-                                    <p>Yours sincerely,<br>
-                                        [Your Name]<br>
-                                        [Your Title]<br>
-                                        [Company Name]<br>
-                                        [Contact Information]</p>
+                                    <p>Yours sincerely,<br><br>
+                                        Summer Web Development Program<br>
+                                        admin@cencadian.ca</p>
                                 </div>
                                 <div class="signature">
                                     <p><strong>Acceptance:</strong></p>
@@ -208,7 +191,6 @@
             const positionType = document.getElementById('positionType').value;
             const startDate = document.getElementById('startDate').value;
             const endDate = document.getElementById('endDate').value;
-            const reportingTo = document.getElementById('reportingTo').options[document.getElementById('reportingTo').selectedIndex].text;
             const location = document.getElementById('location').value;
 
             document.getElementById('note').innerText = positionType === 'paid' ? '' : 'Even though this is a volunteering position, you are expected to be committed to the days and hours of work required for this position. The terms and conditions of your volunteering appointment with us are as follows:';
@@ -216,7 +198,6 @@
             document.getElementById('previewPosition').innerText = positionType === 'paid' ? 'Web Development Intern (Paid)' : 'Web Development Intern (Volunteer)';
             document.getElementById('previewStartDate').innerText = startDate ? startDate : '[Start Date]';
             document.getElementById('previewEndDate').innerText = endDate ? endDate : '[End Date, if applicable]';
-            document.getElementById('previewReportingTo').innerText = reportingTo !== '-- Who should {{ $name }} report to?' ? reportingTo : '[Supervisor’s Name]';
             document.getElementById('previewLocation').innerText = location ? location : '[Job Location]';
         }
     </script>

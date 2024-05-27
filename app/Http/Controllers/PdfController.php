@@ -35,7 +35,6 @@ class PdfController extends Controller
             'type' => 'required',
             'startDate' => 'required',
             'endDate' => 'required',
-            'reportingTo' => 'required',
             'location' => 'required'
         ]);
         $user = User::where('id', $request->id)->first();

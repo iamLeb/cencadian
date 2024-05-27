@@ -31,6 +31,7 @@
 <body>
 <div class="container">
     <div class="header">
+        <h3 style="text-align: center">Offer letter for the position of an Intern - Software Development.</h3>
         <img src="https://summerweb.cencadian.ca/front/assets/img/logo-black.png" alt="CENCADIAN Educational Incorporated">
         <p>
             262 Tanager Trail, Winnipeg, MB<br>
@@ -49,7 +50,7 @@
         <p><strong>Position:</strong> Web Development Intern (Paid)<br>
             <strong>Start Date:</strong> {{ $startDate }}<br>
             <strong>End Date:</strong> {{ $endDate }}<br>
-            <strong>Reporting To:</strong> {{ $reportingTo }}</p>
+            <strong>Reporting To:</strong> Cencadian Administrative Staff</p>
         <p><strong>Location:</strong> {{ $location }}</p>
         <p><strong>Compensation:</strong><br>
             As this is a paid internship position, you will be allocated 30 hours per week at a wage of $15.30 per hour, payable in bi-weekly installments.</p>
@@ -78,10 +79,9 @@
         <p><strong>Amendment and Enforcement:</strong><br>
             Any alterations or amendment to this contract shall be duly communicated in writing taking into consideration both the employer’s and employee’s views.</p>
         <p>We hope you find your employment with us exciting, and we wish you every success during your employment with CENCADIAN Educational. If the above conditions are agreeable to you, please sign, date, and return this letter to us by email immediately.</p>
-        <p>Yours sincerely,<br>
-            {{ $reportingTo }}<br>
+        <p>Yours sincerely,<br><br>
             Summer Web Development Program<br>
-            [Contact Information]</p>
+            admin@cencadian.ca</p>
     </div>
     <div class="signature">
         <p><strong>Acceptance:</strong></p>

@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        User::where('email', 'sharonu1526@gmail.com')->delete();
+        User::where('email', 'judaito2016@gmail.com')->delete();
 
         return view('home');
     }

@@ -193,15 +193,16 @@
 
                 <div class="col-xl-6">
                     <div class="card card-height-100">
-                        <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Interns</h4>
+                        <div class="card-header align-items-center d-flex justify-content-between">
+                            <h4 class="card-title mb-0">Interns ({{ \App\Models\User::where('type', 'intern')->count() }})</h4>
+                            <a href="{{ route('admin.interns') }}">View All</a>
                         </div><!-- end card header -->
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
                                 <table class="table table-centered table-hover align-middle table-nowrap mb-0">
                                     <tbody>
-                                    @foreach(\App\Models\User::where('type', 'intern')->get() as $intern)
+                                    @foreach(\App\Models\User::where('type', 'intern')->take(5)->orderBy('id', 'DESC')->get() as $intern)
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">

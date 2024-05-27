@@ -86,7 +86,7 @@
                                                 <th data-ordering="false">Name</th>
                                                 <th data-ordering="false">Email</th>
                                                 <th>Joined Date</th>
-                                                @if(auth()->id() === 1)
+                                                @if(auth()->user()->super_admin)
                                                     <th>Action</th>
                                                 @endif
                                             </tr>

@@ -86,21 +86,23 @@ class AdminController extends Controller
             'password' => 'required|min:6'
         ]);
 
-//        if (!auth()->user()->super_admin) {
-//            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
-//        } else {
-//            User::create($request->all());
-//            return redirect()->back()->with('success','Admin Created Successfully.');
-//        }
+        if ($request['super_admin'] === '1') {
+            $request['super_admin'] = true;
+        } else {
+            $request['super_admin'] = false;
+        }
 
-        dd($request->all());
+        if (!auth()->user()->super_admin) {
+            return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
+        } else {
+            User::create($request->all());
+            return redirect()->back()->with('success','Admin Created Successfully.');
+        }
+
     }
 
     public function deleteAdmin($id)
     {
-
-        dd($id);
-
         if($id === 1) {
             return redirect()->back()->with('error', 'There was an error processing your request, Please try again');
         } else {

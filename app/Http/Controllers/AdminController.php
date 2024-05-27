@@ -106,6 +106,12 @@ class AdminController extends Controller
         }
     }
 
+    public function internDelete($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Intern Deleted');
+    }
+
     public function showInterviewNotes(Request $request)
     {
         $application = Application::where('id', $request->applicationId)->first();

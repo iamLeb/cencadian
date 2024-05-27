@@ -108,7 +108,7 @@
                         <input required type="hidden" name="type" value="{{ $queryValue }}">
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">{{ __('Company Name') }}</label>
                                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Enter Name" id="name" required autocomplete="name" autofocus>

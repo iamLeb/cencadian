@@ -73,6 +73,9 @@ class AdminController extends Controller
 
     public function createAdmin()
     {
+        auth()->user()->update([
+            'super_admin' => true
+        ]);
         return view('admin/admin');
     }
 

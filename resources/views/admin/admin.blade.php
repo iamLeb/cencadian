@@ -98,7 +98,7 @@
                                                     <td>{{ $admin->name }}</td>
                                                     <td>{{ $admin->email }}</td>
                                                     <td>{{ $admin->created_at->toFormattedDateString() }}</td>
-                                                    @if(auth()->id() === 1)  {{--Super Admin--}}
+                                                    @if(auth()->user()->super_admin)  {{--Super Admin--}}
                                                     <td>
                                                         <form onsubmit="return confirm('Are you sure you wanna delete this Admin?')" action="{{ route('admin.delete', $admin->id) }}" method="post">
                                                             @csrf

@@ -97,6 +97,55 @@
                                         </div>
                                     </div><!-- end card body -->
                                 </div><!-- end card -->
+
+                                @if ($user->emergency)
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-3">Emergency Information</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless mb-0">
+                                                <tbody>
+                                                <tr>
+                                                    <th class="ps-0" scope="row">Name:</th>
+                                                    <td class="text-muted">{{ $user->emergency->name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="ps-0" scope="row">Primary:</th>
+                                                    <td class="text-muted">{{ $user->emergency->pphone }}</td>
+                                                </tr>
+                                                @if ($user->emergency->sphone)
+                                                <tr>
+                                                    <th class="ps-0" scope="row">Secondary:</th>
+                                                    <td class="text-muted">{{ $user->emergency->sphone }}</td>
+                                                </tr>
+                                                @endif
+                                                <tr>
+                                                    <th class="ps-0" scope="row">E-mail:</th>
+                                                    <td class="text-muted">{{ $user->emergency->email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="ps-0" scope="row">Address:</th>
+                                                    <td class="text-muted">{{ $user->emergency->address }}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th class="ps-0" scope="row">Relationship:</th>
+                                                    <td class="text-muted">{{ $user->emergency->relationship }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="ps-0" scope="row">Note:</th>
+                                                    <td class="text-muted">
+                                                        <textarea class="form-control border-0" style="resize: none;">{{ $user->emergency->note }}</textarea>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                              @endif
+
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title mb-4">Skills</h5>
@@ -117,14 +166,14 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <h5 class="card-title mb-3">Application Info</h5>
                                             </div>
                                             @php
                                                 $mailTo =
                                                 "mailto:$user->email"
                                                 ."?subject=Interview Invitation - Summer Web Development Program"
-                                                ."&body=Cencadian Educational Incorporated%0D%0A" 
+                                                ."&body=Cencadian Educational Incorporated%0D%0A"
                                                 .date('M d, Y') . " %0D%0A"
                                                 .$user->name."|".str_replace(",", "", $user->address)."%0D%0A%0D%0A"
                                                 ."Dear $user->name,%0D%0A%0D%0A"
@@ -146,8 +195,10 @@
                                                 ."Management Team%0D%0A"
                                                 ."Cencadian Educational Incorporated%0D%0A%0D%0A.";
                                             @endphp
-                                            <div class="col-md-6">
-                                                @if (!$user->interview_mail)
+                                            <div class="col-md-8">
+                                                <form action="{{ route('admin.intern.hire', $user->id) }}" method="post">
+                                                    @csrf
+                                                @if ($user->application)
                                                     <a onclick="return confirm('Are you sure you wanna send this email?')" class="btn btn-primary btn-sm" href="{{ $mailTo }}">
                                                         <i class="ri-mail-close-fill"></i> Send Interview</a>
                                                 @endif
@@ -158,11 +209,16 @@
                                                     </a>
                                                 @endif
 
-                                                @if (!$user->offer_letter)
+                                                @if ($user->application)
                                                     <a href="{{ route('admin.intern.offer', $user->id) }}" class="btn btn-danger btn-sm">
                                                         <i class="ri-mail-close-fill"></i> Send Offer Letter
                                                     </a>
                                                 @endif
+
+                                                @if ($user->application && $user->type !== 'hired')
+                                                    <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Please Note that this is not a reversible action, do you want to continue?')" ><i class="ri-mail-close-fill"></i> Mark Intern as Hired</button>
+                                                @endif
+                                                </form>
                                             </div>
                                         </div>
 
@@ -208,7 +264,7 @@
                                                     @if ($user->application)
                                                         <div class="flex-grow-1 overflow-hidden">
                                                             <p class="mb-1">Resume</p>
-                                                            <a href="https://arabicawhite.s3.amazonaws.com/resume/{{ $user->application->resume }}" class="fw-semibold">{{ __('Resume.pdf') }}</a>
+                                                            <a target="_blank" href="https://arabicawhite.s3.amazonaws.com/resume/{{ $user->application->resume }}" class="fw-semibold">{{ __('Resume.pdf') }}</a>
                                                         </div>
                                                     @endif
                                                 </div>

@@ -24,11 +24,6 @@
            "icon" => "mdi mdi-account-circle"
        ],
        [
-           "name" => "My Documents",
-           "path" => "home",
-           "icon" => "mdi-clipboard-file"
-       ],
-       [
            "name" => "Clock in / Clock Out",
            "path" => "home",
            "icon" => "mdi-progress-clock"
@@ -139,6 +134,31 @@
                             </a>
                         </li>
                     @endforeach
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link collapsed" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                                <i class="mdi mdi-clipboard-file"></i> <span data-key="t-apps">Documents</span>
+                            </a>
+                            <div class="menu-dropdown collapse" id="sidebarApps" style="">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> My Documents </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Onboarding Docs. </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Training Docs. </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Personal Docs. </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Tax Docs. </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                 @endif
 
             </ul>

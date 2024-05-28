@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('delete/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete');
     Route::get('interns', [AdminController::class, 'interns'])->name('admin.interns');
     Route::get('interns/{id}', [AdminController::class, 'internShow'])->name('admin.intern.show');
+    Route::post('interns/hire/{id}', [AdminController::class, 'internHire'])->name('admin.intern.hire');
     Route::post('interns/delete/{id}', [AdminController::class, 'internDelete'])->name('admin.intern.delete');
     Route::get('company/{id}', [AdminController::class, 'companyShow'])->name('admin.company.show');
     Route::get('companies', [AdminController::class, 'companies'])->name('admin.companies');

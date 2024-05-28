@@ -122,9 +122,29 @@
                                             </div>
                                             @php
                                                 $mailTo =
-                                                "mailto:$user->email
-                                                ?subject=Interview Invitation
-                                                &body=Cencadian Educational Incorporated%0D%0A " .date('M d, Y') . " %0D%0A $user->name | $user->address %0D%0A%0D%0ADear $user->name,%0D%0A%0D%0AWe are pleased to inform you that after reviewing your application for the Web Development Intern position, we would like to invite you to participate in an interview for this position. We believe your skills and experiences could be a good match for our team, and we would like to learn more.%0D%0A%0D%0AInterview Details:%0D%0A• Date: [Interview Date]%0D%0A• Time: [Interview Time]%0D%0A• Location: 262 Tanager Trail, Winnipeg, MB%0D%0A• Expected Duration: About 1 hour%0D%0A%0D%0AThe interview will cover your professional background, your skills, and your possible fit within our team. Additionally, this will be a great opportunity for you to learn more about our company’s culture, the specifics of the role, and the impact you can make at Cencadian.%0D%0A%0D%0ADo not hesitate to contact us at admin@cencadian.ca if you have any questions or need further details.%0D%0A%0D%0AThank you for your interest in the Cencadian Summer Web Development Program. Please let us know if you require any special accommodations for your interview.%0D%0A%0D%0ARegards,%0D%0AManagement Team%0D%0ACencadian Educational Incorporated%0D%0A%0D%0A.";
+                                                "mailto:$user->email"
+                                                ."?subject=Interview Invitation - Summer Web Development Program"
+                                                ."&body=Cencadian Educational Incorporated%0D%0A" 
+                                                .date('M d, Y') . " %0D%0A"
+                                                .$user->name."|".str_replace(",", "", $user->address)."%0D%0A%0D%0A"
+                                                ."Dear $user->name,%0D%0A%0D%0A"
+                                                ."We are pleased to inform you that after reviewing your application for the Web Development Intern position, "
+                                                ."we would like to invite you to participate in an interview for this position. "
+                                                ."We believe your skills and experiences could be a good match for our team, and we would like to learn more.%0D%0A%0D%0A"
+                                                ."Interview Details:%0D%0A"
+                                                ."• Date: [Interview Date]%0D%0A"
+                                                ."• Time: [Interview Time]%0D%0A"
+                                                ."• Location: 262 Tanager Trail, Winnipeg, MB%0D%0A"
+                                                ."• Expected Duration: About 1 hour%0D%0A%0D%0A"
+                                                ."The interview will cover your professional background, your skills, and your possible fit within our team. "
+                                                ."Additionally, this will be a great opportunity for you to learn more about our company’s culture, "
+                                                ."the specifics of the role, and the impact you can make at Cencadian.%0D%0A%0D%0A"
+                                                ."Do not hesitate to contact us at admin@cencadian.ca if you have any questions or need further details.%0D%0A%0D%0A"
+                                                ."Thank you for your interest in the Cencadian Summer Web Development Program. "
+                                                ."Please let us know if you require any special accommodations for your interview.%0D%0A%0D%0A"
+                                                ."Regards,%0D%0A"
+                                                ."Management Team%0D%0A"
+                                                ."Cencadian Educational Incorporated%0D%0A%0D%0A.";
                                             @endphp
                                             <div class="col-md-6">
                                                 @if (!$user->interview_mail)
@@ -243,7 +263,7 @@
                                                             ."%0A%0A"
                                                             .route('reference.questionnaire.show', ['otp' => $reference->otp])
                                                             ."%0A%0A"
-                                                            ."We would appreciate it if you could take 5 minutes to complete this short questionnaire so that we can learn more about the applicant."
+                                                            ."We would appreciate it if you could take about 5 minutes to complete this short questionnaire so that we can learn more about the applicant."
                                                             ."%0A%0A"
                                                             ."If you have any questions or concerns, feel free to reply to this email, or contact us at admin@cencadian.ca"
                                                             ."%0A%0A"

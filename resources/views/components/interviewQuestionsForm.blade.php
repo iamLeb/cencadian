@@ -18,7 +18,9 @@
         'technical_add_two',
         'technical_reverse_string',
         'accept_volunteer',
-        'additional_comments'
+        'additional_comments',
+        'describe_self',
+        'availability'
     );
 
     $previousNotes = [];
@@ -28,7 +30,9 @@
     }   
 @endphp
 
-
+<div class="mb-4">
+    <a href="{{route('admin.intern.show', ['id' => $application->user->id])}}">&#x2190; Back to intern profile</a>
+</div>
 <form id="create-request" action="" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
@@ -76,6 +80,19 @@
                 <p style="font-size:16px; text-decoration:underline">Do you have any questions for us before we begin?</p>
             </div>
 
+
+            <div class="mb-4">
+                <div class="mb-4">
+                    <h3>About the Applicant</h3>
+    
+                    <label class="form-label">Let's get to know you. How would you describe yourself?</label>
+                    @if ($canEdit)
+                        <textarea class="form-control mb-3" name="describe_self" id="" cols="30" rows="10" placeholder="Enter response and/or notes">{{$previousNotes['describe_self']}}</textarea>
+                    @else
+                        <p>{{$previousNotes['describe_self']}}</p>
+                    @endif
+                </div>
+            </div>
 
             <div class="mb-4">
                 <h3>Interest and Motivation</h3>
@@ -244,7 +261,14 @@
             </div>
 
             <div class="mb-4">
-                <h3>Volunteer Position</h3>
+                <h3>Availability</h3>
+
+                <label class="form-label">This program runs Monday to Friday, 9:00AM to 4:00PM. Are you available to work these hours?</label>
+                @if ($canEdit)
+                    <textarea class="form-control mb-3" name="availability" id="" cols="30" rows="10" placeholder="Enter response and/or notes">{{$previousNotes['availability']}}</textarea>
+                @else
+                    <p>{{$previousNotes['availability']}}</p>
+                @endif
 
                 <label class="form-label">We only have a limited number of paid internship positions available this summer. However, there are also volunteer positions available. If we are unable to offer you a paid internship at this time, would you be willing to accept an unpaid volunteer position?</label>
                 @if ($canEdit)
@@ -254,7 +278,7 @@
                 @endif
             </div>
 
-            <div class="mb-3">
+            <div class="mb-5">
                 <h3>Additional Questions and Comments</h3>
                 <label class="form-label">Is there anything else you would like to add that has not been covered? Do you have any questions for us?</label>
                 @if ($canEdit)
@@ -269,6 +293,16 @@
                     </span>
                 @enderror
             </div>
+
+            <h3>Next Steps</h3>
+
+            <p class="lead mb-5">
+                The interview is one stage in the hiring process. In the next stage, we willcontact your references. 
+                Are the references you have provided on your application accurate today? 
+                Once the references are reviewed, we will make a decision regarding your application. 
+                We will contact you before the end of the week regarding our decision. 
+                Thank you for your interest in becoming an intern with Cencadian.
+            </p>
 
             {{-- <input type="hidden" name="interviewer_id" value="{{$interviewer->name}}"/>
             <input type="hidden" name="application_id" value="{{$application->id}}"/> --}}

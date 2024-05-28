@@ -142,9 +142,6 @@
                             <div class="menu-dropdown collapse" id="sidebarApps" style="">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> My Documents </a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Onboarding Docs. </a>
                                     </li>
                                     <li class="nav-item">

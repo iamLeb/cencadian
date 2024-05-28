@@ -30,7 +30,14 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('dashboard.profile');
+        $references = "";
+        if (auth()->user()->application) {
+            $references = auth()->user()->application->reference;
+        }
+
+        return view('dashboard.profile', [
+            'references' => $references
+        ]);
     }
 
     public function profileUpdate(Request $request)

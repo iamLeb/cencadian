@@ -73,4 +73,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Interview::class, 'interviewer_id');
     }
+
+    public function emergency()
+    {
+        return $this->hasMany(Interview::class, 'interviewer_id');
+    }
 }

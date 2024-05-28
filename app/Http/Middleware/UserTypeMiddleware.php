@@ -35,6 +35,7 @@ class UserTypeMiddleware
                     break;
 
                 case 'intern':
+                case 'hired':
                     if (strpos($route, 'admin.') === 0 || strpos($route, 'company.') === 0) {
                         return redirect()->back()->with('error', 'Access denied.');
                     }

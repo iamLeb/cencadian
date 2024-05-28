@@ -25,6 +25,13 @@ Route::group(['prefix' => '/secure'], function () {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
     Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');
+    Route::post('/emergency/contact', [App\Http\Controllers\HiredInternController::class, 'storeEmergencyContact'])->name('emergency.contact.store');
+});
+Route::group(['prefix' => '/intern'], function () {
+    // Interns
+    Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+    Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
+    Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');
 });
 
 Route::group(['prefix' => 'admin'], function () {

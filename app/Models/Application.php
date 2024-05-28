@@ -29,4 +29,5 @@ class Application extends Model
     {
         return $this->hasOne(Interview::class, 'application_id');
     }
+
 }

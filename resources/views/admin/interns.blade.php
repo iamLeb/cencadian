@@ -92,12 +92,6 @@
                                                             <a href="{{ route('admin.intern.show', $intern->id) }}" class="btn btn-sm btn-primary remove-item-btn" >View</a>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex gap-2">
-                                                        <form action="{{ route('admin.intern.delete', $intern->id) }}" method="post">
-                                                            @csrf
-                                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                        </form>
-                                                    </div>
                                                 </div>
 
                                             </td>

@@ -3,7 +3,7 @@
 @section('content')
 
 
-    @if(auth()->user()->application)
+    @if(auth()->user()->application && auth()->user()->isIntern())
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -109,7 +109,7 @@
             <div class="col-xxl-9">
                 <div class="card mt-xxl-n5">
                     <div class="card-header">
-                        @if(auth()->user()->application)
+                        @if(auth()->user()->application && auth()->user()->isIntern())
                             <div class="alert alert-success text-center">Application Submitted Successfully </div>
                         @endif
                         <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
@@ -131,6 +131,8 @@
 
                                 @if(auth()->user()->isCompany())
                                     @include('dashboard.company')
+                                @elseif(auth()->user()->isHired())
+                                    @include('dashboard.hired')
                                 @elseif(auth()->user()->isIntern())
                                     <form action="{{ route('application.store') }}" method="post" enctype="multipart/form-data">
 

@@ -23,9 +23,8 @@
                 </div>
             </div>
             <!--end col-->
-
         </div>
-        <!--end row-->
+
     </div>
 
     <div class="row">
@@ -46,6 +45,20 @@
                             </a>
                         </li>
                     </ul>
+
+                    <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3">
+                        <li class="nav-item">
+                            <form action="{{ route('admin.intern.delete', $user->id) }}" method="post">
+                                @csrf
+                                <button class="btn btn-danger text-white bold text-uppercase" onclick="return confirm('Are you sure you wanna delete this user?')" type="submit" >Delete Account</button>
+                            </form>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-outline-warning text-white bold text-uppercase" href="{{ route('admin.interns') }}">Go back <i class="bx bx-arrow-back"></i></a>
+                        </li>
+                    </ul>
+
                 </div>
                 <!-- Tab panes -->
                 <div class="tab-content pt-4 text-muted">

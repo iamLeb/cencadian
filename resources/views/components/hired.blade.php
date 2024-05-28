@@ -1,4 +1,4 @@
 @extends('layouts.backend')
 @section('content')
-    test page
+    <h3>Welcome to the hired page</h3>
 @endsection

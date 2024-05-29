@@ -51,6 +51,32 @@
     </script>
 @endif
 
+@if(session()->has('error'))
+{{--    <div class="example-alert">--}}
+{{--        <div class="alert alert-warning alert-icon alert-dismissible">--}}
+{{--            <em class="icon ni ni-cross-circle"></em> <strong>Alert</strong>: {{ session('status') }} <button class="close" data-dismiss="alert"></button>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'error',
+            title: "{{ session('error') }}"
+        })
+    </script>
+@endif
+
 @if(session()->has('success'))
 {{--    <div class="example-alert">--}}
 {{--        <div class="alert alert-success alert-icon alert-dismissible">--}}

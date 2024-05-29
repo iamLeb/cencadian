@@ -19,6 +19,7 @@ Route::get('/secure', [App\Http\Controllers\HomeController::class, 'index'])->na
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::post('profile', [HomeController::class, 'updateCompany'])->name('company.update');
 Route::post('profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
+Route::get('/my-documents', [HomeController::class, 'showMyDocuments'])->name('my.documents');
 
 Route::group(['prefix' => '/secure'], function () {
     // Interns

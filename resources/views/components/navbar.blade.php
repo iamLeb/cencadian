@@ -25,7 +25,7 @@
        ],
        [
            "name" => "My Documents",
-           "path" => "home",
+           "path" => "my.documents",
            "icon" => "mdi-clipboard-file"
        ],
        [

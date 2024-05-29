@@ -52,4 +52,9 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Profile Updated');
     }
 
+    public function showMyDocuments(Request $request)
+    {
+        return view('myDocuments');
+    }
+
 }

@@ -73,6 +73,7 @@ class AdminController extends Controller
 
     public function createAdmin()
     {
+
         return view('admin/admin');
     }
 

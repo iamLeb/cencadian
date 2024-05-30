@@ -31,7 +31,7 @@
        [
 
            "name" => "Clock in / Clock Out",
-           "path" => "home",
+           "path" => "clock.index",
            "icon" => "mdi-progress-clock"
        ],
    ];

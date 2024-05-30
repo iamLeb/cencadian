@@ -45,6 +45,16 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * Hire Intern
+     */
+    public function internHire($id): \Illuminate\Http\RedirectResponse
+    {
+        User::where('id', $id)->update(['type' => 'hired']);
+        return redirect()->back()->with('success', 'Intern Has Been Marked as Hired.');
+    }
+
     public function referenceCheckShow($id)
     {
         $reference = InternReference::where('id', $id)->first();

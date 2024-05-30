@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('pphone');
             $table->string('sphone')->nullable();
             $table->string('email');
+            $table->string('relationship');
             $table->string('address');
             $table->text('note')->nullable();
             $table->timestamps();

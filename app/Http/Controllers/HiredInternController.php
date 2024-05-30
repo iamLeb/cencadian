@@ -22,10 +22,26 @@ class HiredInternController extends Controller
             'name' => 'required',
             'email' => 'required',
             'pphone' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'relationship' => 'required'
         ]);
 
-        return "processing";
+        auth()->user()->emergency()->count() ? (
+            auth()->user()->emergency()->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'pphone' => $request->pphone,
+                'sphone' => $request->sphone,
+                'relationship' => $request->relationship,
+                'address' => $request->address,
+                'note' => $request->note,
+            ])
+        ) : (
+            auth()->user()->emergency()->create($request->all())
+        );
+
+        return redirect()->back()->with('success', 'Emergency Contact Stored');
 
     }
+
 }

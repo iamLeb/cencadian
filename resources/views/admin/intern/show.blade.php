@@ -148,7 +148,7 @@
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-4">Skills</h5>
+                                        <h5 class="card-title mb-4">Skillssss</h5>
                                         <div class="d-flex flex-wrap gap-2 fs-15">
                                             @if ($user->application)
                                                 @foreach(explode(',', $user->application->skills) as $skill)

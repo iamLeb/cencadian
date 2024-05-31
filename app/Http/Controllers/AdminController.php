@@ -40,7 +40,7 @@ class AdminController extends Controller
         $user = User::where('id', $id)->first();
         $references = $user->application->reference ?? '';
         return view('admin/intern/show', [
-            "user" => $user,
+            'user' => $user,
             'references' => $references
         ]);
     }

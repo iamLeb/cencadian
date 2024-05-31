@@ -99,52 +99,52 @@
                                 </div><!-- end card -->
 
                                 @if ($user->emergency)
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3">Emergency Information</h5>
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless mb-0">
-                                                <tbody>
-                                                <tr>
-                                                    <th class="ps-0" scope="row">Name:</th>
-                                                    <td class="text-muted">{{ $user->emergency->name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="ps-0" scope="row">Primary:</th>
-                                                    <td class="text-muted">{{ $user->emergency->pphone }}</td>
-                                                </tr>
-                                                @if ($user->emergency->sphone)
-                                                <tr>
-                                                    <th class="ps-0" scope="row">Secondary:</th>
-                                                    <td class="text-muted">{{ $user->emergency->sphone }}</td>
-                                                </tr>
-                                                @endif
-                                                <tr>
-                                                    <th class="ps-0" scope="row">E-mail:</th>
-                                                    <td class="text-muted">{{ $user->emergency->email }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="ps-0" scope="row">Address:</th>
-                                                    <td class="text-muted">{{ $user->emergency->address }}
-                                                    </td>
-                                                </tr>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">Emergency Information</h5>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless mb-0">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th class="ps-0" scope="row">Name:</th>
+                                                        <td class="text-muted">{{ $user->emergency->name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="ps-0" scope="row">Primary:</th>
+                                                        <td class="text-muted">{{ $user->emergency->pphone }}</td>
+                                                    </tr>
+                                                    @if ($user->emergency->sphone)
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">Secondary:</th>
+                                                            <td class="text-muted">{{ $user->emergency->sphone }}</td>
+                                                        </tr>
+                                                    @endif
+                                                    <tr>
+                                                        <th class="ps-0" scope="row">E-mail:</th>
+                                                        <td class="text-muted">{{ $user->emergency->email }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="ps-0" scope="row">Address:</th>
+                                                        <td class="text-muted">{{ $user->emergency->address }}
+                                                        </td>
+                                                    </tr>
 
-                                                <tr>
-                                                    <th class="ps-0" scope="row">Relationship:</th>
-                                                    <td class="text-muted">{{ $user->emergency->relationship }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="ps-0" scope="row">Note:</th>
-                                                    <td class="text-muted">
-                                                        <textarea class="form-control border-0" style="resize: none;">{{ $user->emergency->note }}</textarea>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div><!-- end card body -->
-                                </div><!-- end card -->
-                              @endif
+                                                    <tr>
+                                                        <th class="ps-0" scope="row">Relationship:</th>
+                                                        <td class="text-muted">{{ $user->emergency->relationship }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="ps-0" scope="row">Note:</th>
+                                                        <td class="text-muted">
+                                                            <textarea class="form-control border-0" style="resize: none;">{{ $user->emergency->note }}</textarea>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div><!-- end card body -->
+                                    </div><!-- end card -->
+                                @endif
 
                                 <div class="card">
                                     <div class="card-body">
@@ -198,26 +198,26 @@
                                             <div class="col-md-8">
                                                 <form action="{{ route('admin.intern.hire', $user->id) }}" method="post">
                                                     @csrf
-                                                @if ($user->application)
-                                                    <a onclick="return confirm('Are you sure you wanna send this email?')" class="btn btn-primary btn-sm" href="{{ $mailTo }}">
-                                                        <i class="ri-mail-close-fill"></i> Send Interview</a>
-                                                @endif
+                                                    @if ($user->application)
+                                                        <a onclick="return confirm('Are you sure you wanna send this email?')" class="btn btn-primary btn-sm" href="{{ $mailTo }}">
+                                                            <i class="ri-mail-close-fill"></i> Send Interview</a>
+                                                    @endif
 
-                                                @if ($user->application)
-                                                    <a href="{{route('show.interview.notes', ['applicationId' => $user->application->id, 'interviewerId' => auth()->user()->id])}}" class="btn btn-warning btn-sm">
-                                                        <i class="ri-mail-close-fill"></i>Interview Questions
-                                                    </a>
-                                                @endif
+                                                    @if ($user->application)
+                                                        <a href="{{route('show.interview.notes', ['applicationId' => $user->application->id, 'interviewerId' => auth()->user()->id])}}" class="btn btn-warning btn-sm">
+                                                            <i class="ri-mail-close-fill"></i>Interview Questions
+                                                        </a>
+                                                    @endif
 
-                                                @if ($user->application)
-                                                    <a href="{{ route('admin.intern.offer', $user->id) }}" class="btn btn-danger btn-sm">
-                                                        <i class="ri-mail-close-fill"></i> Send Offer Letter
-                                                    </a>
-                                                @endif
+                                                    @if ($user->application)
+                                                        <a href="{{ route('admin.intern.offer', $user->id) }}" class="btn btn-danger btn-sm">
+                                                            <i class="ri-mail-close-fill"></i> Send Offer Letter
+                                                        </a>
+                                                    @endif
 
-                                                @if ($user->application && $user->type !== 'hired')
-                                                    <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Please Note that this is not a reversible action, do you want to continue?')" ><i class="ri-mail-close-fill"></i> Mark Intern as Hired</button>
-                                                @endif
+                                                    @if ($user->application && $user->type !== 'hired')
+                                                        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Please Note that this is not a reversible action, do you want to continue?')" ><i class="ri-mail-close-fill"></i> Mark Intern as Hired</button>
+                                                    @endif
                                                 </form>
                                             </div>
                                         </div>

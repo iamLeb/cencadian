@@ -68,7 +68,7 @@
                             <div class="col-xxl-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-3">Info</h5>
+                                        <h5 class="card-title mb-3">Information</h5>
                                         <div class="table-responsive">
                                             <table class="table table-borderless mb-0">
                                                 <tbody>

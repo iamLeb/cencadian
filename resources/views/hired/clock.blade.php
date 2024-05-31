@@ -51,18 +51,14 @@
                     </script>
 
                     <div class="hstack gap-2 justify-content-center">
-                        @if(!$clockedOutToday)
-                            @if ($clockedInToday)
-                                <a href="{{ route('clock.out') }}" class="btn btn-danger btn-lg"><i class="ri-stop-circle-line align-bottom me-1"></i> Clock Out</a>
-                            @else
-                                <a href="{{ route('clock.in') }}" class="btn btn-success btn-lg"><i class="ri-play-circle-line align-bottom me-1"></i> Clock In</a>
-                            @endif
+                        @if ($isClockedIn)
+                            <a href="{{ route('clock.out') }}" class="btn btn-danger btn-lg"><i class="ri-stop-circle-line align-bottom me-1"></i> Clock Out</a>
                         @else
-                            <span class="alert alert-success">End of Day</span>
+                            <a href="{{ route('clock.in') }}" class="btn btn-success btn-lg"><i class="ri-play-circle-line align-bottom me-1"></i> Clock In</a>
                         @endif
                     </div>
                     <div class="mt-4">
-                        <h5 class="fs-14 mb-4">Clock In and Out Records</h5>
+                        <h5 class="fs-14 mb-4">Clock In and Out Records <br> <h3>Total time worked: {{ $totalTimeToday }}</h3></h5>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>

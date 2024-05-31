@@ -20,6 +20,8 @@ class ClockInOut extends Model
         'updated_at',
     ];
 
+    protected $dates = ['clock_in', 'clock_out'];
+
     public function getDurationAttribute()
     {
         if ($this->clock_in && $this->clock_out) {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClockInOut;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClockInOutController extends Controller
 {
@@ -21,46 +22,71 @@ class ClockInOutController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $attendance = ClockInOut::where('user_id', $user->id)->whereNull('clock_out')->first();
 
-        // Check if the user has clocked in today
-        $clockedInToday = $user->clock()
-            ->whereDate('created_at', Carbon::today())
-            ->exists();
+        // Get total time worked
+        $totalTimeToday = $this->getTotalTimeToday($user);
 
-        // Check if the user has clocked out today
-        $clockedOutToday = $user->clock()
-                    ->whereDate('clock_out', Carbon::today())
-                    ->exists();
+        // Check if the user is currently clocked in
+        $isClockedIn = $user->clock()->whereNull('clock_out')->exists();
 
         return view('hired.clock', [
-            'clockedInToday' => $clockedInToday,
-            'clockedOutToday' => $clockedOutToday,
+            'isClockedIn' => $isClockedIn,
             'records' => auth()->user()->clock,
+            'duration' => $attendance->duration ?? '',
+            'totalTimeToday' => $totalTimeToday,
         ]);
     }
 
     public function clockIn()
     {
-        auth()->user()->clock()->create([
-            'clock_in' => now()
+        $user = Auth::user();
+
+        // Check if the user is already clocked in
+        $openEntry = $user->clock()->whereNull('clock_out')->first();
+
+        if ($openEntry) {
+            return redirect()->back()->with('error', 'You are already clocked in.');
+        }
+
+        $user->clock()->create([
+            'clock_in' => now(),
         ]);
 
-        return redirect()->back()->with('success', 'Clocked in successfully!');
+        return redirect()->back()->with('success', 'Clocked in successfully.');
     }
 
     public function clockOut()
     {
-        $attendance = ClockInOut::where('user_id', auth()->id())->whereNull('clock_out')->first();
-        if ($attendance) {
-            $attendance->update(
-                [
-                    'clock_out' => now(),
-                    'duration' => $attendance->duration
-                ]
-            );
-            return redirect()->back()->with('success', 'Clocked out successfully!');
+        $user = Auth::user();
+
+        // Find the user's open clock entry
+        $openEntry = $user->clock()->whereNull('clock_out')->first();
+        if (!$openEntry) {
+            return redirect()->back()->with('error', 'You are not clocked in.');
         }
 
-        return redirect()->back()->with('error', 'You need to clock in first!');
+        $openEntry->update([
+            'clock_out' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Clocked out successfully.');
+    }
+
+    private function getTotalTimeToday($user)
+    {
+        $today = Carbon::today();
+        $clockEntries = $user->clock()
+            ->whereDate('clock_in', $today)
+            ->whereNotNull('clock_out')
+            ->get();
+
+        $totalDurationInSeconds = $clockEntries->reduce(function ($carry, $entry) {
+            $clockIn = Carbon::parse($entry->clock_in);
+            $clockOut = Carbon::parse($entry->clock_out);
+            return $carry + $clockIn->diffInSeconds($clockOut);
+        }, 0);
+
+        return gmdate('H:i:s', $totalDurationInSeconds);
     }
 }

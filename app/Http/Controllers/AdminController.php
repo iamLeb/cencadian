@@ -172,15 +172,12 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Interview notes saved successfully');
     }
 
-    public function hiredInterns($id)
+    public function hiredInterns()
     {
-        $user = User::where('id', $id)->first();
+        $users = User::where('type', 'hired')->get();
 
-        $references = $user->application->reference ?? '';
-        return view('admin/intern/show', [
-            "user" => $user,
-            'references' => $references
+        return view('admin/intern/hired', [
+            "users" => $users,
         ]);
-//        return view('admin/intern/hired', ['interns' => $interns]);
     }
 }

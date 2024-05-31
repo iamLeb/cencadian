@@ -61,7 +61,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'showInterviewNotes'])->name('show.interview.notes');
     Route::post('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'saveInterviewNotes'])->name('save.interview.notes');
 
-    Route::get('/hired/interns/{id}', [App\Http\Controllers\AdminController::class, 'hiredInterns'])->name('admin.hired.interns');
+    Route::get('/hired/interns/', [App\Http\Controllers\AdminController::class, 'hiredInterns'])->name('admin.hired.interns');
 });
 
 Route::group(['prefix' => 'company'], function () {

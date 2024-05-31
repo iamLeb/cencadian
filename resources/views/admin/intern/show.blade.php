@@ -167,7 +167,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <h5 class="card-title mb-3">Application Info</h5>
+                                                <h5 class="card-title mb-3">Application Information</h5>
                                             </div>
                                             @php
                                                 $mailTo =

@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Emergency::class);
     }
+
+    public function clock()
+    {
+        return $this->hasMany(ClockInOut::class);
+    }
 }

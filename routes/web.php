@@ -26,10 +26,10 @@ Route::group(['prefix' => '/secure'], function () {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
     Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');
-
     //Clock in-out
     Route::get('/clock-system', [App\Http\Controllers\ClockInOutController::class, 'index'])->name('clock.index');
-
+    Route::get('/clockin', [App\Http\Controllers\ClockInOutController::class, 'clockIn'])->name('clock.in');
+    Route::get('/clockout', [App\Http\Controllers\ClockInOutController::class, 'clockOut'])->name('clock.out');
 });
 
 Route::group(['prefix' => '/intern'], function () {
@@ -60,6 +60,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'showInterviewNotes'])->name('show.interview.notes');
     Route::post('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'saveInterviewNotes'])->name('save.interview.notes');
+
+    Route::get('/hired/interns/{id}', [App\Http\Controllers\AdminController::class, 'hiredInterns'])->name('admin.hired.interns');
 });
 
 Route::group(['prefix' => 'company'], function () {

@@ -92,8 +92,15 @@
                     @endforeach
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('admin.createAdmin')}}">
-                            <i class="mdi "></i>
+                            <i class="mdi mdi mdi-account"></i>
                             <span data-key="t-widgets">My Admins</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('admin.hired.interns', $user->id)}}">
+                            <i class="mdi mdi mdi-account-circle"></i>
+                            <span data-key="t-widgets">Hired Interns</span>
                         </a>
                     </li>
 

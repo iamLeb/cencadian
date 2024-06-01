@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('clock_in_outs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamp('clock_in')->nullable();
+            $table->timestamp('clock_out')->nullable();
+            $table->string('duration')->nullable();
             $table->timestamps();
         });
     }

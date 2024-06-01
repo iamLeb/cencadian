@@ -21,7 +21,6 @@
         <div class="mb-4">
             <a href="{{route('home')}}">&#x2190; Back to dashboard</a>
         </div>
-        <h3 class="mb-3">My Documents</h3>
     </div>
 
     <div class="row">
@@ -39,7 +38,7 @@
                         document.addEventListener("DOMContentLoaded", function() {
                             function updateTime() {
                                 var now = new Date();
-                                var formattedTime = now.getHours() + ':' + now.getMinutes().toString().padStart(2, '0') + ':' + now.getSeconds().toString().padStart(2, '0');;
+                                var formattedTime = now.getHours() + ':' + now.getMinutes().toString().padStart(2, '0') + ':' + now.getSeconds().toString().padStart(2, '0');
                                 document.getElementById('real-time-input').innerText = formattedTime;
                             }
 
@@ -52,8 +51,15 @@
                     </script>
 
                     <div class="hstack gap-2 justify-content-center">
-{{--                        <button class="btn btn-danger btn-lg"><i class="ri-stop-circle-line align-bottom me-1"></i> Stop</button>--}}
-                        <button class="btn btn-success btn-lg"><i class="ri-play-circle-line align-bottom me-1"></i> Clock In</button>
+                        @if(!$clockedOutToday)
+                            @if ($clockedInToday)
+                                <a href="{{ route('clock.out') }}" class="btn btn-danger btn-lg"><i class="ri-stop-circle-line align-bottom me-1"></i> Clock Out</a>
+                            @else
+                                <a href="{{ route('clock.in') }}" class="btn btn-success btn-lg"><i class="ri-play-circle-line align-bottom me-1"></i> Clock In</a>
+                            @endif
+                        @else
+                            <span class="alert alert-success">End of Day</span>
+                        @endif
                     </div>
                     <div class="mt-4">
                         <h5 class="fs-14 mb-4">Clock In and Out Records</h5>
@@ -64,20 +70,20 @@
                                     <th>Date</th>
                                     <th>Clock In Time</th>
                                     <th>Clock Out Time</th>
+                                    <th>Duration</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <!-- Example data, replace with dynamic data -->
-                                <tr>
-                                    <td>01/20/2024</td>
-                                    <td>09:00 AM</td>
-                                    <td>05:00 PM</td>
-                                </tr>
-                                <tr>
-                                    <td>01/21/2024</td>
-                                    <td>09:15 AM</td>
-                                    <td>05:15 PM</td>
-                                </tr>
+                                @foreach($records as $rec)
+                                    <tr>
+                                        <td>{{ $rec->created_at->toFormattedDateString() }}</td>
+                                        <td>{{ $rec->clock_in }}</td>
+                                        <td>{{ $rec->clock_out }}</td>
+                                        <td>{{ $rec->duration }}</td>
+                                    </tr>
+                                @endforeach
+
                                 </tbody>
                             </table>
                         </div>

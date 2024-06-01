@@ -19,19 +19,21 @@ Route::get('/secure', [App\Http\Controllers\HomeController::class, 'index'])->na
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::post('profile', [HomeController::class, 'updateCompany'])->name('company.update');
 Route::post('profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
+Route::get('/my-documents', [HomeController::class, 'showMyDocuments'])->name('my.documents');
 
 Route::group(['prefix' => '/secure'], function () {
     // Interns
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
     Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');
-    Route::post('/emergency/contact', [App\Http\Controllers\HiredInternController::class, 'storeEmergencyContact'])->name('emergency.contact.store');
 });
+
 Route::group(['prefix' => '/intern'], function () {
     // Interns
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
     Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');
+    Route::post('/emergency/contact', [App\Http\Controllers\HiredInternController::class, 'storeEmergencyContact'])->name('emergency.contact.store');
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -41,6 +43,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('delete/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete');
     Route::get('interns', [AdminController::class, 'interns'])->name('admin.interns');
     Route::get('interns/{id}', [AdminController::class, 'internShow'])->name('admin.intern.show');
+    Route::post('interns/hire/{id}', [AdminController::class, 'internHire'])->name('admin.intern.hire');
     Route::post('interns/delete/{id}', [AdminController::class, 'internDelete'])->name('admin.intern.delete');
     Route::get('company/{id}', [AdminController::class, 'companyShow'])->name('admin.company.show');
     Route::get('companies', [AdminController::class, 'companies'])->name('admin.companies');

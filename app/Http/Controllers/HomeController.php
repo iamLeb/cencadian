@@ -31,12 +31,18 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('dashboard.profile');
+        $references = "";
+        if (auth()->user()->application) {
+            $references = auth()->user()->application->reference;
+        }
+
+        return view('dashboard.profile', [
+            'references' => $references
+        ]);
     }
 
     public function profileUpdate(Request $request)
     {
-        dd($request->all());
         Auth::user()->update($request->all());
         return redirect()->route('home')->with('success', 'Profile Saved, Please Start Your Application');
     }
@@ -64,6 +70,11 @@ class HomeController extends Controller
     {
         auth()->user()->update($request->all());
         return redirect()->back()->with('success', 'Profile Updated');
+    }
+
+    public function showMyDocuments(Request $request)
+    {
+        return view('myDocuments');
     }
 
 }

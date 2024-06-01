@@ -11,6 +11,30 @@
            "icon" => "mdi-account-circle-outline"
        ]
    ];
+
+   $hiredLInks = [
+       [
+           "name" => "Dashboard",
+           "path" => "home",
+           "icon" => "mdi-speedometer"
+       ],
+       [
+           "name" => "My Info",
+           "path" => "profile",
+           "icon" => "mdi mdi-account-circle"
+       ],
+       [
+           "name" => "My Documents",
+           "path" => "my.documents",
+           "icon" => "mdi-clipboard-file"
+       ],
+       [
+
+           "name" => "Clock in / Clock Out",
+           "path" => "home",
+           "icon" => "mdi-progress-clock"
+       ],
+   ];
 ?>
 
 <div class="app-menu navbar-menu">
@@ -47,7 +71,7 @@
                 @php $user = auth()->user(); @endphp
 
                 @if (!$user)
-                
+
                 @elseif($user->isIntern())
                     @foreach($links as $link)
                         <li class="nav-item">
@@ -98,57 +122,6 @@
                             </ul>
                         </div>
                     </li>
-
-                        <hr>
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link menu-link collapsed" href="#employeeTemplates" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">--}}
-{{--                                <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Employee Templates</span>--}}
-{{--                            </a>--}}
-{{--                            <div class="menu-dropdown collapse" id="employeeTemplates" style="">--}}
-{{--                                <ul class="nav nav-sm flex-column">--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('admin.template.interview') }}" class="nav-link" data-key="t-calendar"> Letter of Interview </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Interview Questions </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Offer Letter </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Paystub Template </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link menu-link collapsed" href="#projectTemplates" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">--}}
-{{--                                <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Project Templates</span>--}}
-{{--                            </a>--}}
-{{--                            <div class="menu-dropdown collapse" id="projectTemplates" style="">--}}
-{{--                                <ul class="nav nav-sm flex-column">--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Project Completion and Sign </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Project Contracts </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Project Proposal </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('admin.interns') }}" class="nav-link" data-key="t-calendar"> Non Disclosure Agreement </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
                 @elseif ($user->isCompany())
                     @foreach($links as $link)
                         <li class="nav-item">
@@ -158,6 +131,37 @@
                             </a>
                         </li>
                     @endforeach
+                @elseif ($user->isHired())
+                    @foreach($hiredLInks as $link)
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route($link['path']) }}">
+                                <i class="mdi {{ $link['icon'] }}"></i>
+                                <span data-key="t-widgets">{{ $link['name'] }}</span>
+                            </a>
+                        </li>
+                    @endforeach
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link collapsed" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                                <i class="mdi mdi-clipboard-file"></i> <span data-key="t-apps">Documents</span>
+                            </a>
+                            <div class="menu-dropdown collapse" id="sidebarApps" style="">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Onboarding Docs. </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Training Docs. </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Personal Docs. </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="http://127.0.0.1:8000/admin/interns" class="nav-link" data-key="t-calendar"> Tax Docs. </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                 @endif
 
             </ul>

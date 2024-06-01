@@ -23,6 +23,24 @@
                 <p>Application for position of Web Development Intern</p>
             </div>
 
+            <div class="mb-4">
+                <h5>Preamble</h5>
+                <ul>
+                    <li>
+                        The 2024 Cencadian Summer Web Development Program was aimed to provide 
+                        Web Development Services at little to no cost to new or existing small 
+                        to medium scale organizations within community that might not be able to 
+                        afford the huge cost of web development and maintenance.
+                    </li>
+
+                    <li>
+                        The Web Development interns will be trained to assist in updating and editing 
+                        content for existing and new websites, creating and editing web page templates, 
+                        and assisting in other web-related projects as necessary.
+                    </li>
+                </ul>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Duration and Capacity</label>
                 <p>How long, and in what capacity have you known the candidate?</p>
@@ -243,6 +261,6 @@
     <!-- end row -->
 
     <div class="text-end mb-4">
-        <a href="{{ route('referencecheck.store') }}" onclick="event.preventDefault(); document.getElementById('create-request').submit();" class="btn btn-success h-l w-xl">Save Changes</a>
+        <a href="{{ route('referencecheck.store') }}" onclick="event.preventDefault(); document.getElementById('create-request').submit();" class="btn btn-success h-l w-xl">Submit</a>
     </div>
 </form>

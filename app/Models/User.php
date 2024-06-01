@@ -45,9 +45,14 @@ class User extends Authenticatable
         ];
     }
 
-    public function isAdmin(){ return $this->type === 'admin'; }
-    public function isCompany(){ return $this->type === 'company'; }
-    public function isIntern(){ return $this->type === 'intern'; }
+    public function isAdmin(): bool
+    { return $this->type === 'admin'; }
+    public function isCompany(): bool
+    { return $this->type === 'company'; }
+    public function isIntern(): bool
+    { return $this->type === 'intern'; }
+    public function isHired(): bool
+    { return $this->type === 'hired'; }
 
     //Relationship
     public function application()
@@ -67,5 +72,10 @@ class User extends Authenticatable
     public function interview()
     {
         return $this->hasMany(Interview::class, 'interviewer_id');
+    }
+
+    public function emergency()
+    {
+        return $this->hasOne(Emergency::class);
     }
 }

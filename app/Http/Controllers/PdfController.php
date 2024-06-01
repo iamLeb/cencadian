@@ -31,6 +31,12 @@ class PdfController extends Controller
 
     public function generatePdf(Request $request)
     {
+        $request->validate([
+            'type' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required',
+            'location' => 'required'
+        ]);
         $user = User::where('id', $request->id)->first();
 
         $userInfo = [
@@ -44,8 +50,17 @@ class PdfController extends Controller
             'location' => $request['location']
         ];
 
-        $pdf = Pdf::loadView('admin/intern/pdf/pdf_template', $userInfo);
-        // Return PDF as download
-        return $pdf->download('generated_pdf.pdf');
+        if ($request->type === 'volunteer') {
+            $pdf = Pdf::loadView('admin/intern/pdf/pdf_template_volunteer', $userInfo);
+        } else {
+            $pdf = Pdf::loadView('admin/intern/pdf/pdf_template', $userInfo);
+        }
+
+        return $pdf->stream('trest.pdf');
+
     }
 }
+
+//at a wage
+//cencadian
+// return this email to @admin.con

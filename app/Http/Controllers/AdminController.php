@@ -45,6 +45,16 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * Hire Intern
+     */
+    public function internHire($id): \Illuminate\Http\RedirectResponse
+    {
+        User::where('id', $id)->update(['type' => 'hired']);
+        return redirect()->back()->with('success', 'Intern Has Been Marked as Hired.');
+    }
+
     public function referenceCheckShow($id)
     {
         $reference = InternReference::where('id', $id)->first();
@@ -73,6 +83,7 @@ class AdminController extends Controller
 
     public function createAdmin()
     {
+
         return view('admin/admin');
     }
 
@@ -81,11 +92,13 @@ class AdminController extends Controller
         $request->validate([
             'type' => 'required',
             'name' => 'required',
+            'super_admin' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6'
         ]);
 
-        if (auth()->id() != 1) {
+
+        if (!auth()->user()->super_admin) {
             return redirect()->back()->with('error', 'Unauthorized Request Detected!!');
         } else {
             User::create($request->all());
@@ -96,7 +109,7 @@ class AdminController extends Controller
 
     public function deleteAdmin($id)
     {
-        if($id === 1) {
+        if(!auth()->user()->super_admin) {
             return redirect()->back()->with('error', 'You Cannot Delete a Supper Admin');
         } else {
             User::destroy($id);
@@ -104,8 +117,14 @@ class AdminController extends Controller
         }
     }
 
+    public function internDelete($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect()->route('admin.interns')->with('success', 'Intern Deleted');
+    }
+
     public function showInterviewNotes(Request $request)
-    {   
+    {
         $application = Application::where('id', $request->applicationId)->first();
         $interviewer = User::where('id', $request->interviewerId)->first();
         $interview = Interview::where('application_id', $request->applicationId)->where('interviewer_id', $request->interviewerId)->first();

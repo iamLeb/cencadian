@@ -99,6 +99,8 @@
                 </div>
             </div>
             <!--end card-->
+
+            @if ($sr->file)
             <div class="card">
                 <div class="card-header">
                     <div>
@@ -135,6 +137,7 @@
                                                         <i class="ri-file-zip-fill"></i>
                                                     </div>
                                                 </div>
+
                                                 <div class="ms-3 flex-grow-1">
                                                     <h6 class="fs-15 mb-0"><a target="_blank" href="https://arabicawhite.s3.amazonaws.com/file/{{ $sr->file }}" class="text-body">Detailed PDF</a></h6>
                                                 </div>
@@ -155,6 +158,7 @@
                 </div>
             </div>
             <!--end card-->
+            @endif
         </div>
         <!--end col-->
     </div>

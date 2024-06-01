@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col">
-
+            <!-- Display the greeting -->
         <div class="h-100">
             <div class="row mb-3 pb-1">
                 <div class="col-12">
                     <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                         <div class="flex-grow-1">
-                            <h4 class="fs-16 mb-1">Good Morning, {{ auth()->user()->name }}!</h4>
+                            <h4 class="fs-16 mb-1">Welcome {{ auth()->user()->name }}!</h4>
                             <p class="text-muted mb-0">Here's what's happening today.</p>
                         </div>
                         <div class="mt-3 mt-lg-0">
@@ -48,7 +48,7 @@
             <!--end row-->
 
             <div class="row">
-                <div class="col-xl-3 col-md-6">
+                <div class="col-xl-6 col-md-6">
                     <!-- card -->
                     <div class="card card-animate">
                         <div class="card-body">
@@ -72,7 +72,7 @@
                     </div><!-- end card -->
                 </div><!-- end col -->
 
-                <div class="col-xl-3 col-md-6">
+                <div class="col-xl-6 col-md-6">
                     <!-- card -->
                     <div class="card card-animate">
                         <div class="card-body">
@@ -95,7 +95,30 @@
                     </div><!-- end card -->
                 </div><!-- end col -->
 
-                <div class="col-xl-3 col-md-6">
+                <div class="col-xl-4 col-md-6">
+                    <!-- card -->
+                    <div class="card card-animate">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <p class="text-uppercase fw-medium text-muted text-truncate mb-0">No. of Hired Interns</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-4">
+                                <div>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ \App\Models\User::where('type', 'hired')->count() }}">{{ \App\Models\User::where('type', 'hired')->count() }}</span></h4>
+                                </div>
+                                <div class="avatar-sm flex-shrink-0">
+                                    <span class="avatar-title bg-info rounded fs-3">
+                                        <i class="bx bx-layer"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                <div class="col-xl-4 col-md-6">
                     <!-- card -->
                     <div class="card card-animate">
                         <div class="card-body">
@@ -119,7 +142,7 @@
                     </div><!-- end card -->
                 </div><!-- end col -->
 
-                <div class="col-xl-3 col-md-6">
+                <div class="col-xl-4 col-md-6">
                     <!-- card -->
                     <div class="card card-animate">
                         <div class="card-body">
@@ -141,6 +164,7 @@
                         </div><!-- end card body -->
                     </div><!-- end card -->
                 </div><!-- end col -->
+
             </div> <!-- end row-->
 
             <div class="row">
@@ -193,15 +217,16 @@
 
                 <div class="col-xl-6">
                     <div class="card card-height-100">
-                        <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Interns</h4>
+                        <div class="card-header align-items-center d-flex justify-content-between">
+                            <h4 class="card-title mb-0">Interns ({{ \App\Models\User::where('type', 'intern')->count() }})</h4>
+                            <a href="{{ route('admin.interns') }}">View All</a>
                         </div><!-- end card header -->
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
                                 <table class="table table-centered table-hover align-middle table-nowrap mb-0">
                                     <tbody>
-                                    @foreach(\App\Models\User::where('type', 'intern')->get() as $intern)
+                                    @foreach(\App\Models\User::where('type', 'intern')->take(5)->orderBy('id', 'DESC')->get() as $intern)
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">

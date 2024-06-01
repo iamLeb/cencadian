@@ -86,11 +86,14 @@
                                             <td class="date">{{ $intern->created_at->toFormattedDateString() }}</td>
                                             <td class="status"><span class="badge bg-success-subtle text-success text-uppercase">Active</span></td>
                                             <td>
-                                                <div class="d-flex gap-2">
-                                                    <div class="remove">
-                                                        <a href="{{ route('admin.intern.show', $intern->id) }}" class="btn btn-sm btn-danger remove-item-btn" >View</a>
+                                                <div class="d-flex justify-content-evenly">
+                                                    <div class="d-flex gap-2">
+                                                        <div class="remove">
+                                                            <a href="{{ route('admin.intern.show', $intern->id) }}" class="btn btn-sm btn-primary remove-item-btn" >View</a>
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </td>
                                         </tr>
                                     @endforeach

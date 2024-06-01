@@ -10,15 +10,16 @@ class ReferenceCheckController extends Controller
 {
     public function store(Request $request) {
         $request->validate([
-            'reference_id' => 'required',
-            'duration_capacity' => 'required',
-            'performance' => 'required',
-            'teamwork' => 'required',
-            'punctuality' => 'required',
-            'problem_solving' => 'required',
-            'communication' => 'required',
-            'professionalism' => 'required',
-            'suitability' => 'required'
+            'reference_id' => 'required|string|max:2000',
+            'duration_capacity' => 'required|string|max:2000',
+            'performance' => 'required|string|max:2000',
+            'teamwork' => 'required|string|max:2000',
+            'punctuality' => 'required|numeric|min:0|max:5',
+            'problem_solving' => 'required|numeric|min:0|max:5',
+            'communication' => 'required|numeric|min:0|max:5',
+            'professionalism' => 'required|numeric|min:0|max:5',
+            'suitability' => 'required|string|max:2000',
+            'additional_comments' => 'nullable|string|max:2000'
         ]);
 
         $previousRecord = $referenceCheck = ReferenceCheck::where('reference_id', $request->reference_id)->first();

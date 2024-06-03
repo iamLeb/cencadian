@@ -129,6 +129,28 @@
                             </ul>
                         </div>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link collapsed" href="#sidebarApps3" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps3">
+                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Documents</span>
+                        </a>
+                        <div class="menu-dropdown collapse" id="sidebarApps3" style="">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('my.documents') }}" class="nav-link" data-key="t-calendar"> My Documents </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-dropdown collapse" id="sidebarApps3" style="">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('show.add.employee.documents') }}" class="nav-link" data-key="t-calendar"> Add Employee Documents </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
                 @elseif ($user->isCompany())
                     @foreach($links as $link)
                         <li class="nav-item">

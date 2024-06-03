@@ -40,6 +40,9 @@
     @include('alerts')
     @include('components/header')
 
+
+{{--    @include('components/clockReminder')--}}
+
     <!-- removeNotificationModal -->
     <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -77,9 +80,12 @@
 
         <div class="page-content">
             <div class="container-fluid">
-
+                @foreach(auth()->user()->clock()->whereNull('clock_out')->get() as $clock)
+                    @if($clock->whereNull('clock_in'))
+                        Please clock in
+                    @endif
+                @endforeach
                 @yield('content')
-
             </div>
             <!-- container-fluid -->
         </div>
@@ -170,6 +176,21 @@
 
 <!-- App js -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
+
+<!-- Custom JavaScript to Trigger Modal -->
+{{--@if(auth()->user()->isHired())--}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function showModal() {
+                var modal = new bootstrap.Modal(document.getElementById('periodicModal'));
+                modal.show();
+            }
+
+            // Trigger the modal every 5 minutes (300000 milliseconds)
+            setInterval(showModal, 1000);
+        });
+    </script>
+{{--@endif--}}
 </body>
 
 </html>

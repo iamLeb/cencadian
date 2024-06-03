@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\ReferenceCheckController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,7 +20,7 @@ Route::get('/secure', [App\Http\Controllers\HomeController::class, 'index'])->na
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::post('profile', [HomeController::class, 'updateCompany'])->name('company.update');
 Route::post('profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('update.profile');
-Route::get('/my-documents', [HomeController::class, 'showMyDocuments'])->name('my.documents');
+Route::get('/my-documents', [DocumentController::class, 'showMyDocuments'])->name('my.documents');
 Route::post('change-password', [HomeController::class, 'changePassword'])->name('change.password');
 
 Route::group(['prefix' => '/secure'], function () {
@@ -63,6 +64,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/admin/interns/interview/{applicationId}/{interviewerId}', [AdminController::class, 'saveInterviewNotes'])->name('save.interview.notes');
 
     Route::get('/hired/interns/', [App\Http\Controllers\AdminController::class, 'hiredInterns'])->name('admin.hired.interns');
+    Route::get('add-employee-documents', [AdminController::class, 'showAddEmployeeDocuments'])->name('show.add.employee.documents');
+    Route::post('add-employee-documents', [DocumentController::class, 'createDocument'])->name('create.document');
 });
 
 Route::group(['prefix' => 'company'], function () {

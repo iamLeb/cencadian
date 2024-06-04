@@ -80,11 +80,9 @@
 
         <div class="page-content">
             <div class="container-fluid">
-                @foreach(auth()->user()->clock()->whereNull('clock_out')->get() as $clock)
-                    @if($clock->whereNull('clock_in'))
-                        Please clock in
-                    @endif
-                @endforeach
+
+                {{ auth()->user()->clocked_in }}
+
                 @yield('content')
             </div>
             <!-- container-fluid -->

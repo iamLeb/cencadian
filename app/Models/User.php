@@ -83,4 +83,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(ClockInOut::class);
     }
+
+    public function ownedDocuments() {
+        return $this->hasMany(Document::class, 'owner_id');
+    }
+
+    public function documentAccesses() {
+        return $this->hasMany(DocumentAccess::class, 'user_id');
+    }
 }

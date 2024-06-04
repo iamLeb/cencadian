@@ -180,4 +180,12 @@ class AdminController extends Controller
             "users" => $users,
         ]);
     }
+    
+    public function showAddEmployeeDocuments(Request $request)
+    {
+        $employees = User::where('type', 'hired')->orWhere('type', 'admin')->orWhere('type', 'super_admin')->get();
+        return view('addEmployeeDocuments', [
+            "employees" => $employees
+        ]);
+    }
 }

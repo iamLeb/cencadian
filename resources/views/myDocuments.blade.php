@@ -12,90 +12,48 @@
                     <h3 class="mb-3">My Documents</h1>
                 </div>
 
+                
                 <div class="card">
-                    <div class="card-body p-4">
-                        <h3>Onboarding Documents</h3>
+                    @if (auth()->user()->isAdmin())
+                        <div class="card-body p-4">
+                            <h3>Owned Documents</h3>
 
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
+                            <ul>
+                                @foreach ($ownedDocuments as &$ownedDocument)
+                                    <li>
+                                        <a target="_blank" href="https://arabicawhite.s3.amazonaws.com/documents/{{$ownedDocument->category}}/{{$ownedDocument->file_name}}">
+                                            {{$ownedDocument->file_name}}
+                                        </a>
+                                    </li>
+                                @endforeach
 
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
+                                @if (!$ownedDocuments or !count($ownedDocuments))
+                                    <li>You haven't shared any documents.</li>
+                                @endif
 
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
+                    @endif
                     
 
                 </div>
 
                 <div class="card">
                     <div class="card-body p-4">
-                        <h3>Training Documents</h3>
+                        <h3>Shared with me</h3>
 
                         <ul>
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
+                            @foreach ($accessibleDocuments as &$accessibleDocument)
+                                <li>
+                                    <a target="_blank" href="https://arabicawhite.s3.amazonaws.com/documents/{{$accessibleDocument->category}}/{{$accessibleDocument->file_name}}">
+                                        {{$accessibleDocument->file_name}}
+                                    </a>
+                                </li>
+                            @endforeach
 
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-
-                </div>
-
-                <div class="card">
-                    <div class="card-body p-4">
-                        <h3>Pay Stubs</h3>
-
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Document 1</a>
-                            </li>
+                            @if (!$accessibleDocuments or !count($accessibleDocuments))
+                                <li>No documents have been shared with you</li>
+                            @endif
                         </ul>
                     </div>
                     

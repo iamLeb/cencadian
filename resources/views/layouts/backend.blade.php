@@ -77,9 +77,8 @@
 
         <div class="page-content">
             <div class="container-fluid">
-
+                {{ auth()->user()->clocked_in }}
                 @yield('content')
-
             </div>
             <!-- container-fluid -->
         </div>

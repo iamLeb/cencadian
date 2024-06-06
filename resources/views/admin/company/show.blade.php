@@ -60,27 +60,6 @@
                                 <td class="fw-medium">Title</td>
                                 <td>{{ ucfirst($sr->title) }}</td>
                             </tr>
-                            <tr>
-                                <td class="fw-medium">Tasks Title</td>
-                                <td>Profile Page Structure</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium">Priority</td>
-                                <td><span class="badge bg-danger-subtle text-danger">{{ $sr->priority }}</span></td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium">Deadline</td>
-                                <td><span>{{ $sr->deadline }}</span></td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium">Budget Range</td>
-                                <td>${{ $sr->budget }}</td>
-                            </tr>
-
-                            <tr>
-                                <td class="fw-medium">Category</td>
-                                <td>{{ $sr->category }}</td>
-                            </tr>
                             </tbody>
                         </table>
                         <!--end table-->
@@ -92,10 +71,26 @@
         <div class="col-xxl-9">
             <div class="card">
                 <div class="card-body">
-                    <div class="text-muted">
-                        <h6 class="mb-3 fw-semibold text-uppercase">Summary</h6>
-                        <p>{{ $sr->desc }}</p>
-                    </div>
+
+                    <h3 class="mb-5 text-center">Project title: {{$sr->title}}</h3>
+
+                    <h6 class="mb-3 fw-semibold text-uppercase">Executive Summary</h6>
+                    <p class="mb-4">{{ $sr->executive_summary }}</p>
+
+                    <h6 class="mb-3 fw-semibold text-uppercase">Background and rationale</h6>
+                    <p class="mb-4">{{ $sr->background_rationale }}</p>
+
+                    <h6 class="mb-3 fw-semibold text-uppercase">Community Involvement</h6>
+                    <p class="mb-4">{{ $sr->community_involvement }}</p>
+
+                    <h6 class="mb-3 fw-semibold text-uppercase">Project Requirements</h6>
+                    <p class="mb-4">{{ $sr->project_requirements }}</p>
+
+                    <h6 class="mb-3 fw-semibold text-uppercase">Project Team</h6>
+                    <p class="mb-4">{{ $sr->project_team }}</p>
+
+                    <h6 class="mb-3 fw-semibold text-uppercase">Budget</h6>
+                    <p class="mb-4">{{ $sr->budget }}</p>
                 </div>
             </div>
             <!--end card-->

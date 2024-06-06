@@ -31,15 +31,16 @@ class ServiceRequestController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'executive_summary' => 'required',
-            'community_involvement' => 'required',
-            'background_rationale' => 'required',
-            'project_requirements' => 'required',
-            'project_team' => 'required',
-            'budget' => 'required',
-            'org_category' => 'required',
-            'service_category' => 'required',
+            'title' => 'required|string|max:300',
+            'executive_summary' => 'required|string|max:2500',
+            'community_involvement' => 'required|string|max:2500',
+            'background_rationale' => 'required|string|max:2500',
+            'project_requirements' => 'required|string|max:2500',
+            'project_team' => 'required|string|max:2500',
+            'budget' => 'required|string|max:2500',
+            'org_category' => 'required|string|max:300',
+            'service_category' => 'required|string|max:300',
+            'other_remarks' => 'string|nullable|max:2500'
         ]);
 
 //        ServiceRequest::create([
@@ -69,7 +70,7 @@ class ServiceRequestController extends Controller
 //            ]);
 //        }
 
-        return redirect()->route('company.home')->with('success', 'Service Request Created');
+        return redirect()->route('company.home')->with('success', ' Created');
 
     }
 }

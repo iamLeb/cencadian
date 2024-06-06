@@ -146,16 +146,9 @@
                                     </div><!-- end card -->
                                 @endif
 
-
-                                @if ($user->clock)
-                                    @foreach($user->clock as $clock)
-                                        <p>{{ $clock->created_at }}</p>
-                                    @endforeach
-                                @endif
-
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-4">Skills</h5>
+                                        <h5 class="card-title mb-4">Skillssss</h5>
                                         <div class="d-flex flex-wrap gap-2 fs-15">
                                             @if ($user->application)
                                                 @foreach(explode(',', $user->application->skills) as $skill)
@@ -174,7 +167,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <h5 class="card-title mb-3">Application Info</h5>
+                                                <h5 class="card-title mb-3">Application Information</h5>
                                             </div>
                                             @php
                                                 $mailTo =
@@ -205,26 +198,26 @@
                                             <div class="col-md-8">
                                                 <form action="{{ route('admin.intern.hire', $user->id) }}" method="post">
                                                     @csrf
-                                                @if ($user->application)
-                                                    <a onclick="return confirm('Are you sure you wanna send this email?')" class="btn btn-primary btn-sm" href="{{ $mailTo }}">
-                                                        <i class="ri-mail-close-fill"></i> Send Interview</a>
-                                                @endif
+                                                    @if ($user->application)
+                                                        <a onclick="return confirm('Are you sure you wanna send this email?')" class="btn btn-primary btn-sm" href="{{ $mailTo }}">
+                                                            <i class="ri-mail-close-fill"></i> Send Interview</a>
+                                                    @endif
 
-                                                @if ($user->application)
-                                                    <a href="{{route('show.interview.notes', ['applicationId' => $user->application->id, 'interviewerId' => auth()->user()->id])}}" class="btn btn-warning btn-sm">
-                                                        <i class="ri-mail-close-fill"></i>Interview Questions
-                                                    </a>
-                                                @endif
+                                                    @if ($user->application)
+                                                        <a href="{{route('show.interview.notes', ['applicationId' => $user->application->id, 'interviewerId' => auth()->user()->id])}}" class="btn btn-warning btn-sm">
+                                                            <i class="ri-mail-close-fill"></i>Interview Questions
+                                                        </a>
+                                                    @endif
 
-                                                @if ($user->application)
-                                                    <a href="{{ route('admin.intern.offer', $user->id) }}" class="btn btn-danger btn-sm">
-                                                        <i class="ri-mail-close-fill"></i> Send Offer Letter
-                                                    </a>
-                                                @endif
+                                                    @if ($user->application)
+                                                        <a href="{{ route('admin.intern.offer', $user->id) }}" class="btn btn-danger btn-sm">
+                                                            <i class="ri-mail-close-fill"></i> Send Offer Letter
+                                                        </a>
+                                                    @endif
 
-                                                @if ($user->application && $user->type !== 'hired')
-                                                    <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Please Note that this is not a reversible action, do you want to continue?')" ><i class="ri-mail-close-fill"></i> Mark Intern as Hired</button>
-                                                @endif
+                                                    @if ($user->application && $user->type !== 'hired')
+                                                        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Please Note that this is not a reversible action, do you want to continue?')" ><i class="ri-mail-close-fill"></i> Mark Intern as Hired</button>
+                                                    @endif
                                                 </form>
                                             </div>
                                         </div>

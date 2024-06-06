@@ -56,7 +56,7 @@ class PdfController extends Controller
             $pdf = Pdf::loadView('admin/intern/pdf/pdf_template', $userInfo);
         }
 
-        return $pdf->stream('trest.pdf');
+        return $pdf->download($user->name . '-offerLetter.pdf');
 
     }
 }

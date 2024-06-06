@@ -17,7 +17,7 @@
 
                                     <th scope="col" style="width: 10px;">
                                         <div class="form-check">
-                                            <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
+                                            <input id="check-all" class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
                                         </div>
                                     </th>
                                     <th>
@@ -79,4 +79,15 @@
             </div>
         </form>
     </div>
+
+    <script>
+        let checkAllBox = document.querySelector('#check-all');
+        checkAllBox.addEventListener('click', (e) => {
+            let formChecks = document.querySelectorAll('input.form-check-input');
+
+            for (let i = 0; i<formChecks.length; i++) {
+                formChecks[i].checked=e.target.checked;
+            }
+        });
+    </script>
 @endsection

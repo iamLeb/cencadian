@@ -170,7 +170,7 @@
                         </li>
                     @endforeach
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link menu-link collapsed" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                                 <i class="mdi mdi-clipboard-file"></i> <span data-key="t-apps">Documents</span>
                             </a>
@@ -190,7 +190,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                 @endif
 
             </ul>

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\InternReference;
 use App\Models\ReferenceCheck;
 use App\Models\Interview;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use function Termwind\render;
@@ -180,12 +181,38 @@ class AdminController extends Controller
             "users" => $users,
         ]);
     }
-    
+
     public function showAddEmployeeDocuments(Request $request)
     {
         $employees = User::where('type', 'hired')->orWhere('type', 'admin')->orWhere('type', 'super_admin')->get();
         return view('addEmployeeDocuments', [
             "employees" => $employees
         ]);
+    }
+
+    public function manageClock($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        $result = [];
+
+        foreach ($user->clock as $clock) {
+            $timestamp1 = $clock->clock_in;
+            $timestamp2 = $clock->clock_out;
+
+            // Ensure both timestamps are set
+            if ($timestamp1 && $timestamp2) {
+                $time1 = Carbon::parse($timestamp1);
+                $time2 = Carbon::parse($timestamp2);
+
+                $differenceInSeconds = $time1->diffInSeconds($time2);
+
+                $result[] = [
+                    'clocked_in' => $timestamp1,
+                    'clocked_out' => $timestamp2,
+                    'difference_in_seconds' => $differenceInSeconds,
+                ];
+            }
+        }
     }
 }

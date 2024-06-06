@@ -21,7 +21,9 @@ class ClockInOutController extends Controller
 
     public function index()
     {
+
         $user = auth()->user();
+
         $attendance = ClockInOut::where('user_id', $user->id)->whereNull('clock_out')->first();
 
         // Get total time worked

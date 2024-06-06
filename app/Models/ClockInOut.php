@@ -27,7 +27,7 @@ class ClockInOut extends Model
         if ($this->clock_in && $this->clock_out) {
             $clockIn = Carbon::parse($this->clock_in);
             $clockOut = Carbon::parse($this->clock_out);
-            return $clockOut->diffForHumans($clockIn, true); // human readable format
+            return $clockOut->diffForHumans($clockIn, true); // readable format
         }
 
         return null;

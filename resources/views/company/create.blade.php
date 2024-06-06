@@ -64,7 +64,7 @@
                     <div class="mb-3">
                         <label class="form-label">Background and Rationale</label>
                         <p>Describe the problem and why the project is necessary. Explain how the project aligns with the strategic goals of your organization, and how it will help form connections in your community.</p>
-                        <textarea class="form-control @error('community_involvement') is-invalid @enderror" name="background_rationale" id="" cols="30" rows="10" placeholder="Enter Background & Rationale" required>{{ old('background_rationale') }}</textarea>
+                        <textarea class="form-control @error('background_rationale') is-invalid @enderror" name="background_rationale" id="" cols="30" rows="10" placeholder="Enter Background & Rationale" required>{{ old('background_rationale') }}</textarea>
                         @error('background_rationale')
                         <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -108,7 +108,7 @@
                     <div class="mb-3">
                         <label class="form-label">Other Remarks</label>
                         <p>If there is anything Cencadian should know about your organization or your proposed project not covered in the previous sections, let us know here.</p>
-                        <textarea class="form-control" name="other_remarks" id="" cols="30" rows="10" placeholder="Enter Other Remarks"></textarea>
+                        <textarea class="form-control" name="other_remarks" id="" cols="30" rows="10" placeholder="Enter Other Remarks">{{old('other_remarks')}}</textarea>
                     </div>
 
 
@@ -221,9 +221,31 @@
                     <div class="mb-3">
                         <label for="choices-categories-input" class="form-label">Service Category</label>
                         <select name="service_category" class="form-select @error('service_category') is-invalid @enderror" data-choices data-choices-search-false id="choices-categories-input" required>
-                            <option disabled selected>-- Select Service Category --</option>
-                            <option value="new">New Service</option>
-                            <option value="alter">Alter Existing Service</option>
+                            <option disabled
+                            @if (!old('service_category'))
+                                    selected
+                                @endif
+                            >
+                                -- Select Service Category --
+                            </option>
+
+                            <option 
+                                value="new"
+                                @if (old('service_category') == 'new')
+                                    selected
+                                @endif
+                            >
+                                New Service
+                            </option>
+
+                            <option 
+                                value="alter"
+                                @if (old('service_category') == 'alter')
+                                    selected
+                                @endif
+                            >
+                                Alter Existing Service
+                            </option>
                         </select>
                         @error('service_category')
                         <span class="invalid-feedback" role="alert">
@@ -239,11 +261,52 @@
                     <div class="mb-3">
                         <label for="choices-categories-input" class="form-label">Organization Type</label>
                         <select name="org_category" class="form-select @error('org_category') is-invalid @enderror" data-choices data-choices-search-false id="choices-categories-input" required>
-                            <option disabled selected>-- Select Organization Type --</option>
-                            <option value="smallbiz">Small Business</option>
-                            <option value="medbiz">Medium Business</option>
-                            <option value="nonprofit">Non-Profit Organization</option>
-                            <option value="other">Other Organization Type</option>
+
+                            <option disabled 
+                                @if (!old('org_category'))
+                                    selected
+                                @endif
+                            >
+                                -- Select Organization Type --
+                            </option>
+
+                            <option 
+                                value="smallbiz"
+                                @if (old('org_category')  == 'smallbiz')
+                                    selected
+                                @endif
+                            >
+                                Small Business
+                            </option>
+
+                            <option
+                                value="medbiz"
+                                @if (old('org_category')  == 'medbiz')
+                                    selected
+                                @endif
+                            >
+                                Medium Business
+                            </option>
+
+
+                            <option 
+                                value="nonprofit"
+                                @if (old('org_category') == 'nonprofit')
+                                    selected
+                                @endif
+                            >
+                                Non-Profit Organization
+                            </option>
+
+                            <option 
+                                value="other"
+                                @if (old('org_category') == 'other')
+                                    selected
+                                @endif
+                            >
+                                Other Organization Type
+                            </option>
+
                         </select>
                         @error('org_category')
                         <span class="invalid-feedback" role="alert">

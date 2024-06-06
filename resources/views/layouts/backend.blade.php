@@ -39,7 +39,6 @@
 <div id="layout-wrapper">
     @include('alerts')
     @include('components/header')
-
     <!-- removeNotificationModal -->
     <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

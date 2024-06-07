@@ -144,7 +144,7 @@ class DocumentController extends Controller
 
         //add new accesses that do not currently exist
         foreach ($request->share_with as $user_id) {
-            
+
             if (!DocumentAccess::where('document_id', $request->id)->where('user_id', $user_id)->exists()) {
                 DocumentAccess::create([
                     "user_id" => $user_id,
@@ -158,5 +158,5 @@ class DocumentController extends Controller
         return redirect()->route('my.documents')->with('success', 'Document access updated successfully');
     }
 
-    
+
 }

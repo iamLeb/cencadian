@@ -73,6 +73,7 @@ class ClockInOutController extends Controller
         $openEntry->update([
             'clock_out' => now(),
         ]);
+
         auth()->user()->update(['clocked_in' => false]);
 
         return redirect()->back()->with('success', 'Clocked out successfully.');

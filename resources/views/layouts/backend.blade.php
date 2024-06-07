@@ -40,9 +40,6 @@
     @include('alerts')
     @include('components/header')
 
-
-{{--    @include('components/clockReminder')--}}
-
     <!-- removeNotificationModal -->
     <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -80,9 +77,7 @@
 
         <div class="page-content">
             <div class="container-fluid">
-
-                {{ auth()->user()->clocked_in }}
-
+                @include('components.clockReminder')
                 @yield('content')
             </div>
             <!-- container-fluid -->
@@ -174,21 +169,21 @@
 
 <!-- App js -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
+<script>
+    const FIVE_MIN = 1000 * 60 * 5;
 
-<!-- Custom JavaScript to Trigger Modal -->
-{{--@if(auth()->user()->isHired())--}}
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function showModal() {
-                var modal = new bootstrap.Modal(document.getElementById('periodicModal'));
-                modal.show();
-            }
+    function waitAndDoSomething() {
+        const msToNextRounded5Min = FIVE_MIN - (Date.now() % FIVE_MIN);
+        let modal = new bootstrap.Modal(document.getElementById('periodicModal'));
+        modal.hide();
 
-            // Trigger the modal every 5 minutes (300000 milliseconds)
-            setInterval(showModal, 1000);
-        });
-    </script>
-{{--@endif--}}
+        setInterval(() => {
+            modal.show();
+        }, msToNextRounded5Min);
+    }
+
+    waitAndDoSomething();
+</script>
 </body>
 
 </html>

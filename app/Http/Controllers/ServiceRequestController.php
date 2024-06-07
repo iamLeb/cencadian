@@ -33,14 +33,12 @@ class ServiceRequestController extends Controller
         $request->validate([
             'title' => 'required|string|max:300',
             'executive_summary' => 'required|string|max:2500',
-            'community_involvement' => 'required|string|max:2500',
-            'background_rationale' => 'required|string|max:2500',
             'project_requirements' => 'required|string|max:2500',
-            'project_team' => 'required|string|max:2500',
             'budget' => 'required|string|max:2500',
             'org_category' => 'required|string|max:300',
             'service_category' => 'required|string|max:300',
-            'other_remarks' => 'string|nullable|max:2500'
+            'other_remarks' => 'string|nullable|max:2500',
+            'budget_specify' => 'string|required|max:10|min:2'
         ]);
 
 //        ServiceRequest::create([

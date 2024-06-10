@@ -7,6 +7,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\ReferenceCheckController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\TimesheetController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -49,6 +50,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('delete/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete');
     Route::get('interns', [AdminController::class, 'interns'])->name('admin.interns');
     Route::get('interns/{id}', [AdminController::class, 'internShow'])->name('admin.intern.show');
+    Route::get('interns/{id}/generate-pay-stub', [TimesheetController::class, 'showGeneratePayStub'])->name('show.generate.pay.stub');
+    Route::get('interns/{id}/review-timesheet', [TimesheetController::class, 'reviewTimesheet'])->name('review.timesheet');
+    Route::get('interns/edit-clock-entry/{id}', [TimesheetController::class, 'showEditClockEntry'])->name('show.edit.clock.entry');
+    Route::post('interns/edit-clock-entry/{id}', [TimesheetController::class, 'editClockEntry'])->name('edit.clock.entry');
+    Route::get('interns/delete-clock-entry/{id}', [TimesheetController::class, 'deleteClockEntry'])->name('delete.clock.entry');
+    Route::get('interns/{id}/create-clock-entry', [TimesheetController::class, 'showCreateClockEntry'])->name('show.create.clock.entry');
+    Route::post('interns/{id}/create-clock-entry', [TimesheetController::class, 'createClockEntry'])->name('create.clock.entry');
     Route::post('interns/hire/{id}', [AdminController::class, 'internHire'])->name('admin.intern.hire');
     Route::post('interns/delete/{id}', [AdminController::class, 'internDelete'])->name('admin.intern.delete');
     Route::get('company/{id}', [AdminController::class, 'companyShow'])->name('admin.company.show');

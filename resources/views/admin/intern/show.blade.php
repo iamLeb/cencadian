@@ -206,7 +206,7 @@
                                             <div class="col-md-8">
                                                 <form action="{{ route('admin.intern.hire', $user->id) }}" method="post">
                                                     @csrf
-                                                @if ($user->application)
+                                                @if ($user->application && $user->type === "intern")
                                                     <a onclick="return confirm('Are you sure you wanna send this email?')" class="btn btn-primary btn-sm" href="{{ $mailTo }}">
                                                         <i class="ri-mail-close-fill"></i> Send Interview</a>
                                                 @endif
@@ -217,7 +217,7 @@
                                                     </a>
                                                 @endif
 
-                                                @if ($user->application)
+                                                @if ($user->application && $user->type === "intern")
                                                     <a href="{{ route('admin.intern.offer', $user->id) }}" class="btn btn-danger btn-sm">
                                                         <i class="ri-mail-close-fill"></i> Send Offer Letter
                                                     </a>
@@ -226,6 +226,13 @@
                                                 @if ($user->application && $user->type !== 'hired')
                                                     <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Please Note that this is not a reversible action, do you want to continue?')" ><i class="ri-mail-close-fill"></i> Mark Intern as Hired</button>
                                                 @endif
+
+                                                @if ($user->type === 'hired') 
+                                                    <a href={{route('show.generate.pay.stub', ['id' => $user->id])}} class="btn btn-success btn-sm"><i class="ri-mail-close-fill"></i> Generate Pay Stub</a>       
+                                                    
+                                                    <a href={{route('review.timesheet', ['id' => $user->id])}} class="btn btn-danger btn-sm"><i class="mdi mdi-clock-edit-outline"></i>Review timesheet</a>
+                                                @endif
+
                                                 </form>
                                             </div>
                                         </div>

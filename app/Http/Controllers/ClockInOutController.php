@@ -23,6 +23,10 @@ class ClockInOutController extends Controller
     {
 
         $user = auth()->user();
+        $today = Carbon::today();
+
+        // Fetch records where created_at is today
+        $recordsToday = $user->clock()->whereDate('created_at', $today)->get();
 
         $attendance = ClockInOut::where('user_id', $user->id)->whereNull('clock_out')->first();
 
@@ -34,7 +38,7 @@ class ClockInOutController extends Controller
 
         return view('hired.clock', [
             'isClockedIn' => $isClockedIn,
-            'records' => auth()->user()->clock,
+            'records' => $recordsToday,
             'duration' => $attendance->duration ?? '',
             'totalTimeToday' => $totalTimeToday,
         ]);

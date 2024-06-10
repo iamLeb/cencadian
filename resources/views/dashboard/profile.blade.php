@@ -1,3 +1,12 @@
+@php
+    $application = auth()?->user()?->application()?->first();
+    $referenceOnePrefContact = auth()?->user()?->application()?->first()?->reference()?->first()->prefContact;
+    $referenceTwoPrefContact = auth()?->user()?->application()?->first()?->reference()?->skip(1)->first()->prefContact;
+    $referenceThreePrefContact = auth()?->user()?->application()?->first()?->reference()?->skip(2)->first()
+        ->prefContact;
+@endphp
+
+{{-- https://arabicawhite.s3.amazonaws.com/resume/{{$application->resume}} --}}
 @extends('layouts.backend')
 @section('content')
 
@@ -11,10 +20,10 @@
                     </div>
                 </div>
                 <!-- <div class="col-6">
-                        <div class="page-title-box d-sm-flex align-items-center justify-content-around">
-                            <a target="_blank" href="https://arabicawhite.s3.amazonaws.com/resume/{{ auth()->user()->application->resume }}">View Uploaded Resume</a>
-                        </div>
-                    </div> -->
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-around">
+                                            <a target="_blank" href="https://arabicawhite.s3.amazonaws.com/resume/{{ auth()->user()->application->resume }}">View Uploaded Resume</a>
+                                        </div>
+                                    </div> -->
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -134,9 +143,8 @@
                                     @elseif(auth()->user()->isHired())
                                         @include('dashboard.hired')
                                     @elseif(auth()->user()->isIntern())
-                                        <form
-                                            action="{{ route('application.update', auth()->user()->application()->first()->id) }}"
-                                            method="post" enctype="multipart/form-data">
+                                        <form action="{{ route('application.update', $application->id) }}" method="post"
+                                            enctype="multipart/form-data">
 
 
 
@@ -178,16 +186,15 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label for="gender" class="form-label">Gender</label>
-                                                        @if (auth()->user()->gender)
-                                                            <input type="text" value="{{ auth()->user()->gender }}"
-                                                                class="form-control">
-                                                        @else
-                                                            <select class="form-control" name="gender" id="gender">
-                                                                <option selected disabled>-- Select Gender --</option>
-                                                                <option value="male">Male</option>
-                                                                <option value="female">Female</option>
-                                                            </select>
-                                                        @endif
+
+                                                        <select class="form-control" name="gender" id="gender">
+                                                            <option selected disabled>-- Select Gender --</option>
+                                                            <option @if (auth()->user()->gender === 'male') selected @endif
+                                                                value="male">Male</option>
+                                                            <option @if (auth()->user()->gender === 'female') selected @endif
+                                                                value="female">Female</option>
+                                                        </select>
+
 
                                                     </div>
                                                 </div>
@@ -232,9 +239,10 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-5">
                                                         <label for="cityInput" class="form-label">Address</label>
-                                                        <input readonly value="{{ auth()->user()->address }}" required
-                                                            name="city" type="text" class="form-control"
-                                                            id="cityInput" placeholder="Enter Your City" />
+                                                        <input readonly required name="city" type="text"
+                                                            class="form-control" id="cityInput"
+                                                            placeholder="Enter Your City"
+                                                            value="{{ auth()->user()->address }}" />
                                                     </div>
                                                 </div>
 
@@ -258,7 +266,7 @@
                                                         <input required name="reference1_name" type="text"
                                                             class="form-control" id="ref1NameInput"
                                                             placeholder="Enter Reference 1's name"
-                                                            value="{{ auth()->user()->application()->first()->reference()->first()->name }}" />
+                                                            value="{{ $application->reference()->first()->name }}" />
                                                     </div>
                                                 </div>
 
@@ -268,7 +276,7 @@
                                                         <input required name="reference1_org" type="text"
                                                             class="form-control" id="ref1OrgInput"
                                                             placeholder="Enter Reference 1's organization"
-                                                            value="{{ auth()->user()->application()->first()->reference()->first()->org }}" />
+                                                            value="{{ $application->reference()->first()->org }}" />
                                                     </div>
                                                 </div>
 
@@ -279,7 +287,7 @@
                                                         <input required name="reference1_relationship" type="phone"
                                                             class="form-control" id="ref1RelationshipInput"
                                                             placeholder="Enter Reference 1's relationship"
-                                                            value="{{ auth()->user()->application()->first()->reference()->first()->relationship }}" />
+                                                            value="{{ $application->reference()->first()->relationship }}" />
                                                     </div>
                                                 </div>
 
@@ -289,7 +297,7 @@
                                                         <input required name="reference1_phone" type="phone"
                                                             class="form-control" id="ref1PhoneInput"
                                                             placeholder="Enter Reference 1's phone"
-                                                            value="{{ auth()->user()->application()->first()->reference()->first()->phone }}" />
+                                                            value="{{ $application->reference()->first()->phone }}" />
                                                     </div>
                                                 </div>
 
@@ -299,7 +307,7 @@
                                                         <input required name="reference1_email" type="email"
                                                             class="form-control" id="ref1EmailInput"
                                                             placeholder="Enter Reference 1's email"
-                                                            value="{{ auth()->user()->application()->first()->reference()->first()->email }}" />
+                                                            value="{{ $application->reference()->first()->email }}" />
                                                     </div>
                                                 </div>
 
@@ -310,15 +318,14 @@
                                                         <label for="ref1PrefPhoneInput" class="form-label">Phone</label>
                                                         <input type="radio" id="ref1PrefPhoneInput"
                                                             name="reference1_prefContact"
-                                                            value="{{ auth()->user()->application()->first()->reference()->first()->prefContact }}"
-                                                            required
-                                                            @if {} />
+                                                            value="{{ $application->reference()->first()->prefContact }}"
+                                                            required @if ($referenceOnePrefContact === 'phone') checked @endif />
 
                                                         <label for="ref1PrefEmailInput" class="form-label">Email</label>
                                                         <input type="radio" id="ref1PrefEmailInput"
                                                             name="reference1_prefContact"
-                                                            value="{{ auth()->user()->application()->first()->reference()->first()->prefContact }}"
-                                                            required />
+                                                            value="{{ $application->reference()->first()->prefContact }}"
+                                                            required @if ($referenceOnePrefContact === 'email') checked @endif />
                                                     </div>
                                                 </div>
 
@@ -332,7 +339,7 @@
                                                         <input required name="reference2_name" type="text"
                                                             class="form-control" id="ref2NameInput"
                                                             placeholder="Enter Reference 2's name"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->name }}" />
+                                                            value="{{ $application->reference()->skip(1)->first()->name }}" />
                                                     </div>
                                                 </div>
 
@@ -342,7 +349,7 @@
                                                         <input required name="reference2_org" type="text"
                                                             class="form-control" id="ref2OrgInput"
                                                             placeholder="Enter Reference 2's organization"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->org }}" />
+                                                            value="{{ $application->reference()->skip(1)->first()->org }}" />
                                                     </div>
                                                 </div>
 
@@ -353,7 +360,7 @@
                                                         <input required name="reference2_relationship" type="phone"
                                                             class="form-control" id="ref2RelationshipInput"
                                                             placeholder="Enter Reference 2's relationship"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->relationship }}" />
+                                                            value="{{ $application->reference()->skip(1)->first()->relationship }}" />
                                                     </div>
                                                 </div>
 
@@ -363,7 +370,7 @@
                                                         <input required name="reference2_phone" type="phone"
                                                             class="form-control" id="ref2PhoneInput"
                                                             placeholder="Enter Reference 2's phone"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->phone }}" />
+                                                            value="{{ $application->reference()->skip(1)->first()->phone }}" />
                                                     </div>
                                                 </div>
 
@@ -373,7 +380,7 @@
                                                         <input required name="reference2_email" type="email"
                                                             class="form-control" id="ref2EmailInput"
                                                             placeholder="Enter Reference 2's email"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->email }}" />
+                                                            value="{{ $application->reference()->skip(1)->first()->email }}" />
                                                     </div>
                                                 </div>
 
@@ -384,11 +391,13 @@
 
                                                         <label for="ref2PrefPhoneInput" class="form-label">Phone</label>
                                                         <input type="radio" id="ref2PrefPhoneInput"
-                                                            name="reference2_prefContact" value="phone" required />
+                                                            name="reference2_prefContact" value="phone" required
+                                                            @if ($referenceTwoPrefContact === 'phone') checked @endif />
 
                                                         <label for="ref1PrefEmailInput" class="form-label">Email</label>
                                                         <input type="radio" id="ref2PrefEmailInput"
-                                                            name="reference2_prefContact" value="email" required />
+                                                            name="reference2_prefContact" value="email" required
+                                                            @if ($referenceTwoPrefContact === 'email') checked @endif />
 
 
                                                     </div>
@@ -404,7 +413,7 @@
                                                         <input required name="reference3_name" type="text"
                                                             class="form-control" id="ref3NameInput"
                                                             placeholder="Enter Reference 3's name"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(2)->first()->name }}" />
+                                                            value="{{ $application->reference()->skip(2)->first()->name }}" />
                                                     </div>
                                                 </div>
 
@@ -414,7 +423,7 @@
                                                         <input required name="reference3_org" type="text"
                                                             class="form-control" id="ref3OrgInput"
                                                             placeholder="Enter Reference 3's organization"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->org }}" />
+                                                            value="{{ $application->reference()->skip(1)->first()->org }}" />
                                                     </div>
                                                 </div>
 
@@ -425,7 +434,7 @@
                                                         <input required name="reference3_relationship" type="phone"
                                                             class="form-control" id="ref3RelationshipInput"
                                                             placeholder="Enter Reference 3's relationship"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->relationship }}" />
+                                                            value="{{ $application->reference()->skip(1)->first()->relationship }}" />
                                                     </div>
                                                 </div>
 
@@ -434,7 +443,7 @@
                                                         <label for="ref3PhoneInput" class="form-label">Phone</label>
                                                         <input required name="reference3_phone" type="phone"
                                                             class="form-control" id="ref3PhoneInput"
-                                                            placeholder="Enter Reference 3's phone"value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->phone }}" />
+                                                            placeholder="Enter Reference 3's phone"value="{{ $application->reference()->skip(1)->first()->phone }}" />
                                                     </div>
                                                 </div>
 
@@ -444,7 +453,7 @@
                                                         <input required name="reference3_email" type="email"
                                                             class="form-control" id="ref3EmailInput"
                                                             placeholder="Enter Reference 3's email"
-                                                            value="{{ auth()->user()->application()->first()->reference()->skip(1)->first()->email }}" />
+                                                            value="{{ $application->reference()->skip(1)->first()->email }}" />
                                                     </div>
                                                 </div>
 
@@ -454,11 +463,13 @@
 
                                                         <label for="ref1PrefPhoneInput" class="form-label">Phone</label>
                                                         <input type="radio" id="ref1PrefPhoneInput"
-                                                            name="reference3_prefContact" value="phone" required />
+                                                            name="reference3_prefContact" value="phone" required
+                                                            @if ($referenceThreePrefContact === 'phone') checked @endif />
 
                                                         <label for="ref1PrefEmailInput" class="form-label">Email</label>
                                                         <input type="radio" id="ref1PrefEmailInput"
-                                                            name="reference3_prefContact" value="email" required />
+                                                            name="reference3_prefContact" value="email" required
+                                                            @if ($referenceThreePrefContact === 'email') checked @endif />
                                                     </div>
                                                 </div>
 
@@ -467,7 +478,8 @@
                                                 <div class="card-body">
                                                     <div>
                                                         @if (auth()->user()->application)
-                                                            <a href="{{ auth()->user()->application->resume }}"
+                                                            
+                                                            <a href="https://arabicawhite.s3.amazonaws.com/resume/{{ $application->resume }}"
                                                                 class="btn btn-ghost-light w-100 text-black">
                                                                 View Submitted Resume
                                                             </a>
@@ -484,12 +496,12 @@
 
                                                 <div class="col-lg-12">
                                                     <div class="mb-3 pb-2">
-                                                        <label for="exampleFormControlTextarea"
-                                                            class="form-label">Additional Note
+                                                        <label for="exampleFormControlTextarea" class="form-label">
+                                                            Additional Note
                                                             (<small>Optional</small>)</label>
                                                         <textarea name="note" class="form-control" id="exampleFormControlTextarea"
-                                                            placeholder="Enter any additional note" value="{{ auth()->user()->application()->first()->note }}"
-                                                            rows="3"></textarea>
+                                                            placeholder="Enter any additional note" "
+                                                                                                                                                                                                                                    rows="3">{{ $application->note }}</textarea>
                                                     </div>
                                                 </div>
 

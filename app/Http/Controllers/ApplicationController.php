@@ -175,12 +175,11 @@ class ApplicationController extends Controller
 
         auth()->user()->update([
             "phone" => $request->phone,
-            "address" => $request->address,
             "dob" => $request->dob,
             "gender" => $request->gender
         ]);
 
         echo 'ApplicationController@store() called.';
-        return redirect()->back()->with('success', "Your Application Has Been Submitted.");
+        return redirect()->back()->with('success', "Your Application Has Been Updated.");
     }
 }

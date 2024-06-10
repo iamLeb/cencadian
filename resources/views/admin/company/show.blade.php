@@ -77,20 +77,36 @@
                     <h6 class="mb-3 fw-semibold text-uppercase">Executive Summary</h6>
                     <p class="mb-4">{{ $sr->executive_summary }}</p>
 
-                    <h6 class="mb-3 fw-semibold text-uppercase">Background and rationale</h6>
-                    <p class="mb-4">{{ $sr->background_rationale }}</p>
+                    @if ($sr->background_rationale)
+                        <h6 class="mb-3 fw-semibold text-uppercase">Background and rationale</h6>
+                        <p class="mb-4">{{ $sr->background_rationale }}</p>
+                    @endif
 
-                    <h6 class="mb-3 fw-semibold text-uppercase">Community Involvement</h6>
-                    <p class="mb-4">{{ $sr->community_involvement }}</p>
+                    @if ($sr->community_involvement)
+                        <h6 class="mb-3 fw-semibold text-uppercase">Community Involvement</h6>
+                        <p class="mb-4">{{ $sr->community_involvement }}</p>
+                    @endif
 
                     <h6 class="mb-3 fw-semibold text-uppercase">Project Requirements</h6>
                     <p class="mb-4">{{ $sr->project_requirements }}</p>
 
-                    <h6 class="mb-3 fw-semibold text-uppercase">Project Team</h6>
-                    <p class="mb-4">{{ $sr->project_team }}</p>
+                    @if ($sr->project_team)
+                        <h6 class="mb-3 fw-semibold text-uppercase">Project Team</h6>
+                        <p class="mb-4">{{ $sr->project_team }}</p>
+                    @endif
 
-                    <h6 class="mb-3 fw-semibold text-uppercase">Budget</h6>
+                    <h6 class="mb-3 fw-semibold text-uppercase">Budget Range</h6>
                     <p class="mb-4">{{ $sr->budget }}</p>
+
+                    @if ($sr->budget_specify)
+                        <h6 class="mb-3 fw-semibold text-uppercase">Specific budget</h6>
+                        <p class="mb-4">{{ $sr->budget_specify }}</p>
+                    @endif
+
+                    @if ($sr->other_remarks)
+                        <h6 class="mb-3 fw-semibold text-uppercase">Other Remarks</h6>
+                        <p class="mb-4">{{ $sr->other_remarks }}</p>
+                    @endif
                 </div>
             </div>
             <!--end card-->

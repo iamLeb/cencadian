@@ -41,7 +41,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Executive Summary</label>
-                        <p>Provide a brief overview of your organization, the project, the needs it addresses, and the proposed solution. Summarize the main objectives and the expected outcomes of the project</p>
+                        <p>What type of business do you offer, and how could a website help you?</p>
                         <textarea class="form-control @error('executive_summary') is-invalid @enderror" name="executive_summary" id="" cols="30" rows="10" placeholder="Enter Executive Summary" required>{{ old('executive_summary') }}</textarea>
                         @error('executive_summary')
                         <span class="invalid-feedback" role="alert">
@@ -51,30 +51,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Community Involvement</label>
-                        <p>As a community-minded organization, Cencadian prioritizes working with organizations that make an impact in their community. Explain how your business or organization impacts the local community. </p>
-                        <textarea class="form-control @error('community_involvement') is-invalid @enderror" name="community_involvement" id="" cols="30" rows="10" placeholder="Enter Community Involvement" required>{{ old('community_involvement') }}</textarea>
-                        @error('community_involvement')
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Background and Rationale</label>
-                        <p>Describe the problem and why the project is necessary. Explain how the project aligns with the strategic goals of your organization, and how it will help form connections in your community.</p>
-                        <textarea class="form-control @error('background_rationale') is-invalid @enderror" name="background_rationale" id="" cols="30" rows="10" placeholder="Enter Background & Rationale" required>{{ old('background_rationale') }}</textarea>
-                        @error('background_rationale')
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
                         <label class="form-label">Project Requirements</label>
-                        <p>Detail the specific features and functionalities you would like to see implemented in your project.</p>
+                        <p>What are the features or functionalities you want to see in your website?</p>
                         <textarea class="form-control @error('project_requirements') is-invalid @enderror" name="project_requirements" id="" cols="30" rows="10" placeholder="Enter Project Requirements" required>{{ old('project_requirements') }}</textarea>
                         @error('project_requirements')
                         <span class="invalid-feedback" role="alert">
@@ -84,30 +62,86 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Project Team</label>
-                        <p>List the members of your organization that will be involved in the project, including their roles and responsibilities.</p>
-                        <textarea class="form-control @error('project_team') is-invalid @enderror" name="project_team" id="" cols="30" rows="10" placeholder="Enter Project Team" required>{{ old('project_team') }}</textarea>
-                        @error('project_team')
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
                         <label class="form-label">Budget</label>
-                        <p>Cencadian is a community-minded non-profit organization offering free and low-cost web development services to small to medium-sized businesses and organizations. A budget is not required, but can help us offer additional support, features, and quality for your project. Indicate your proposed budget range, and we will offer a tailored package specific to your organization’s needs. Please note that your organization will be responsible for domain hosting and any other costs associated with maintaining the project.</p>
-                        <textarea class="form-control @error('budget') is-invalid @enderror" name="budget" id="" cols="30" rows="10" placeholder="Enter Budget" required>{{ old('budget') }}</textarea>
-                        @error('budget')
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        {{-- <p>Cencadian is a community-minded non-profit organization offering free and low-cost web development services to small to medium-sized businesses and organizations. A budget is not required, but can help us offer additional support, features, and quality for your project. Indicate your proposed budget range, and we will offer a tailored package specific to your organization’s needs. Please note that your organization will be responsible for domain hosting and any other costs associated with maintaining the project.</p> --}}
+                        <p>What amount of funds is your organization allocating for this project?</p>
+
+                        <div class="mb-3">
+                                <select class="form-control @error('budget') is-invalid @enderror" name="budget">
+                                    <option 
+                                        @if (!old('budget'))
+                                            selected
+                                        @endif
+                                        disabled
+                                    >
+                                        -- Select Budget --
+                                    </option>
+
+                                    <option 
+                                        value="<$2000"
+                                        @if (old('budget') === "<$2000")
+                                            selected
+                                        @endif
+                                    >
+                                        Budget less than $2000 (Basic Website without Maintainance)
+                                    </option>
+        
+                                    <option 
+                                        value="$2000-$4000"
+                                        @if (old('budget') === "$2000-$4000")
+                                            selected
+                                        @endif
+                                    >
+                                        Budget between $2000 - $4000 (Advanced Feature Website with 1 year Maintainance)
+                                    </option>
+    
+                                    <option 
+                                        value="$4000-$6000"
+                                        @if (old('budget') === "$4000-$6000")
+                                            selected
+                                        @endif
+                                    >
+                                        Budget between $4000 - $6000 (Premium Feature Website with 1 year Maintainance, Domain and Hosting)
+                                    </option>
+                                </select>
+                                @error('budget')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span>Please specify:</span>
+                            <input name="budget_specify" id="budgetSpec" value={{old('budget_specify') ?? "$"}}  type="text" class="form-control @error('budget_specify') is-invalid @enderror">
+                            @error('budget_specify')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
 
+                    <script>
+                        //prevent non-number characters from being input in the budget and prevent them from deleting $
+                        const input = document.querySelector('#budgetSpec');
+                        input.addEventListener('input', () => {
+                            let val = input.value;
+
+                            if (val.length == 0) {
+                                input.value = "$";
+                            } else if ((val.length > 1) && isNaN(parseInt(val.substring(val.length -1)))) { 
+                                input.value = val.substring(0, val.length -1);
+                            }
+
+                            
+                        });
+                    </script>
+
                     <div class="mb-3">
-                        <label class="form-label">Other Remarks</label>
-                        <p>If there is anything Cencadian should know about your organization or your proposed project not covered in the previous sections, let us know here.</p>
+                        <label class="form-label">Other Remarks (Optional)</label>
+                        <p>Is there any other thing we should know about the project?</p>
                         <textarea class="form-control" name="other_remarks" id="" cols="30" rows="10" placeholder="Enter Other Remarks">{{old('other_remarks')}}</textarea>
                     </div>
 
@@ -186,11 +220,10 @@
             </div> -->
             <!-- end card -->
 
-            <div class="text-end mb-4">
-                <a href="{{ route('company.store') }}" onclick="event.preventDefault(); document.getElementById('create-request').submit();" class="btn btn-success w-sm">Submit Project Proposal</a>
-            </div>
+        
         </div>
         <!-- end col -->
+        
         <div class="col-lg-4">
             <!-- <div class="card">
                 <div class="card-header">
@@ -254,10 +287,10 @@
                         @enderror
                     </div>
 
-                </div>
+                {{-- </div> --}}
 
-                <div class="card">
-                <div class="card-body">
+                {{-- <div class="card">
+                <div class="card-body"> --}}
                     <div class="mb-3">
                         <label for="choices-categories-input" class="form-label">Organization Type</label>
                         <select name="org_category" class="form-select @error('org_category') is-invalid @enderror" data-choices data-choices-search-false id="choices-categories-input" required>
@@ -317,12 +350,16 @@
 
                 </div>
                 <!-- end card body -->
-            </div>
+            {{-- </div> --}}
             <!-- end card -->
         </div>
         <!-- end col -->
     </div>
     <!-- end row -->
+
+    <div class="text-end mb-4 w-100">
+        <a href="{{ route('company.store') }}" onclick="event.preventDefault(); document.getElementById('create-request').submit();" class="btn btn-success w-100 btn-lg">Submit Project Proposal</a>
+    </div>
     </form>
 
     <!-- ckeditor -->

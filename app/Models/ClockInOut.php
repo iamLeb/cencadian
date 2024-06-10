@@ -33,6 +33,25 @@ class ClockInOut extends Model
         return null;
     }
 
+    public function getDurationInSecondsAttribute()
+    {
+        if ($this->clock_in && $this->clock_out) {
+            $clockIn = Carbon::parse($this->clock_in);
+            $clockOut = Carbon::parse($this->clock_out);
+            return $clockOut->diffInSeconds($clockIn, true);
+        }
+
+        return null;
+    }
+
+    public function getCarbonIntervalAttribute() {
+        if ($this->clock_in && $this->clock_out) {
+            $clockIn = Carbon::parse($this->clock_in);
+            $clockOut = Carbon::parse($this->clock_out);
+            return $clockOut->diff($clockIn, true);
+        }
+    }
+
 
     // Relationaship
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

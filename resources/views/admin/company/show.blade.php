@@ -60,6 +60,38 @@
                                 <td class="fw-medium">Title</td>
                                 <td>{{ ucfirst($sr->title) }}</td>
                             </tr>
+
+                            <tr>
+                                <td class="fw-medium">Organization Type</td>
+                                <td>
+                                    @php
+                                        if ($sr->org_category === "smallbiz") {
+                                            echo("Small Business");
+                                        } else if ($sr->org_category === "medbiz") {
+                                            echo("Medium Business");
+                                        } else if ($sr->org_category === "nonprofit") {
+                                            echo("Non-Profit");
+                                        } else if ($sr->org_category === "other") {
+                                            echo("Other Organization Type");
+                                        } else {
+                                            echo("Unknown");
+                                        }
+                                    @endphp
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-medium">Service Type</td>
+                                <td>
+                                    @php
+                                        if ($sr->service_category === "new") {
+                                            echo('New service');
+                                        } else if ($sr->service_category === "alter") {
+                                            echo('Alter Existing Service');
+                                        }
+                                    @endphp
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                         <!--end table-->
@@ -75,37 +107,39 @@
                     <h3 class="mb-5 text-center">Project title: {{$sr->title}}</h3>
 
                     <h6 class="mb-3 fw-semibold text-uppercase">Executive Summary</h6>
-                    <p class="mb-4">{{ $sr->executive_summary }}</p>
+                    <p class="mb-3 fw-medium">What type of business do you offer, and how could a website help you?</p>
+                    <p class=" text-muted mb-4">{{ $sr->executive_summary }}</p>
 
                     @if ($sr->background_rationale)
                         <h6 class="mb-3 fw-semibold text-uppercase">Background and rationale</h6>
-                        <p class="mb-4">{{ $sr->background_rationale }}</p>
+                        <p class="text-muted mb-4">{{ $sr->background_rationale }}</p>
                     @endif
 
                     @if ($sr->community_involvement)
                         <h6 class="mb-3 fw-semibold text-uppercase">Community Involvement</h6>
-                        <p class="mb-4">{{ $sr->community_involvement }}</p>
+                        <p class="text-muted mb-4">{{ $sr->community_involvement }}</p>
                     @endif
 
                     <h6 class="mb-3 fw-semibold text-uppercase">Project Requirements</h6>
-                    <p class="mb-4">{{ $sr->project_requirements }}</p>
+                    <p class="mb-3 fw-medium">What are the features or functionalities you want to see in your website?</p>
+                    <p class="text-muted mb-4">{{ $sr->project_requirements }}</p>
 
                     @if ($sr->project_team)
                         <h6 class="mb-3 fw-semibold text-uppercase">Project Team</h6>
-                        <p class="mb-4">{{ $sr->project_team }}</p>
+                        <p class="text-muted mb-4">{{ $sr->project_team }}</p>
                     @endif
 
                     <h6 class="mb-3 fw-semibold text-uppercase">Budget Range</h6>
-                    <p class="mb-4">{{ $sr->budget }}</p>
+                    <p class="text-muted mb-4">{{ $sr->budget }}</p>
 
                     @if ($sr->budget_specify)
                         <h6 class="mb-3 fw-semibold text-uppercase">Specific budget</h6>
-                        <p class="mb-4">{{ $sr->budget_specify }}</p>
+                        <p class="text-muted mb-4">{{ $sr->budget_specify }}</p>
                     @endif
 
                     @if ($sr->other_remarks)
                         <h6 class="mb-3 fw-semibold text-uppercase">Other Remarks</h6>
-                        <p class="mb-4">{{ $sr->other_remarks }}</p>
+                        <p class="text-muted mb-4">{{ $sr->other_remarks }}</p>
                     @endif
                 </div>
             </div>

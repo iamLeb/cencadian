@@ -14,7 +14,7 @@ class TimesheetController extends Controller {
 
     public function showGeneratePayStub(Request $request) {
         $intern = User::where('id', $request->id)->first();
-        $clockRecords = $intern->clock;
+        $clockRecords = $intern->clock->whereNotNull('clock_out');
 
         return view('admin/intern/generatePayStub', [
             'intern' => $intern,
@@ -25,7 +25,7 @@ class TimesheetController extends Controller {
     public function reviewTimesheet(Request $request) {
         $intern = User::where('id', $request->id)->first();
         
-        $clockRecords = $intern->clock;
+        $clockRecords = $intern->clock->whereNotNull('clock_out');
 
         //if the querystring specifies start and end dates, use them to filter the results
         if ($request->start) {

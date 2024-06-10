@@ -176,7 +176,9 @@ class ApplicationController extends Controller
         auth()->user()->update([
             "phone" => $request->phone,
             "dob" => $request->dob,
-            "gender" => $request->gender
+            "gender" => $request->gender,
+            "name" => $request->name,
+            "address" => $request->city,
         ]);
 
         echo 'ApplicationController@store() called.';

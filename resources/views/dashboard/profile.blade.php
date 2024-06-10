@@ -166,7 +166,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label for="emailInput" class="form-label">Email Address</label>
-                                                        <input required name="email" type="email"
+                                                        <input readonly required name="email" type="email"
                                                             class="form-control" id="emailInput"
                                                             placeholder="Enter your email"
                                                             value="{{ auth()->user()->email }}">
@@ -239,7 +239,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-5">
                                                         <label for="cityInput" class="form-label">Address</label>
-                                                        <input readonly required name="city" type="text"
+                                                        <input required name="city" type="text"
                                                             class="form-control" id="cityInput"
                                                             placeholder="Enter Your City"
                                                             value="{{ auth()->user()->address }}" />

@@ -76,7 +76,7 @@
                                                 @php
                                                     $phone = str_replace(" ", "", $company->phone);
                                                     if(strlen($phone) > 10) {
-                                                        $formatted_phone = substr($phone, 0) . substr($phone, 1, 3) . ' ' . substr($phone, 3, 3) . ' ' . substr($phone, 6, 4);
+                                                        $formatted_phone = substr($phone, 0) . ' ' . substr($phone, 1, 3) . ' ' . substr($phone, 3, 3) . ' ' . substr($phone, 6, 4);
                                                     } else {
                                                         $formatted_phone = substr($phone, 0, 3) . ' ' . substr($phone, 3, 3) . ' ' . substr($phone, 6, 4);
                                                     }

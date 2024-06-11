@@ -22,7 +22,7 @@ class ApplicationController extends Controller
     {
         // log something
 
-        echo 'ApplicationController@store() called.';
+//        echo 'ApplicationController@store() called.';
 
         $request['address'] = $request->city . ', ' . $request->country . ', ' . $request->postalCode;
 
@@ -181,7 +181,7 @@ class ApplicationController extends Controller
             "address" => $request->city,
         ]);
 
-        echo 'ApplicationController@store() called.';
+//        echo 'ApplicationController@store() called.';
         return redirect()->back()->with('success', "Your Application Has Been Updated.");
     }
 }

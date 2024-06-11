@@ -72,8 +72,18 @@
                                             <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
                                             <td class="customer_name">{{ $company->name }}</td>
                                             <td class="email">{{ $company->email }}</td>
-                                            <td class="phone">{{ $company->phone }}</td>
+                                            <td class="phone">
+                                                @php
+                                                    $phone = str_replace(" ", "", $company->phone);
+                                                    if(strlen($phone) > 10) {
+                                                        $formatted_phone = substr($phone, 0) . substr($phone, 1, 3) . ' ' . substr($phone, 3, 3) . ' ' . substr($phone, 6, 4);
+                                                    } else {
+                                                        $formatted_phone = substr($phone, 0, 3) . ' ' . substr($phone, 3, 3) . ' ' . substr($phone, 6, 4);
+                                                    }
+                                                    echo $formatted_phone;
+                                                @endphp
 
+                                            </td>
                                             <td class="date">{{ $company->created_at->toFormattedDateString() }}</td>
                                             <td class="status"><span class="badge bg-success-subtle text-success text-uppercase">Active</span></td>
                                             @if(count($company->serviceRequest))

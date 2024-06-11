@@ -72,16 +72,7 @@
                                             <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
                                             <td class="customer_name">{{ $company->name }}</td>
                                             <td class="email">{{ $company->email }}</td>
-                                            <td class="phone">
-                                                @php
-                                                    $phoneNumber = $company->phone; // Assuming $company->phone contains the phone number
-                                                    $numbers = str_split($phoneNumber);
-                                                    $group1 = implode('', array_slice($numbers, 0, 3));
-                                                    $group2 = implode('', array_slice($numbers, 2, 3));
-                                                    $group3 = implode('', array_slice($numbers, 5, 4));
-                                                    echo $group1 . ' ' . $group2 . ' ' . $group3;
-                                                @endphp
-                                            </td>
+                                            <td class="phone">{{ $company->phone }}</td>
 
                                             <td class="date">{{ $company->created_at->toFormattedDateString() }}</td>
                                             <td class="status"><span class="badge bg-success-subtle text-success text-uppercase">Active</span></td>

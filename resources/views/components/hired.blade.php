@@ -15,9 +15,15 @@
                                     <div class="col-sm-auto">
                                         <div class="input-group">
                                             <input id="real-time-input" type="text" class="form-control border-0 dash-filter-picker shadow" data-provider="flatpickr" data-range-date="true" data-date-format="d M, Y" data-default-date="01 Jan 2022 to 31 Jan 2022">
-                                            <div class="input-group-text bg-primary border-primary text-white">
-                                                <i class="ri-calendar-2-line"></i>
-                                            </div>
+                                            @if(auth()->user()->snooze)
+                                                <div class="pr-2">
+                                                    <a class="btn btn-primary" href="{{ route('clock.snooze.toggle') }}">Allow Clock Reminder</a>
+                                                </div>
+                                            @else
+                                                <div class="pr-2">
+                                                    <a class="btn btn-danger" href="{{ route('clock.snooze.toggle') }}">Stop Reminder</a>
+                                                </div>
+                                            @endif
                                         </div>
 
                                         <script>

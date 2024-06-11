@@ -85,6 +85,15 @@ class ClockInOutController extends Controller
         return redirect()->back()->with('success', 'Clocked out successfully.');
     }
 
+    public function snooze()
+    {
+        auth()->user()->update([
+            'snooze' => !auth()->user()->snooze
+        ]);
+
+        return redirect()->back()->with('success', 'You have successfully Toggle your clock reminder');
+    }
+
     private function getTotalTimeToday($user)
     {
         $today = Carbon::today();

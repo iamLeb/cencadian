@@ -170,13 +170,12 @@
 <!-- App js -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script>
-    const FIVE_MIN = 1000 * 60 * 5;
+    const FIVE_MIN = 1000 * 60 * 0.1;
 
     function waitAndDoSomething() {
         const msToNextRounded5Min = FIVE_MIN - (Date.now() % FIVE_MIN);
         let modal = new bootstrap.Modal(document.getElementById('periodicModal'));
         modal.hide();
-
         setInterval(() => {
             modal.show();
         }, msToNextRounded5Min);

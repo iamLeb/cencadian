@@ -31,6 +31,7 @@ Route::group(['prefix' => '/secure'], function () {
     Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');
     //Clock in-out
     Route::get('/clock-system', [App\Http\Controllers\ClockInOutController::class, 'index'])->name('clock.index');
+    Route::get('/clock-stop', [App\Http\Controllers\ClockInOutController::class, 'snooze'])->name('clock.snooze.toggle');
     Route::get('/clockin', [App\Http\Controllers\ClockInOutController::class, 'clockIn'])->name('clock.in');
     Route::get('/clockout', [App\Http\Controllers\ClockInOutController::class, 'clockOut'])->name('clock.out');
 });

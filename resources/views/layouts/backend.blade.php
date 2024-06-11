@@ -170,7 +170,7 @@
 <!-- App js -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script>
-    const FIVE_MIN = 1000 * 60 * 0.1;
+    const FIVE_MIN = 1000 * 60 * 5;
 
     function waitAndDoSomething() {
         const msToNextRounded5Min = FIVE_MIN - (Date.now() % FIVE_MIN);

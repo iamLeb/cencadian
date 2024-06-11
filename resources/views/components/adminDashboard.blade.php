@@ -172,14 +172,16 @@
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Companies Request</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Last 5 Company Request</h4>
+                            <a href="{{ route('admin.companies') }}">View All</a>
+
                         </div><!-- end card header -->
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
                                 <table class="table table-hover table-centered align-middle table-nowrap mb-0">
                                     <tbody>
-                                    @foreach(\App\Models\User::where('type', 'company')->get() as $company)
+                                    @foreach(\App\Models\User::where('type', 'company')->take(5)->orderBy('id', 'desc')->get() as $company)
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
@@ -198,11 +200,11 @@
 
                                             @if(count($company->serviceRequest))
                                                 <td>
-                                                    <a href="{{ route('admin.company.show', $company->serviceRequest->first()->id ) }}" class="btn btn-primary">View</a>
+                                                    <a href="{{ route('admin.company.show', $company->serviceRequest->first()->id ) }}" class="btn btn-primary btn-sm px-5 py-2">View</a>
                                                 </td>
                                             @else
                                                 <td>
-                                                    <button class="btn">No Request Yet</button>
+                                                    <button class="btn btn-sm">No Request Yet</button>
                                                 </td>
                                             @endif
 
@@ -219,7 +221,7 @@
                 <div class="col-xl-6">
                     <div class="card card-height-100">
                         <div class="card-header align-items-center d-flex justify-content-between">
-                            <h4 class="card-title mb-0">Interns ({{ \App\Models\User::where('type', 'intern')->count() }})</h4>
+                            <h4 class="card-title mb-0">Last 5 Interns Reg.</h4>
                             <a href="{{ route('admin.interns') }}">View All</a>
                         </div><!-- end card header -->
 

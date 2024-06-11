@@ -83,7 +83,7 @@
                                 </tr>
                                 </thead>
                                 <tbody id="clock-entries">
-                                
+
                                 @foreach($clockRecords as $rec)
                                     <tr>
                                         <td>{{ $rec->created_at->toFormattedDateString() }}</td>
@@ -92,7 +92,7 @@
                                         <td>{{ $rec->carbonInterval }}</td>
                                         <td class="d-flex justify-content-around gap-2">
                                             <a href={{route('show.edit.clock.entry', ['id' => $rec->id])}} class="btn btn-link"><i class="mdi mdi-file-edit-outline"></i></a>
-                                            <a onclick="return confirm('Are you sure you want to delete this clock record?')" href="{{route('delete.clock.entry', ['id' => $rec->id])}}" class="btn btn-link"><i class="mdi mdi-trash-can-outline"></i></a>                                                                              
+                                            <a onclick="return confirm('Are you sure you want to delete this clock record?')" href="{{route('delete.clock.entry', ['id' => $rec->id])}}" class="btn btn-link"><i class="mdi mdi-trash-can-outline"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

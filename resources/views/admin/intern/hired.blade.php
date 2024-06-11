@@ -1,6 +1,5 @@
 @extends('layouts.backend')
 @section('content')
-
     <div class="container-fluid">
 
         <!-- start page title -->
@@ -44,67 +43,82 @@
                             <div class="table-responsive table-card mt-3 mb-1">
                                 <table class="table align-middle table-nowrap" id="customerTable">
                                     <thead class="table-light">
-                                    <tr>
-                                        <th scope="col" style="width: 50px;">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="checkAll" value="option">
-                                            </div>
-                                        </th>
-                                        <th class="sort" data-sort="customer_name">Customer</th>
-                                        <th class="sort" data-sort="email">Email</th>
-                                        <th class="sort" data-sort="phone">Phone</th>
-                                        <th class="sort" data-sort="date">Joining Date</th>
-                                        <th class="sort" data-sort="status">Status</th>
-                                        <th class="sort" data-sort="action">Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col" style="width: 50px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll"
+                                                        value="option">
+                                                </div>
+                                            </th>
+                                            <th class="sort" data-sort="customer_name">Customer</th>
+                                            <th class="sort" data-sort="email">Email</th>
+                                            <th class="sort" data-sort="phone">Phone</th>
+                                            <th class="sort" data-sort="date">Joining Date</th>
+                                            <th class="sort" data-sort="status">Status</th>
+                                            <th class="sort" data-sort="action">Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
 
-                                    @foreach($users as $intern)
-                                        <tr>
-                                            <th scope="row">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
-                                                </div>
-                                            </th>
-                                            <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
-                                            <td class="customer_name">{{ $intern->name }}</td>
-                                            <td class="email">{{ $intern->email }}</td>
-                                            <td class="phone">
-                                                @php
-                                                    $phoneNumber = $intern->phone; // Assuming $intern->phone contains the phone number
-                                                    $numbers = str_split($phoneNumber);
-                                                    $group1 = implode('', array_slice($numbers, 0, 3));
-                                                    $group2 = implode('', array_slice($numbers, 2, 3));
-                                                    $group3 = implode('', array_slice($numbers, 5, 4));
-                                                    echo $group1 . ' ' . $group2 . ' ' . $group3;
-                                                @endphp
-                                            </td>
+                                        @foreach ($users as $intern)
+                                            <tr>
+                                                <th scope="row">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="chk_child"
+                                                            value="option1">
+                                                    </div>
+                                                </th>
+                                                <td class="id" style="display:none;"><a href="javascript:void(0);"
+                                                        class="fw-medium link-primary">#VZ2101</a></td>
+                                                <td class="customer_name">{{ $intern->name }}</td>
+                                                <td class="email">{{ $intern->email }}</td>
+                                                <td class="phone">
+                                                    @php
+                                                        $phoneNumber = $intern->phone; // Assuming $intern->phone contains the phone number
+                                                        $numbers = str_split($phoneNumber);
+                                                        $group1 = implode('', array_slice($numbers, 0, 3));
+                                                        $group2 = implode('', array_slice($numbers, 2, 3));
+                                                        $group3 = implode('', array_slice($numbers, 5, 4));
+                                                        echo $group1 . ' ' . $group2 . ' ' . $group3;
+                                                    @endphp
+                                                </td>
 
-                                            <td class="date">{{ $intern->created_at->toFormattedDateString() }}</td>
-                                            <td class="status"><span class="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                            <td>
-                                                <div class="d-flex justify-content-evenly">
-                                                    <div class="d-flex gap-2">
-                                                        <div class="remove">
-                                                            <a href="{{ route('admin.intern.show', $intern->id) }}" class="btn btn-sm btn-primary remove-item-btn" >View</a>
+                                                <td class="date">{{ $intern->created_at->toFormattedDateString() }}</td>
+                                                @if ($intern->clocked_in)
+                                                    <td class="status"><span
+                                                            class="badge bg-success-subtle text-success text-uppercase">Clocked
+                                                            In</span></td>
+                                                @else
+                                                    <td class="status"><span
+                                                            class="badge bg-danger-subtle text-danger text-uppercase">Clocked
+                                                            Out</span></td>
+                                                @endif
+                                                <td>
+                                                    <div class="d-flex justify-content-evenly">
+                                                        <div class="d-flex gap-2">
+                                                            <div class="remove">
+                                                                <a href="{{ route('admin.intern.show', $intern->id) }}"
+                                                                    class="btn btn-sm btn-primary remove-item-btn">View</a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
 
                                     </tbody>
                                 </table>
                                 <div class="noresult" style="display: none">
                                     <div class="text-center">
-                                        <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
+                                        <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
+                                            colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                                         </lord-icon>
                                         <h5 class="mt-2">Sorry! No Result Found</h5>
-                                        <p class="text-muted mb-0">We've searched more than {{ \App\Models\User::where('type', 'intern')->count() }}+ Interns We did not find any
+                                        <p class="text-muted mb-0">We've searched more than
+                                            {{ \App\Models\User::where('type', 'intern')->count() }}+ Interns We did not
+                                            find any
                                             Intern for your search.</p>
                                     </div>
                                 </div>
@@ -140,5 +154,4 @@
 
     <!-- listjs init -->
     <script src="{{ asset('assets/js/pages/listjs.init.js') }}"></script>
-
 @endsection

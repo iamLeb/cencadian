@@ -147,13 +147,6 @@
                                     </div><!-- end card -->
                                 @endif
 
-
-                                @if ($user->clock)
-                                    @foreach($user->clock as $clock)
-                                        <p>{{ $clock->created_at }}</p>
-                                    @endforeach
-                                @endif
-
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title mb-4">Skills</h5>
@@ -227,9 +220,9 @@
                                                     <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Please Note that this is not a reversible action, do you want to continue?')" ><i class="ri-mail-close-fill"></i> Mark Intern as Hired</button>
                                                 @endif
 
-                                                @if ($user->type === 'hired') 
-                                                    <a href={{route('show.generate.pay.stub', ['id' => $user->id])}} class="btn btn-success btn-sm"><i class="ri-mail-close-fill"></i> Generate Pay Stub</a>       
-                                                    
+                                                @if ($user->type === 'hired')
+                                                    <a href={{route('show.generate.pay.stub', ['id' => $user->id])}} class="btn btn-success btn-sm"><i class="ri-mail-close-fill"></i> Generate Pay Stub</a>
+
                                                     <a href={{route('review.timesheet', ['id' => $user->id])}} class="btn btn-danger btn-sm"><i class="mdi mdi-clock-edit-outline"></i>Review timesheet</a>
                                                 @endif
 

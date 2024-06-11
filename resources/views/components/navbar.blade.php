@@ -92,7 +92,7 @@
                     @endforeach
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('admin.createAdmin')}}">
-                            <i class="mdi mdi mdi-account"></i>
+                            <i class="mdi mdi mdi-account-key"></i>
                             <span data-key="t-widgets">My Admins</span>
                         </a>
                     </li>
@@ -106,7 +106,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link menu-link collapsed" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
-                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">My Interns</span>
+                            <i class="mdi mdi-account"></i> <span data-key="t-apps">My Interns</span>
                         </a>
                         <div class="menu-dropdown collapse" id="sidebarApps" style="">
                             <ul class="nav nav-sm flex-column">
@@ -119,7 +119,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link menu-link collapsed" href="#sidebarApps2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps2">
-                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">My Companies</span>
+                            <i class="mdi mdi-google-circles-extended"></i> <span data-key="t-apps">My Companies</span>
                         </a>
                         <div class="menu-dropdown collapse" id="sidebarApps2" style="">
                             <ul class="nav nav-sm flex-column">
@@ -132,7 +132,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link menu-link collapsed" href="#sidebarApps3" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps3">
-                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Documents</span>
+                            <i class="mdi mdi-file-document"></i> <span data-key="t-apps">Documents</span>
                         </a>
                         <div class="menu-dropdown collapse" id="sidebarApps3" style="">
                             <ul class="nav nav-sm flex-column">

@@ -221,7 +221,7 @@
                                                 @endif
 
                                                 @if ($user->type === 'hired')
-                                                    <a href={{route('show.generate.pay.stub', ['id' => $user->id])}} class="btn btn-success btn-sm"><i class="ri-mail-close-fill"></i> Generate Pay Stub</a>
+                                                    <a href={{route('show.pay.stubs', ['id' => $user->id])}} class="btn btn-success btn-sm"><i class="ri-mail-close-fill"></i> View Pay Stubs</a>
 
                                                     <a href={{route('review.timesheet', ['id' => $user->id])}} class="btn btn-danger btn-sm"><i class="mdi mdi-clock-edit-outline"></i>Review timesheet</a>
                                                 @endif

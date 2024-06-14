@@ -51,12 +51,12 @@
                                     <tbody id="clock-entries">
                                         <tr>
                                             <td>
-                                                <input name="clock_in" class="form-control" type="text" value="{{ $clockRecord->clock_in }}"/>
+                                                <input name="clock_in" class="form-control" type="datetime" value="{{ $clockRecord->clock_in }}"/>
                                             </td>
 
 
                                             <td>
-                                                <input name="clock_out" class="form-control" type="text" value="{{ $clockRecord->clock_out }}"/>
+                                                <input name="clock_out" class="form-control" type="datetime" value="{{ $clockRecord->clock_out }}"/>
                                             </td>
 
                                             <td class="d-flex justify-content-around gap-2">

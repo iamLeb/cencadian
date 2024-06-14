@@ -1,0 +1,238 @@
+@extends('layouts.backend')
+
+@section('content')
+
+@php
+    function formatTwoDecimal ($number) {
+        return number_format((float)$number, 2, '.', '');
+    }
+@endphp
+    <!--Page title-->
+    <div class="row">
+        <div class="col-12">
+
+            @if (auth()->user()->type === "admin")
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Pay Stubs</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href={{route('admin.interns')}}>Interns</a></li>
+                            <li class="breadcrumb-item"><a href={{route('admin.intern.show', ['id' => $employee->id])}}>{{$employee->name}}</a></li>
+                            <li class="breadcrumb-item active">Pay Stubs</li>
+                    </div>
+                </div>
+
+                <div class="d-print-none mb-4">
+                    <a href="{{route('admin.intern.show', ['id' => $employee->id])}}">&#x2190; Back to intern profile</a>
+                </div>
+            @else
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">My Pay</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item active">Pay Stubs</li>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            @foreach ($payStubs as $paystub)
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <form> 
+                            @csrf
+                            <h3 class="mb-4">Earnings Statement: {{$paystub->pay_period_start}} to {{$paystub->pay_period_end}}</h3>
+
+                            <h3>Company Details</h3>
+
+                            <div class="form-group row mb-3">
+                                <label for="company-name-input" class="col-sm-2 col-form-label text-sm-end">Company Name:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="company_name" type="text" id="company-name-input" value="{{$paystub->company_name}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="company-address-input" class="col-sm-2 col-form-label text-sm-end">Address:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="company_address" type="text" id="company-address-input" value="{{$paystub->company_address}}" readonly/>
+                                </div>
+                            </div>
+
+                            <h3>Employee Information</h3>
+
+                            <div class="form-group row mb-3">
+                                <label for="employee-name-input" class="col-sm-2 col-form-label text-sm-end">Name:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="employee_name" type="text" id="employee-name-input" value="{{$paystub->employee_name}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="employee-address-input" class="col-sm-2 col-form-label text-sm-end">Address:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="employee_address" type="text" id="employee-address-input" value="{{$paystub->employee_address}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="employee-id-input" class="col-sm-2 col-form-label text-sm-end">Employee ID:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="employee_id" type="text" id="employee-id-input" value="{{$paystub->employee_id}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="employee-sin-input" class="col-sm-2 col-form-label text-sm-end">SIN:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="employee_sin" type="text" id="employee-sin-input" value="{{$paystub->employee_sin}}" readonly/>
+                                </div>
+                            </div>
+
+                            <h3>Pay Period</h3>
+                            
+                            <div class="form-group row mb-3">
+                                <label for="pay-period-start-input" class="col-sm-2 col-form-label text-sm-end">Starting:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="pay_period_start" type="date" id="pay-period-start-input" value={{$paystub->pay_period_start}} readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="pay-period-end-input" class="col-sm-2 col-form-label text-sm-end">Ending:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="pay_period_end" type="date" id="pay-period-end-input" value={{$paystub->pay_period_end}} readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="pay-date-input" class="col-sm-2 col-form-label text-sm-end">Pay Date</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="pay_date" type="date" id="pay-date-input" value="{{$paystub->pay_date}}" readonly/>
+                                </div>
+                            </div>
+
+                            <h3>Earnings</h3>
+
+                            <div class="form-group row mb-3">
+                                <label for="hourly-rate-input" class="col-sm-2 col-form-label text-sm-end">Hourly Rate:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="hourly_rate" type="text" id="hourly-rate-input" value="{{formatTwoDecimal($paystub->hourly_rate)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="hours-worked-input" class="col-sm-2 col-form-label text-sm-end">Hours:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="hours_worked" type="text" id="hours-worked-input" value="{{$paystub->hours_worked}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="total-wages-input" class="col-sm-2 col-form-label text-sm-end">Total Wages:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="total_wages" type="text" id="total-wages-input" value="{{formatTwoDecimal($paystub->total_wages)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="vacation-pay-input" class="col-sm-2 col-form-label text-sm-end">4% Vacation Pay:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="vacation_pay" type="text" id="vacation-pay-input" value="{{formatTwoDecimal($paystub->vacation_pay)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="gross-pay-input" class="col-sm-2 col-form-label text-sm-end">Gross Pay:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="gross_pay" type="text" id="gross_pay_input" value="{{formatTwoDecimal($paystub->gross_pay)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="ytd-earnings-input" class="col-sm-2 col-form-label text-sm-end">YTD Earnings:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="ytd_earnings" type="text" id="ytd-earnings-input" value="{{formatTwoDecimal($paystub->ytd_earnings)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <h3>Deductions</h3>
+                            
+                            <div class="form-group row mb-3">
+                                <label for="federal-tax-input" class="col-sm-2 col-form-label text-sm-end">Federal Tax:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="federal_tax" type="number" id="federal-tax-input" value="{{formatTwoDecimal($paystub->federal_tax)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="provincial-tax-input" class="col-sm-2 col-form-label text-sm-end">Provincial Tax:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="provincial_tax" type="number" id="provincial-tax-input" value="{{formatTwoDecimal($paystub->provincial_tax)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="cpp-deduction-input" class="col-sm-2 col-form-label text-sm-end">CPP:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="cpp_deduction" type="number" id="cpp-deduction-input" value="{{formatTwoDecimal($paystub->cpp_deduction)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="ei-deduction-input" class="col-sm-2 col-form-label text-sm-end">EI:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="ei_deduction" type="number" id="ei-deduction-input" value="{{formatTwoDecimal($paystub->ei_deduction)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="total-deductions-input" class="col-sm-2 col-form-label text-sm-end">Total Deductions:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="total_deductions" type="number" step="0.01" id="total-deductions-input" value="{{formatTwoDecimal($paystub->total_deductions)}}" readonly/>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row mb-3">
+                                <label for="ytd-deductions-input" class="col-sm-2 col-form-label text-sm-end">YTD Deductions:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="ytd_deductions" type="number" id="ytd-deductions-input" value="{{formatTwoDecimal($paystub->ytd_deductions)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <h3>Year to Date</h3>
+
+                            <div class="form-group row mb-3">
+                                <label for="gross-ytd" class="col-sm-2 col-form-label text-sm-end">Year to date gross:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="gross_ytd" type="number" id="gross-ytd" value="{{formatTwoDecimal($paystub->ytd_earnings)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="deductions-ytd" class="col-sm-2 col-form-label text-sm-end">Year to date deductions:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="deductions_ytd" type="number" id="deductions-ytd" value="{{formatTwoDecimal($paystub->ytd_deductions)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="net-pay-ytd" class="col-sm-2 col-form-label text-sm-end">Year to date net pay:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="ytd_net_pay" type="number" id="net-pay-ytd" value="{{formatTwoDecimal($paystub->ytd_net_pay)}}" readonly/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    
+@endsection

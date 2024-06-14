@@ -43,6 +43,7 @@ Route::group(['prefix' => '/intern'], function () {
     Route::post('/application', [App\Http\Controllers\ApplicationController::class, 'store'])->name('application.store');
     Route::post('/application/update/{id}', [App\Http\Controllers\ApplicationController::class, 'update'])->name('application.update');
     Route::post('/emergency/contact', [App\Http\Controllers\HiredInternController::class, 'storeEmergencyContact'])->name('emergency.contact.store');
+    Route::get('/my-pay', [TimesheetController::class, 'showMyPay'])->name('show.my.pay');
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -59,6 +60,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('interns/delete-clock-entry/{id}', [TimesheetController::class, 'deleteClockEntry'])->name('delete.clock.entry');
     Route::get('interns/{id}/create-clock-entry', [TimesheetController::class, 'showCreateClockEntry'])->name('show.create.clock.entry');
     Route::post('interns/{id}/create-clock-entry', [TimesheetController::class, 'createClockEntry'])->name('create.clock.entry');
+    Route::post('interns/{id}/generate-pay-stub', [TimesheetController::class, 'showGeneratePayStub'])->name('show.generate.pay.stub');
+    Route::post('interns/{id}/submit-pay-stub', [TimesheetController::class, 'submitPayStub'])->name('submit.pay.stub');
+    Route::Get('interns/{id}/pay-stubs', [TimesheetController::class, 'showPayStubs'])->name('show.pay.stubs');
     Route::post('interns/hire/{id}', [AdminController::class, 'internHire'])->name('admin.intern.hire');
     Route::post('interns/delete/{id}', [AdminController::class, 'internDelete'])->name('admin.intern.delete');
     Route::get('company/{id}', [AdminController::class, 'companyShow'])->name('admin.company.show');

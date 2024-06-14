@@ -34,6 +34,11 @@
            "path" => "clock.index",
            "icon" => "mdi-progress-clock"
        ],
+       [
+            "name" => "My Pay",
+            "path" => "show.my.pay",
+            "icon" => "mdi-account-cash"
+        ],
    ];
 ?>
 

@@ -76,6 +76,12 @@
                                                     <th class="ps-0" scope="row">Full Name:</th>
                                                     <td class="text-muted">{{ $user->name }}</td>
                                                 </tr>
+                                                
+                                                <tr>
+                                                    <th class="ps-0" scope="row">Employee number:</th>
+                                                    <td class="text-muted">{{$user->employee_number ?? "Not found"}}</td>
+                                                </tr>
+
                                                 <tr>
                                                     <th class="ps-0" scope="row">Mobile:</th>
                                                     <td class="text-muted">{{ $user->phone }}</td>

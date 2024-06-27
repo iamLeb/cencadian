@@ -13,7 +13,13 @@
         //Could make this a column of the user table later, as of now all interns are paid the same rate.
         $HOURLY_RATE = 15.30;
 
-        $hoursWorked = round(($timeWorked->dayz * 24) + ($timeWorked->hours) + (0.01666 * $timeWorked->seconds), 2);
+        $hoursWorked = round(($timeWorked->dayz * 24) + ($timeWorked->hours) + (0.01666 * $timeWorked->seconds), 0);
+
+        //force cap of 60 hours per pay period
+        if ($hoursWorked > 60) {
+            $hoursWorked = 60;
+        }
+
         $wagePay = round($hoursWorked * $HOURLY_RATE, 2);
         $vacationPay = round($wagePay * 0.04, 2);
         $grossPay = $wagePay + $vacationPay;

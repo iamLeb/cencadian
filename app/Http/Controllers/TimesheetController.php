@@ -67,7 +67,7 @@ class TimesheetController extends Controller {
         }
 
         if ($request->end) {
-            $clockRecords = $clockRecords->where('clock_in', '<=', $request->end);
+            $clockRecords = $clockRecords->where('clock_in', '<=', date('Y-m-d', strtotime($request->end . ' + 1 days')));
         }
 
         return view('admin/intern/reviewTimesheet', [

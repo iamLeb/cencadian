@@ -2,6 +2,7 @@
 @section('content')
 
     @php
+        //this should be moved outside the view
         use Carbon\CarbonInterval;
         use Carbon\Carbon;
 
@@ -23,10 +24,6 @@
         $wagePay = round($hoursWorked * $HOURLY_RATE, 2);
         $vacationPay = round($wagePay * 0.04, 2);
         $grossPay = $wagePay + $vacationPay;
-
-        function formatTwoDecimal ($number) {
-            return number_format((float)$number, 2, '.', '');
-        }
     @endphp
 
     <!--Page title-->
@@ -184,7 +181,7 @@
                             <div class="form-group row mb-3">
                                 <label for="employee-id-input" class="col-sm-2 col-form-label text-sm-end">Employee ID:</label>
                                 <div class="col-sm-6 col-xl-4">
-                                    <input class="form-control col" name="employee_id" type="text" id="employee-id-input" value="{{$intern->id}}" readonly/>
+                                    <input class="form-control col" name="employee_number" type="text" id="employee-id-input" value="{{$intern->employee_number}}" readonly/>
                                 </div>
                             </div>
 
@@ -230,7 +227,8 @@
                             <div class="form-group row mb-3">
                                 <label for="hours-worked-input" class="col-sm-2 col-form-label text-sm-end">Hours:</label>
                                 <div class="col-sm-6 col-xl-4">
-                                    <input class="form-control col" name="hours_worked" type="text" id="hours-worked-input" value={{$hoursWorked}} readonly/>
+                                    <input class="form-control col" name="hours_worked" type="text" id="hours-worked-input" value="{{$hoursWorked}}"/>
+                                    <button type="button" id="override-hours-button" class="btn btn-sm btn-warning">Override</button>
                                 </div>
                             </div>
 
@@ -251,7 +249,7 @@
                             <div class="form-group row mb-3">
                                 <label for="gross-pay-input" class="col-sm-2 col-form-label text-sm-end">Gross Pay:</label>
                                 <div class="col-sm-6 col-xl-4">
-                                    <input class="form-control col" name="gross_pay" type="text" id="gross_pay_input" value={{formatTwoDecimal($grossPay)}} readonly/>
+                                    <input class="form-control col" name="gross_pay" type="text" id="gross-pay-input" value={{formatTwoDecimal($grossPay)}} readonly/>
                                 </div>
                             </div>
 
@@ -306,6 +304,15 @@
                                 </div>
                             </div>
 
+                            <h3>Net Pay</h3>
+                            
+                            <div class="form-group row mb-3">
+                                <label for="net-pay" class="col-sm-2 col-form-label text-sm-end">Net pay this period:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="net_pay" type="number" id="net-pay-input" placeholder="(CALCULATED)" readonly/>
+                                </div>
+                            </div>
+
                             <h3>Year to Date</h3>
 
                             <div class="form-group row mb-3">
@@ -329,6 +336,8 @@
                                 </div>
                             </div>
 
+                            <input type="hidden" name="employee_id" value="{{$intern->id}}">
+
                             <button type="submit" class="btn btn-success btn-lg w-100"><i class="mdi mdi-cash"></i> Generate Pay Stub</button>
                             </form>
 
@@ -338,5 +347,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function overrideHoursWorked() {
+            console.log("Overriding hours worked");
+            const hourlyRate = {{$HOURLY_RATE}}
+
+            const numHoursInput = document.querySelector("#hours-worked-input");
+            const numHours = numHoursInput.value;
+
+            const totalWagesInput = document.querySelector("#total-wages-input");
+            const vacationPayInput = document.querySelector("#vacation-pay-input");
+            const grossPayInput = document.querySelector("#gross-pay-input");
+            
+            const totalWages = numHours * hourlyRate;
+            const vacationPay = totalWages * 0.04
+            const grossPay = totalWages + vacationPay
+
+            totalWagesInput.value = totalWages.toFixed(2);
+            vacationPayInput.value = vacationPay.toFixed(2);
+            grossPayInput.value = grossPay.toFixed(2);
+        }
+
+        const overrideHoursButton = document.querySelector("#override-hours-button");
+        overrideHoursButton.addEventListener('click', overrideHoursWorked);
+    </script>
 
 @endsection

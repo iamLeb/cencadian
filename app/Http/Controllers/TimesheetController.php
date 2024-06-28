@@ -20,6 +20,9 @@ class TimesheetController extends Controller {
        //calculate total deductions for this pay period
        $total_deductions = $request->federal_tax + $request->provincial_tax + $request->cpp_deduction + $request->ei_deduction; 
 
+       //calculate net pay for this pay period
+       $net_pay = $request->gross_pay - $total_deductions;
+
         //calculate ytd amounts based on previous pay stubs and amounts given on the new pay stub.
         $ytd_earnings_before_current = DB::table('pay_stubs')->where('employee_id', $request->employee_id)->sum('gross_pay');
         $ytd_deductions_before_current = DB::table('pay_stubs')->where('employee_id', $request->employee_id)->sum('total_deductions');
@@ -35,6 +38,7 @@ class TimesheetController extends Controller {
             'company_address' => $request->company_address,
             'employee_name' => $request->employee_name,
             'employee_address' => $request->employee_address,
+            'employee_number' => $request->employee_number,
             'employee_id' => $request->employee_id,
             'employee_sin' => $request->employee_sin,
             'pay_period_start' => $request->pay_period_start,
@@ -51,6 +55,7 @@ class TimesheetController extends Controller {
             'cpp_deduction' => $request->cpp_deduction,
             'ei_deduction' => $request->ei_deduction,
             'total_deductions' => $total_deductions,
+            'net_pay' => $net_pay,
             'ytd_deductions' => $ytd_deductions,
             'ytd_net_pay' => $ytd_net_pay
         ]);
@@ -161,6 +166,7 @@ class TimesheetController extends Controller {
             'company_address' => $request->company_address,
             'employee_name' => $request->employee_name,
             'employee_address' => $request->employee_address,
+            'employee_number' => $request->employee_number,
             'employee_id' => $request->employee_id,
             'employee_sin' => $request->employee_sin,
             'pay_period_start' => $request->pay_period_start,
@@ -177,6 +183,7 @@ class TimesheetController extends Controller {
             'cpp_deduction' => $request->cpp_deduction,
             'ei_deduction' => $request->ei_deduction,
             'total_deductions' => $request->total_deductions,
+            'net_pay' => $request->net_pay,
             'ytd_deductions' => $request->ytd_deductions,
             'ytd_net_pay' => $request->ytd_net_pay
         ]);

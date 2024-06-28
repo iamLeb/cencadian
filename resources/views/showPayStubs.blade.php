@@ -2,11 +2,6 @@
 
 @section('content')
 
-@php
-    function formatTwoDecimal ($number) {
-        return number_format((float)$number, 2, '.', '');
-    }
-@endphp
     <!--Page title-->
     <div class="row">
         <div class="col-12">
@@ -83,7 +78,7 @@
                             <div class="form-group row mb-3">
                                 <label for="employee-id-input" class="col-sm-2 col-form-label text-sm-end">Employee ID:</label>
                                 <div class="col-sm-6 col-xl-4">
-                                    <input class="form-control col" name="employee_id" type="text" id="employee-id-input" value="{{$paystub->employee_id}}" readonly/>
+                                    <input class="form-control col" name="employee_id" type="text" id="employee-id-input" value="{{$paystub->employee->employee_number}}" readonly/>
                                 </div>
                             </div>
 
@@ -122,7 +117,7 @@
                             <div class="form-group row mb-3">
                                 <label for="hourly-rate-input" class="col-sm-2 col-form-label text-sm-end">Hourly Rate:</label>
                                 <div class="col-sm-6 col-xl-4">
-                                    <input class="form-control col" name="hourly_rate" type="text" id="hourly-rate-input" value="{{formatTwoDecimal($paystub->hourly_rate)}}" readonly/>
+                                    <input class="form-control col" name="hourly_rate" type="text" id="hourly-rate-input" value="{{($paystub->hourly_rate)}}" readonly/>
                                 </div>
                             </div>
 
@@ -202,6 +197,15 @@
                                 <label for="ytd-deductions-input" class="col-sm-2 col-form-label text-sm-end">YTD Deductions:</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <input class="form-control col" name="ytd_deductions" type="number" id="ytd-deductions-input" value="{{formatTwoDecimal($paystub->ytd_deductions)}}" readonly/>
+                                </div>
+                            </div>
+
+                            <h3>Net Pay</h3>
+                            
+                            <div class="form-group row mb-3">
+                                <label for="net-pay" class="col-sm-2 col-form-label text-sm-end">Net pay this period:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="net_pay" type="number" id="net-pay-input" value="{{formatTwoDecimal($paystub->net_pay)}}" readonly/>
                                 </div>
                             </div>
 

@@ -1,12 +1,6 @@
 @extends('layouts.backend')
 @section('content')
 
-@php
-    function formatTwoDecimal ($number) {
-        return number_format((float)$number, 2, '.', '');
-    }
-@endphp
-
     <!--Page title-->
     <div class="row">
         <div class="col-12">
@@ -75,7 +69,7 @@
                             <div class="form-group row mb-3">
                                 <label for="employee-id-input" class="col-sm-2 col-form-label text-sm-end">Employee ID:</label>
                                 <div class="col-sm-6 col-xl-4">
-                                    <input class="form-control col" name="employee_id" type="text" id="employee-id-input" value="{{$employee_id}}" readonly/>
+                                    <input class="form-control col" name="employee_number" type="text" id="employee-id-input" value="{{$employee_number}}" readonly/>
                                 </div>
                             </div>
 
@@ -197,6 +191,15 @@
                                 </div>
                             </div>
 
+                            <h3>Net Pay</h3>
+                            
+                            <div class="form-group row mb-3">
+                                <label for="net-pay" class="col-sm-2 col-form-label text-sm-end">Net pay this period:</label>
+                                <div class="col-sm-6 col-xl-4">
+                                    <input class="form-control col" name="net_pay" type="number" id="net-pay-input" value="{{formatTwoDecimal($net_pay)}}" readonly/>
+                                </div>
+                            </div>
+
                             <h3>Year to Date</h3>
 
                             <div class="form-group row mb-3">
@@ -219,6 +222,8 @@
                                     <input class="form-control col" name="ytd_net_pay" type="number" id="net-pay-ytd" value="{{formatTwoDecimal($ytd_net_pay)}}" readonly/>
                                 </div>
                             </div>
+
+                            <input type="hidden" name="employee_id" value="{{$employee_id}}"/>
 
                             <button type="submit" class="btn btn-warning btn-lg w-100"><i class="mdi mdi-cash"></i> Submit Pay Stub</button>
                             </form>

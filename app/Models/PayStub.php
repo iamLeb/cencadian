@@ -14,4 +14,8 @@ class PayStub extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function employee() {
+        return $this->belongsTo(User::class, 'employee_id');
+    }
 }

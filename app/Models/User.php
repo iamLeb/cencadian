@@ -91,4 +91,8 @@ class User extends Authenticatable
     public function documentAccesses() {
         return $this->hasMany(DocumentAccess::class, 'user_id');
     }
+
+    public function payStubs() {
+        return $this->hasMany(PayStub::class, 'user_id');
+    }
 }

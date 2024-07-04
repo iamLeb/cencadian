@@ -445,8 +445,8 @@
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8">
                     <div class="section-title text-center mb-40 tg-heading-subheading animation-style3">
-                        <span class="sub-title">WHAT WE OFFER</span>
-                        <h2 class="title tg-element-title">We Offer Solutions for Small to Medium-Sized Organizations</h2>
+                        <span class="sub-title">OUR PORTFOLIO</span>
+                        <h2 class="title tg-element-title">Previous and Ongoing Projects for Small to Medium-Sized Organizations</h2>
                     </div>
                 </div>
             </div>
@@ -455,14 +455,14 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                         <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
-                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_building_websites_i78t.svg') }}" alt=""></a>
+                                <a class='shine-animate' href='https://st-bonni-lwc.onrender.com/'><img style="object-fit: contain" src="{{ asset('front/assets/img/st-bonni-lwc-logo.png') }}" alt=""></a>
                             </div>
                             <div class="services-content">
                                 <div class="icon">
-                                    <i class="fa fa-laptop"></i>
+                                    <i class="fa fa-tree"></i>
                                 </div>
-                                <h4 class="title"><a href='services-details.html'>Web Development Solutions</a></h4>
-                                <p>At Cencadian, we create custom web solutions to fit your business perfectly, whether it's an e-commerce site, corporate page, or dynamic app. Our experienced team turns your vision into digital reality.</p>
+                                <h4 class="title"><a href='services-details.html'>St. Boniface Lawn and Window Care</a></h4>
+                                <p>We provided this local small business with an online presence, including contact information, social media links, and a booking system to allow users to schedule services, view service availabilities and leave verified reviews.</p>
                             </div>
                         </div>
                     </div>

@@ -145,8 +145,8 @@ $lists = [
                             <div class="icon">
                                 <i class="flaticon-profit"></i>
                             </div>
-                            <h4 class="title"><a href='services-details.html'>Web Development Solutions</a></h4>
-                            <p>At Cencadian, we create custom web solutions to fit your business perfectly, whether it's an e-commerce site, corporate page, or dynamic app. Our experienced team turns your vision into digital reality.</p>
+                            <h4 class="title"><a href='services-details.html'>St. Boniface Lawn and Window Care</a></h4>
+                            <p>Asdf</p>
                         </div>
                     </div>
                 </div>

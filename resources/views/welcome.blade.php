@@ -446,13 +446,13 @@
                 <div class="col-xl-6 col-lg-8">
                     <div class="section-title text-center mb-40 tg-heading-subheading animation-style3">
                         <span class="sub-title">OUR PORTFOLIO</span>
-                        <h2 class="title tg-element-title">Previous and Ongoing Projects for Small to Medium-Sized Organizations</h2>
+                        <h2 class="title tg-element-title">Previous and Ongoing Projects for SMEs</h2>
                     </div>
                 </div>
             </div>
             <div class="services-item-wrap">
                 <div class="row justify-content-center">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8">
                         <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
                                 <a class='shine-animate' href='https://st-bonni-lwc.onrender.com/'><img style="object-fit: contain" src="{{ asset('front/assets/img/st-bonni-lwc-logo.png') }}" alt=""></a>
@@ -463,38 +463,40 @@
                                 </div>
                                 <h4 class="title"><a href='services-details.html'>St. Boniface Lawn and Window Care</a></h4>
                                 <p>We provided this local small business with an online presence, including contact information, social media links, and a booking system to allow users to schedule services, view service availabilities and leave verified reviews.</p>
+
+                                <a href='https://st-bonni-lwc.onrender.com/'>View website -></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8">
                         <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
-                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_savings_re_eq4w.svg') }}" alt=""></a>
+                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front\assets\undraw_judge_katerina_limpitsouni_ny-1-q.svg') }}" alt=""></a>
                             </div>
                             <div class="services-content">
                                 <div class="icon">
-                                    <i class="flaticon-financial-profit"></i>
+                                    <i class="fa fa-gavel"></i>
                                 </div>
-                                <h4 class="title"><a href='services-details.html'>Little to no Cost</a></h4>
-                                <p>The 2024 Cencadian Summer Web Development Program is aimed to provide Web Development Services at little to no cost to new or existing small to medium scale organizations within the community that might not be able to afford the huge cost of web development and maintenance.  </p>
+                                <h4 class="title"><a href='services-details.html'>Campbell Law Firm (Ongoing)</a></h4>
+                                <p>We are in the process of developing a search engine optimized website for a local law firm. This website will allow prospective clients to view services offered by the office, find contact information for lawyers and get in touch with the office, increasing outreach for the business. </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8">
                         <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
-                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_showing_support_re_5f2v.svg') }}" alt=""></a>
+                                <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front\assets\undraw_buy_house_re_8xq7.svg') }}" alt=""></a>
                             </div>
                             <div class="services-content">
                                 <div class="icon">
-                                    <i class="flaticon-handshake"></i>
+                                    <i class="fa fa-house-user"></i>
                                 </div>
-                                <h4 class="title"><a href='services-details.html'>Community Impact</a></h4>
-                                <p>By focusing on local businesses and organizations that might not otherwise afford web development, we aim to strengthen community ties and foster economic growth.</p>
+                                <h4 class="title"><a href='services-details.html'>Bukola Bliss, REALTOR &#xAE (Ongoing)</a></h4>
+                                <p>We developed a seamless real estate experience with comprehensive property listings, a booking system for viewings, and an expert blog featuring market trends and tips.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                    {{-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                         <div class="services-item shine-animate-item" style="height: 36rem">
                             <div class="services-thumb">
                                 <a class='shine-animate' href='services-details.html'><img style="object-fit: contain" src="{{ asset('front/assets/undraw_outer_space_re_u9vd.svg') }}" alt=""></a>
@@ -507,7 +509,7 @@
                                 <p>Local businesses, startups, and entrepreneurs who lack the financial resources for extensive web development services will gain a competitive edge through affordable access to professional websites, enabling them to reach a wider audience and thrive in the digital landscape. </p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div style="display:flex; justify-content:center width:100%">
